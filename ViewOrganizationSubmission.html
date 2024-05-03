@@ -15,8 +15,6 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/theme.min.css">
 
-
-
     <style>
         /* inter-300 - latin */
         
@@ -91,14 +89,26 @@
                 background-color: #D5A187;
                 box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
             }
-            .col-1 {
+            .col-1-head {
+                flex-basis: 20%;
+            }
+            .col-2-head {
+                flex-basis: 20%;
+            }
+            .col-3-head {
                 flex-basis: 10%;
             }
+            .col-4-head {
+                flex-basis: -20%;
+            }
+            .col-1 {
+                flex-basis: 30%;
+            }
             .col-2 {
-                flex-basis: 40%;
+                flex-basis: 20%;
             }
             .col-3 {
-                flex-basis: 20%;
+                flex-basis: 10%;
             }
             .col-4 {
                 flex-basis: 20%;
@@ -159,7 +169,6 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
-
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
@@ -213,13 +222,14 @@
     <main>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
             <div class="table-container">
-                <ul class="responsive-table" id="donorTable">
+                <ul class="responsive-table" id="submissionTable">
                     <li class="table-header">
-                        <div class="col col-1">Donor ID</div>
-                        <div class="col col-2">Donor Name</div>
-                        <div class="col col-3">No. of Donations</div>
-                        <div class="col col-4">Activity Status</div>
-                        <div class="col col-5">Contact</div>
+
+                        <div class="col col-1-head">Organization Name
+                        </div>
+                        <div class="col col-2-head">Submission Request</div>
+                        <div class="col col-3-head">Contact</div>
+                        <div class="col col-4-head">Request</div>
                     </li>
                 </ul>
             </div>
@@ -231,20 +241,21 @@
             <div class="row py-5 d-flex justify-content-between">
 
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
-                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt="">
+                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt>
                     <address class="text-secondary mt-3">
-                <strong>Unity</strong><br>
-                Al Rehab City, New Cairo<br>
-                Cairo, EG 103021<br>
-                <abbr title="Phone">P:</abbr>
-                (+20) 1013455666
-              </address>
+                                <strong>Unity</strong><br>
+                                Al Rehab City, New Cairo<br>
+                                Cairo, EG 103021<br>
+                                <abbr title="Phone">P:</abbr>
+                                (+20) 1013455666
+                            </address>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
                     <h3 class="h6 mb-3">Company</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="adminLogin.html">Administrator Login</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="adminLogin.html">Administrator
+                                        Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link link-fancy ps-0" href="#">Administrator Dashboard</a>
@@ -257,8 +268,10 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="register.html">Register System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="content.html">Simple Text Content Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="register.html">Register System
+                                        Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="content.html">Simple Text Content
+                                        Page</a>
                         </li>
                     </ul>
                 </div>
@@ -271,55 +284,154 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+
             // Retrieve requests from local storage
-            let storedDonors = JSON.parse(localStorage.getItem('donors'));
+            let storedRequests = JSON.parse(localStorage.getItem('requests'));
 
             // If no requests are found in local storage, use default requests
-            if (!storedDonors) {
-                storedDonors = [{
-                    id: 324424,
-                    name: 'John Hands',
-                    donations: 430,
-                    activity: 'Active',
-                    contact: '+389348834'
+            if (!storedRequests) {
+                storedRequests = [{
+                    id: 1,
+                    organization: 'Helping Hands',
+                    request: 'Request 1'
                 }, {
-                    id: 4893535,
-                    name: 'John Ahmed',
-                    donations: 42,
-                    activity: 'Offline',
-                    contact: '+3893483425'
+                    id: 2,
+                    organization: 'Goodwill',
+                    request: 'Request 2'
                 }];
-                localStorage.setItem('donors', JSON.stringify(storedDonors));
+                localStorage.setItem('requests', JSON.stringify(storedRequests));
             }
 
             // Update the global requests array
-            donors = storedDonors;
+            requests = storedRequests;
 
             // Create table rows with the retrieved requests
-            createTableRows(donors);
+            createTableRows(requests);
 
-            localStorage.clear();
+            // localStorage.clear();
         });
 
-        // Function to create table rows from JSON data
         function createTableRows(data) {
-            const table = document.getElementById('donorTable');
-            data.forEach((donor, index) => {
+            const table = document.getElementById('submissionTable');
+
+            // Remove existing rows (excluding the header)
+            const existingRows = table.querySelectorAll('.table-row');
+            existingRows.forEach(row => row.remove());
+
+            data.forEach((request, index) => {
                 const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
                 const newRow = document.createElement('li');
-                newRow.classList.add(rowClass);
+                newRow.classList.add(rowClass, 'table-row');
+                newRow.setAttribute('data-id', request.id); // Add data-id attribute
                 newRow.innerHTML = `
-              <div class="col col-1" data-label="Donor ID">${donor.id}</div>
-              <div class="col col-2" data-label="Donor Name">${donor.name}</div>
-              <div class="col col-3" data-label="No. of Donations">${donor.donations}</div>
-              <div class="col col-4" data-label="Activity Status">${donor.activity}</div>
-              <div class="col col-5" data-label="Contact">${donor.contact}</div>
-            `;
+      <div class="col col-1" data-label="Organization Name">${request.organization}</div>
+      <div class="col col-2" data-label="Submission Request">${request.request}</div>
+      <div class="col col-3" data-label="Contact">Contact Info</div>
+      <div class="col col-4" data-label="Request">
+        <button onclick="acceptRequest(${request.id})" class="btn btn-success">Accept</button>
+        <button onclick="rejectRequest(${request.id})" class="btn btn-danger">Reject</button>
+      </div>
+    `;
                 table.appendChild(newRow);
             });
         }
-    </script>
 
+
+        function acceptRequest(id) {
+            // Find the request object with the given id
+            const request = requests.find(req => req.id === id);
+
+            if (request) {
+                // Extract organization information from the request object
+                const {
+                    organization,
+                    request: submissionRequest,
+                    contact
+                } = request;
+
+                // Assuming the newly accepted organization is stored in an object called newOrganization
+                const newOrganization = {
+                    id: id,
+                    name: organization,
+                    donations: 0, // Update with the actual donations
+                    status: 'New', // Update with the actual status
+                    contact: contact // Update with the actual contact info
+                };
+
+
+                // Retrieve organizations from localStorage and parse the JSON string
+                let organizations = JSON.parse(localStorage.getItem('organizations')) || [];
+
+                // Add the new organization to the organizations array
+                organizations.push(newOrganization);
+
+                // Store the updated organizations array back to localStorage after stringifying it
+                localStorage.setItem('organizations', JSON.stringify(organizations));
+
+                removeOrganization(id);
+
+                localStorage.setItem('requests', JSON.stringify(requests));
+
+                // Redirect to the ViewOrganizations.html page using window.location.replace()
+                window.location.replace('ViewOrganizations.html');
+            }
+        }
+
+        function removeOrganization(id) {
+            // Find the index of the request with the given id
+            const index = requests.findIndex(request => request.id === id);
+
+            // If the request is found
+            if (index !== -1) {
+                // Remove the request from the array
+                requests.splice(index, 1);
+
+                // Remove the corresponding row from the table
+                const table = document.getElementById('submissionTable');
+                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                    console.log(`Row with ID ${id} removed from the table.`);
+                } else {
+                    console.log(`Row with ID ${id} not found in the table.`);
+                }
+                localStorage.setItem('requests', JSON.stringify(requests));
+
+            } else {
+                console.log(`Request with ID ${id} not found.`);
+            }
+        }
+
+        function rejectRequest(id) {
+            // Find the index of the request with the given id
+            const index = requests.findIndex(request => request.id === id);
+
+            // If the request is found
+            if (index !== -1) {
+                // Remove the request from the array
+                requests.splice(index, 1);
+
+                // Remove the corresponding row from the table
+                const table = document.getElementById('submissionTable');
+                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                }
+
+                // Update the local storage with the modified requests array
+                localStorage.setItem('requests', JSON.stringify(requests));
+
+                // Log a message indicating the request is rejected
+                console.log(`Request ${id} rejected`);
+            } else {
+                console.log(`Request ${id} not found`);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            createTableRows(requests);
+        });
+    </script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>
