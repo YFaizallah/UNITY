@@ -104,5 +104,41 @@
 
       </div>
 
-    </div></body>
+    </div>
+    <script>
+      // Define user data as an array of objects
+      const admin = [
+        {
+          "email": "admin1@gmail.com",
+          "password": "password1"
+        },
+        {
+          "email": "admin2@gmail.com",
+          "password": "password2"
+        }
+      ];
+    
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+    
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+    
+          const email = document.getElementById('exampleInputEmail1').value;
+          const password = document.getElementById('exampleInputPassword1').value;
+    
+          const foundUser = admin.find(admin => admin.email === email && admin.password === password);
+          if (foundUser) {
+            const adminName = foundUser.email.replace('@gmail.com', '');
+            localStorage.setItem('adminName', adminName);
+            window.location.href = 'adminDashboard.html'
+          } else {
+            window.location.href = '404NotFound.html';
+          }
+        });
+      });
+    </script>
+    
+    
+  </body>
 </html>
