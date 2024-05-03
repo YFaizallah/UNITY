@@ -132,6 +132,28 @@
         }
     </style>
 
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+    </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
@@ -140,34 +162,38 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <a href="index.html">
-                <img src="UnityAssets/png/logo-color.png" style="width:150px; margin-right: 50px;" alt=""></a>
+            <img src="UnityAssets/png/logo-color.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
+      View Organization 
+    </a>
+                    </li>
 
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Vieworganizations.html">
-    View Organizations
-    </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewDonors.html" aria-label="Brings you to the frontpage">
-      View Donors
-    </a>
+    View Donor 
+  </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewSubmissions.html">
-      Review Submissions
-    </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Review Submissions</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ManageRequests.html">
-      Manage Requests
-    </a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="ManageAccounts.html">
@@ -182,7 +208,6 @@
             </div>
         </div>
     </nav>
-
     <main>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
             <div class="table-container">
