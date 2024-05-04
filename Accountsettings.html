@@ -49,87 +49,6 @@
             url('./fonts/inter-v12-latin-700.woff') format('woff');
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
-        
-        .table-container {
-            margin-top: 100px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        h2 {
-            font-size: 26px;
-            margin: 20px 0;
-            text-align: center;
-            small {
-                font-size: 0.5em;
-            }
-        }
-        
-        .responsive-table {
-            li {
-                border-radius: 3px;
-                padding: 25px 30px;
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 25px;
-            }
-            .table-header {
-                background-color: #162836;
-                font-size: 14px;
-                text-transform: uppercase;
-                letter-spacing: 0.03em;
-                color: white;
-            }
-            .table-row-even {
-                background-color: white;
-                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-            }
-            .table-row-odd {
-                background-color: #D5A187;
-                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-            }
-            .col-1 {
-                flex-basis: 10%;
-            }
-            .col-2 {
-                flex-basis: 40%;
-            }
-            .col-3 {
-                flex-basis: 20%;
-            }
-            .col-4 {
-                flex-basis: 20%;
-            }
-            .col-5 {
-                flex-basis: 20%;
-            }
-            @media all and (max-width: 767px) {
-                .table-header {
-                    display: none;
-                }
-                .table-row {}
-                li {
-                    display: block;
-                }
-                .col {
-                    flex-basis: 100%;
-                }
-                .col {
-                    display: flex;
-                    padding: 10px 0;
-                    &:before {
-                        color: #6C7A89;
-                        padding-right: 10px;
-                        content: attr(data-label);
-                        flex-basis: 50%;
-                        text-align: right;
-                    }
-                }
-            }
-        }
     </style>
 
     <style>
@@ -150,6 +69,17 @@
             display: block;
         }
         
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
         li {
             list-style: none;
         }
@@ -163,7 +93,7 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
+            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px; margin-top:10px;" alt="" href="index.html">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -219,16 +149,24 @@ Account Settings
 
     <main>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="table-container" style="margin-top: 150px;">
-                <ul class="responsive-table" id="donorTable">
-                    <li class="table-header">
-                        <div class="col col-1">Donor ID</div>
-                        <div class="col col-2">Donor Name</div>
-                        <div class="col col-3">No. of Donations</div>
-                        <div class="col col-4">Activity Status</div>
-                        <div class="col col-5">Contact</div>
-                    </li>
-                </ul>
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8 mt-5" style="margin-top: 50px;">
+                        <h1 class="mb-4">Account Settings</h1>
+                        <div>
+                            <p>Welcome, <span id="adminCheck"></span>!</p>
+                            <p>If you want to change your password, please enter a new password below:</p>
+                            <form id="passwordForm">
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <input type="password" class="form-control form-control-lg" id="newPassword" name="newPassword">
+                                    <div id="passwordError" class="error-message"></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color: #162836; color: #D5A187;">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -277,44 +215,53 @@ Account Settings
     </footer>
 
     <script>
-        let donors = [];
-        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("passwordForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const newPassword = document.getElementById("newPassword").value; // Get the new password
+            const newPasswordField = document.getElementById("newPassword"); // Get the new password field
+            const passwordError = document.getElementById("passwordError"); // Get the error message element
 
-            // If no requests are found in local storage, use default requests
-            donors = [{
-                id: 324424,
-                name: 'John Hands',
-                donations: 430,
-                activity: 'Active',
-                contact: '+389348834'
-            }, {
-                id: 4893535,
-                name: 'John Ahmed',
-                donations: 42,
-                activity: 'Offline',
-                contact: '+3893483425'
-            }];
+            // Regular expression to check if password contains at least 7 characters and at least one capital letter
+            const passwordRegex = /^(?=.*[A-Z]).{7,}$/;
 
-            createTableRows(donors);
+            // Check if the new password field is empty
+            if (newPassword.trim() === '') {
+                newPasswordField.classList.add('error'); // Add error class to the input field
+                passwordError.textContent = 'Please enter a new password'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Check if the new password meets the constraints
+            if (!passwordRegex.test(newPassword)) {
+                newPasswordField.classList.add('error'); // Add error class to the input field
+                passwordError.textContent = 'Password should contain at least 7 characters and at least one capital letter'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Simulate password change
+            localStorage.setItem("password", newPassword); // Store the new password (you can replace this with your actual password change code)
+            console.log("New Password: ", newPassword); // For demonstration
+            alert("Password changed successfully!");
+            newPasswordField.classList.remove('error'); // Remove error class from the input field
+            passwordError.textContent = ''; // Clear error message
         });
 
-        // Function to create table rows from JSON data
-        function createTableRows(data) {
-            const table = document.getElementById('donorTable');
-            data.forEach((donor, index) => {
-                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
-                const newRow = document.createElement('li');
-                newRow.classList.add(rowClass);
-                newRow.innerHTML = `
-              <div class="col col-1" data-label="Donor ID">${donor.id}</div>
-              <div class="col col-2" data-label="Donor Name">${donor.name}</div>
-              <div class="col col-3" data-label="No. of Donations">${donor.donations}</div>
-              <div class="col col-4" data-label="Activity Status">${donor.activity}</div>
-              <div class="col col-5" data-label="Contact">${donor.contact}</div>
-            `;
-                table.appendChild(newRow);
-            });
-        }
+        document.getElementById("newPassword").addEventListener("input", function() {
+            const newPasswordField = document.getElementById("newPassword"); // Get the new password field
+            newPasswordField.classList.remove('error'); // Remove error class from the input field
+            document.getElementById("passwordError").textContent = ''; // Clear error message
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminName = localStorage.getItem('adminName');
+
+            const adminElement = document.querySelector("#adminCheck");
+
+            adminElement.textContent = `${adminName}`
+
+        });
     </script>
 
 
@@ -346,6 +293,7 @@ Account Settings
             console.log(scrollpos)
         })
     </script>
+
 
 </body>
 
