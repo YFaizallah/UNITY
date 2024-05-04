@@ -1,0 +1,398 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Administrator Login</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+    <style>
+        /* inter-300 - latin */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+
+</head>
+
+<body class="d-flex h-100 w-100" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+    <div class="h-100 container-fluid">
+        <div class="h-100 row d-flex align-items-stretch">
+
+            <div class="col-12 col-md-7 col-lg-6 d-flex align-items-start flex-column px-vw-5">
+
+                <header class="mb-auto py-vh-2 col-12">
+                    <a class="navbar-brand pe-4 fs-4" href="/">
+                        <img src="UnityAssets/png/logo-no-background.png" style="width:150px;" alt>
+                    </a>
+
+                </header>
+                <main class="mb-auto col-12">
+                    <h1>Register</h1>
+
+                    <form class="row" id="loginForm">
+                        <div class="col-12 col-lg-10 col-xl-8">
+                            <div class="mb-3">
+                                <label for="userType" id="registerLabel" class="form-label">Register as</label>
+                                <select class="form-select form-select-lg form-control-lg form-control-color" id="userType" aria-label="Default select example" style="display: block;">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="donor">Donor</option>
+                                    <option value="organization">Organization</option>
+                                </select>
+                            </div>
+
+                            <div id="donorFields" style="display: none;">
+
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="First Name">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <select class="form-control-lg" id="genderDonor" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Gender</option>
+                                    <option value="donor">Male</option>
+                                    <option value="organization">Female</option>
+                                </select>
+                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="tel" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Address">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Area">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+
+                                <label style="font-size: 20px;">How are you interested in helping?</label>
+                                <select class="form-control-lg" id="donorTypeSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Choose..</option>
+                                    <option value="regularDonor">Materialistic Donations</option>
+                                    <option value="teacher">Pro-Bono Teacher</option>
+                                    <option value="doctor">Pro-Bono Doctor</option>
+                                </select>
+
+
+                            </div>
+
+                            <div id="organizationRepFields" style="display: none;">
+                                <label style="font-size: 20px;">Representative Details</label>
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="First Name">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Last Name">
+
+                                <select class="form-control-lg" id="genderRep" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Gender</option>
+                                    <option value="donor">Male</option>
+                                    <option value="organization">Female</option>
+                                </select>
+                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="tel" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" id="goToOrg" style="background-color: #162836; color: #D5A187;">Continue</button>
+                            </div>
+
+                            <div id="organizationFields" style="display: none;">
+                                <label style="font-size: 20px;">Organization Details</label>
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Type">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Address">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Area">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Postal Code">
+
+                                <label style="font-size: 20px;">Please specify the location</label>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                                <label style="font-size: 20px;">Please upload documents verifying your organization's status</label>
+                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+
+
+                            </div>
+
+
+
+                            <div id="doctorDonor" style="display: none;">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Address">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Area">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Medical Specialty">
+
+                                <label style="font-size: 20px;">Specify the clinic's location</label>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                                <label style="font-size: 20px;">How many patients would you be able to help?</label>
+                                <input type="number" class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Pro-Bono Patients">
+
+                                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+
+                            </div>
+
+                            <div id="teacherDonor" style="display: none;">
+                                <label style="font-size: 20px;">How many subjects can you teach?</label>
+                                <input type="number" id='numOfSubjects' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="How many subjects can you teach?">
+
+                                <div id="subjectFields"></div>
+
+                                <label style="font-size: 20px;">How many classes can you help?</label>
+                                <input type="number" id='numOfClasses' class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Of Classes">
+
+                                <label style="font-size: 20px;">Would you be interested in private tutoring?</label>
+                                <select class="form-control-lg" id="privateTutorSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Choose..</option>
+                                    <option value="yesPrivate">Yes</option>
+                                    <option value="noPrivate">No</option>
+                                </select>
+
+                                <div id="numOfStudent" style="display: none;">
+                                    <label style="font-size: 20px;">Specify the number of students</label>
+                                    <input type="number" id='numOfStudents' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="# Of Students">
+                                </div>
+
+
+                                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+                            </div>
+
+                            <div class="mb-3 form-check py-3">
+
+                            </div>
+                            <button type="submit" id="registerButton" class="btn btn-primary btn-lg btn-block" style="background-color: #162836; color: #D5A187;">Register</button>
+                        </div>
+                    </form>
+
+                </main>
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-6 bg-cover" style="background-image: url(UnityAssets/126501.jpg);"></div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userTypeSelect = document.getElementById('userType');
+            const donorFields = document.getElementById('donorFields');
+            const organizationRepFields = document.getElementById('organizationRepFields');
+            const registerLabel = document.getElementById('registerLabel');
+
+            const donorTypeSelect = document.getElementById('donorTypeSelect');
+            const teacherDonor = document.getElementById('teacherDonor');
+            const doctorDonor = document.getElementById('doctorDonor');
+
+            const subjectNumber = document.getElementById('numOfSubjects');
+
+            const privateTutorSelect = document.getElementById('privateTutorSelect');
+            const studentNum = document.getElementById('numOfStudent');
+
+            const registerButton = document.getElementById('registerButton');
+
+            const organizationFields = document.getElementById('organizationFields');
+            const continueButton = document.getElementById('goToOrg');
+
+            userTypeSelect.addEventListener('change', function() {
+                const selectedUserType = userTypeSelect.value;
+
+                if (selectedUserType === 'donor') {
+                    donorFields.style.display = 'block';
+                    organizationRepFields.style.display = 'none';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                } else if (selectedUserType === 'organization') {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'block';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                    registerButton.style.display = 'none';
+
+                } else {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'none';
+                }
+            });
+
+
+
+            donorTypeSelect.addEventListener('change', function() {
+                const selectedDonorType = donorTypeSelect.value;
+
+                if (selectedDonorType === 'teacher') {
+                    teacherDonor.style.display = 'block';
+                    doctorDonor.style.display = 'none';
+                    donorFields.style.display = 'none';
+                } else if (selectedDonorType === 'doctor') {
+
+                    doctorDonor.style.display = 'block';
+                    teacherDonor.style.display = 'none'
+                    donorFields.style.display = 'none';
+                } else {
+
+                    doctorDonor.style.display = 'none';
+                    teacherDonor.style.display = 'none';
+                }
+
+            });
+
+            subjectNumber.addEventListener('change', function() {
+                let numOfSubjects = parseInt(subjectNumber.value);
+                const subjectFields = document.getElementById('subjectFields');
+
+                // Clear existing fields
+                subjectFields.innerHTML = '';
+
+                for (let i = 0; i < numOfSubjects; i++) {
+                    const newField = document.createElement('input');
+                    newField.type = 'text';
+                    newField.classList.add('form-control', 'form-control-lg');
+                    newField.style.marginBottom = '10px';
+                    newField.placeholder = 'Subject Name';
+                    subjectFields.appendChild(newField);
+                }
+            });
+
+            privateTutorSelect.addEventListener('change', function() {
+                const privateValue = privateTutorSelect.value;
+
+                if (privateValue === 'yesPrivate') {
+                    studentNum.style.display = 'block';
+                } else {
+                    studentNum.style.display = 'none';
+                }
+            });
+
+            continueButton.addEventListener('click', function() {
+                event.preventDefault();
+                organizationRepFields.style.display = 'none';
+                organizationFields.style.display = 'block';
+                registerButton.style.display = 'block';
+                registerButton.style.marginBottom = '10px';
+            });
+
+            registerButton.addEventListener('click', function() {
+                event.preventDefault();
+                const inputFields = document.querySelectorAll('input');
+                const selectFields = document.querySelectorAll('select');
+                let allFieldsFilled = true;
+
+                inputFields.forEach(field => {
+                    if (!field.value) {
+                        field.classList.add('error');
+                        allFieldsFilled = false;
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
+
+                selectFields.forEach(select => {
+                    select.addEventListener('change', function() {
+                        if (this.selectedIndex === 0) {
+                            this.classList.add('error');
+                        } else {
+                            this.classList.remove('error');
+                        }
+                    });
+
+                    // Add initial check for error class on page load
+                    if (select.selectedIndex === 0) {
+                        select.classList.add('error');
+                    }
+                });
+            });
+
+            function checkForValues() {
+                const inputFields = document.querySelectorAll('input, select');
+                inputFields.forEach(field => {
+                    if (field.value || (field.tagName === 'SELECT' && field.selectedIndex !== 0)) {
+                        field.classList.remove('error');
+                    }
+                });
+            }
+
+            // Call the function when the page loads
+            checkForValues();
+
+            // Event listener for input fields
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+            // Event listener for select fields
+            document.querySelectorAll('select').forEach(select => {
+                select.addEventListener('change', function() {
+                    if (this.selectedIndex !== 0) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
