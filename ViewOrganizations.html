@@ -277,6 +277,7 @@ Account Settings
         // Sample JSON data
 
         if (document.referrer != "") {
+            console.log(document.referrer);
             organizations = JSON.parse(localStorage.getItem('organizations'));
         } else {
             let organizations = [{
@@ -293,7 +294,7 @@ Account Settings
                 contact: 'Pending'
             }, ];
 
-            localStorage.setItem('organizations', JSON.stringify(organizations));
+            //localStorage.setItem('organizations', JSON.stringify(organizations));
 
         }
 
