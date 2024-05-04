@@ -1,4 +1,4 @@
-<!-- <!doctype html>
+<!doctype html>
 <html class="h-100" lang="en">
 
 <head>
@@ -172,7 +172,7 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <img src="UnityAssets/png/logo-color.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
+            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -193,8 +193,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Review Submissions</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="reviewOrganization.html">Organization</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="reviewDonor.html">Donor</a></li>
                         </ul>
                     </li>
 
@@ -206,7 +206,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ManageAccounts.html">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountmanagment.html">
       Account Management
     </a>
                     </li>
@@ -214,6 +214,12 @@
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizations.html">
       Registered Organizations
     </a>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountsettings.html">
+Account Settings
+</a>
                     </li>
             </div>
         </div>
@@ -225,9 +231,9 @@
                 <ul class="responsive-table" id="submissionTable">
                     <li class="table-header">
 
-                        <div class="col col-1-head">Donor ID
+                        <div class="col col-1-head">Donor Name
                         </div>
-                        <div class="col col-2-head">Donor Name</div>
+                        <div class="col col-2-head">Submission Request</div>
                         <div class="col col-3-head">Contact</div>
                         <div class="col col-4-head">Request</div>
                     </li>
@@ -278,37 +284,24 @@
             </div>
         </div>
 
-        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Peter Adel</a>
+        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
 
     <script>
+        let DonorRequests = [];
         document.addEventListener("DOMContentLoaded", function() {
-            // Retrieve requests from local storage
-            let storedDonorRequests = JSON.parse(localStorage.getItem('DonorRequests'));
+            DonorRequests = [{
+                id: 1,
+                donor: 'Faizallah',
+                request: 'Request 1'
+            }, {
+                id: 2,
+                donor: 'Youssef',
+                request: 'Request 2'
+            }];
 
-            // If no requests are found in local storage, use default requests
-            if (!storedDonorRequests) {
-                storedDonorRequests = [{
-                    id: 24294,
-                    donorName: 'John Doe',
-                    request: 'Request 1',
-                    contact: '+53905930935'
-                }, {
-                    id: 24394,
-                    donorName: 'Jane Doe',
-                    request: 'Request 2',
-                    contact: '+5390590935'
-                }];
-                localStorage.setItem('DonorRequests', JSON.stringify(storedDonorRequests));
-            }
-
-            // Update the global requests array
-            donorRequests = storedDonorRequests;
-
-            // Create table rows with the retrieved requests
-            createTableRows(donorRequests);
-
+            createTableRows(DonorRequests);
         });
 
         function createTableRows(data) {
@@ -324,9 +317,9 @@
                 newRow.classList.add(rowClass, 'table-row');
                 newRow.setAttribute('data-id', request.id); // Add data-id attribute
                 newRow.innerHTML = `
-      <div class="col col-1" data-label="DonorID">${request.id}</div>
-      <div class="col col-2" data-label="Submission Request">${request.donorName}</div>
-      <div class="col col-3" data-label="Contact">${request.contact}</div>
+      <div class="col col-1" data-label="Donor Name">${request.organization}</div>
+      <div class="col col-2" data-label="Submission Request">${request.request}</div>
+      <div class="col col-3" data-label="Contact">Contact Info</div>
       <div class="col col-4" data-label="Request">
         <button onclick="acceptRequest(${request.id})" class="btn btn-success">Accept</button>
         <button onclick="rejectRequest(${request.id})" class="btn btn-danger">Reject</button>
@@ -339,96 +332,79 @@
 
         function acceptRequest(id) {
             // Find the request object with the given id
-            const request = donorRequests.find(req => req.id === id);
+            const request = organizationRequests.find(req => req.id === id);
 
             if (request) {
                 // Extract organization information from the request object
                 const {
-                    id,
-                    donorName,
-                    request,
+                    organization,
+                    request: submissionRequest,
                     contact
                 } = request;
 
                 // Assuming the newly accepted organization is stored in an object called newOrganization
-                const newDonor = {
+                const newOrganization = {
                     id: id,
-                    name: donorName,
+                    name: organization,
                     donations: 0, // Update with the actual donations
                     status: 'New', // Update with the actual status
                     contact: contact // Update with the actual contact info
                 };
 
+                let organizations = JSON.parse(localStorage.getItem('organizations')) || [];
 
-                // Retrieve organizations from localStorage and parse the JSON string
-                let donors = JSON.parse(localStorage.getItem('donors')) || [];
+                organizations.push(newOrganization);
 
-                // Add the new organization to the organizations array
-                donors.push(newDonor);
+                localStorage.setItem('organizations', JSON.stringify(organizations));
 
-                // Store the updated organizations array back to localStorage after stringifying it
-                localStorage.setItem('donors', JSON.stringify(donors));
+                removeOrganization(id);
 
-                removeDonor(id);
-
-                localStorage.setItem('DonorRequests', JSON.stringify(donorRequests));
-
-                // Redirect to the ViewOrganizations.html page using window.location.replace()
-                window.location.replace('ViewDonors.html');
+                window.location.replace('ViewOrganizations.html');
             }
         }
 
-        function removeDonor(id) {
-            // Find the index of the request with the given id
-            const index = donorRequests.findIndex(donor => donor.id === id);
+        function removeOrganization(id) {
+            const index = organizationRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                donorRequests.splice(index, 1);
+                organizationRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
                 const rowToRemove = table.querySelector(`[data-id="${id}"]`);
-                if (rowToRemove) {
-                    rowToRemove.remove();
-                    console.log(`Row with ID ${id} removed from the table.`);
-                } else {
-                    console.log(`Row with ID ${id} not found in the table.`);
-                }
-                localStorage.setItem('DonorRequests', JSON.stringify(donorRequests));
-
+                if (rowToRemove) rowToRemove.remove();
             } else {
                 console.log(`Request with ID ${id} not found.`);
             }
         }
 
         function rejectRequest(id) {
-            console.log("Rejecting request:", id); // Debugging statement
-
             // Find the index of the request with the given id
-            const index = donorRequests.findIndex(request => request.id === id);
-            console.log("Index:", index); // Debugging statement
+            const index = organizationRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                donorRequests.splice(index, 1);
-                console.log("Updated donorRequests:", donorRequests); // Debugging statement
-
-                // Update the local storage with the modified requests array
-                localStorage.setItem('DonorRequests', JSON.stringify(donorRequests));
-                console.log("Donor requests updated in local storage."); // Debugging statement
+                organizationRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
-                removeDonor(id); // Call the correct function to remove the donor from the table
+                const table = document.getElementById('submissionTable');
+                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                }
 
-                // Log a message indicating the request is rejected
-                console.log(`Request ${id} rejected`);
+                localStorage.setItem('requests', JSON.stringify(organizationRequests));
             } else {
                 console.log(`Request ${id} not found`);
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            createTableRows(organizationRequests);
+        });
     </script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -459,245 +435,6 @@
             console.log(scrollpos)
         })
     </script>
-
-</body>
-
-</html> -->
-
-<!doctype html>
-<html class="h-100" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="description" content="A growing collection of ready to use components for the CSS framework Bootstrap 5">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
-    <meta name="author" content="Holger Koenemann">
-    <meta name="generator" content="Eleventy v2.0.0">
-    <meta name="HandheldFriendly" content="true">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/theme.min.css">
-
-
-
-    <style>
-        /* inter-300 - latin */
-        
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url('./fonts/inter-v12-latin-300.woff') format('woff');
-            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        }
-        
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url('./fonts/inter-v12-latin-500.woff') format('woff');
-            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        }
-        
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url('./fonts/inter-v12-latin-700.woff') format('woff');
-            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        }
-    </style>
-
-    <style>
-        /* Add custom CSS to hide dropdown by default */
-        
-        .dropdown-item {
-            margin: 3px 0 5px -25px;
-        }
-        
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            /* Adjust as needed */
-        }
-        /* Show dropdown when hovering over the dropdown item */
-        
-        .nav-item.dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        li {
-            list-style: none;
-        }
-    </style>
-
-</head>
-
-<body data-bs-spy="scroll" data-bs-target="#navScroll">
-
-
-    <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
-        <div class="container">
-
-            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px; margin-top:10px;" alt="" href="index.html">
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
-      View Organization 
-    </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewDonors.html" aria-label="Brings you to the frontpage">
-    View Donor 
-  </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Review Submissions</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountmanagment.html">
-      Account Management
-    </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizations.html">
-      Registered Organizations
-    </a>
-
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountsettings.html">
-Account Settings
-</a>
-                    </li>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-8">
-
-                    </div>
-                </div>
-
-
-    </main>
-
-    <footer>
-        <div class="container small border-top">
-            <div class="row py-5 d-flex justify-content-between">
-
-                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
-                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt="">
-                    <address class="text-secondary mt-3">
-                <strong>Unity</strong><br>
-                Al Rehab City, New Cairo<br>
-                Cairo, EG 103021<br>
-                <abbr title="Phone">P:</abbr>
-                (+20) 1013455666
-              </address>
-                </div>
-                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
-                    <h3 class="h6 mb-3">Company</h3>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="adminLogin.html">Administrator Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" href="#">Administrator Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-12 col-lg-6 col-xl-3 p-5">
-                    <h3 class="h6 mb-3">Subpages</h3>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="register.html">Register System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="content.html">Simple Text Content Page</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const adminName = localStorage.getItem('adminName');
-
-            const adminElement = document.querySelector("#adminCheck");
-
-            adminElement.textContent = `Welcome to your dashboard, ${adminName}`
-
-        });
-    </script>
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800, // values from 0 to 3000, with step 50ms
-        });
-    </script>
-
-    <script>
-        let scrollpos = window.scrollY
-        const header = document.querySelector(".navbar")
-        const header_height = header.offsetHeight
-
-        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
-
-        window.addEventListener('scroll', function() {
-            scrollpos = window.scrollY;
-
-            if (scrollpos >= header_height) {
-                add_class_on_scroll()
-            } else {
-                remove_class_on_scroll()
-            }
-
-            console.log(scrollpos)
-        })
-    </script>
-
 
 </body>
 
