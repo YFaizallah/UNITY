@@ -269,24 +269,26 @@
 
     <script>
         // Sample JSON data
-        let organizations = [{
-            id: 42235,
-            name: 'Helping Hands',
-            donations: 350,
-            status: 'Pending',
-            contact: 'Pending'
-        }, {
-            id: 42442,
-            name: 'Goodwill',
-            donations: 220,
-            status: 'Pending',
-            contact: 'Pending'
-        }, ];
 
-        if (!localStorage.getItem('organizations')) {
-            localStorage.setItem('organizations', JSON.stringify(organizations));
-        } else {
+        if (document.referrer != "") {
             organizations = JSON.parse(localStorage.getItem('organizations'));
+        } else {
+            let organizations = [{
+                id: 42235,
+                name: 'Helping Hands',
+                donations: 350,
+                status: 'Pending',
+                contact: 'Pending'
+            }, {
+                id: 42442,
+                name: 'Goodwill',
+                donations: 220,
+                status: 'Pending',
+                contact: 'Pending'
+            }, ];
+
+            localStorage.setItem('organizations', JSON.stringify(organizations));
+
         }
 
         // Function to create table rows from JSON data

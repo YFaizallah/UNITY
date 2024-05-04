@@ -283,32 +283,19 @@
     </footer>
 
     <script>
+        let organizationRequests = [];
         document.addEventListener("DOMContentLoaded", function() {
+            organizationRequests = [{
+                id: 1,
+                organization: 'Helping Hands',
+                request: 'Request 1'
+            }, {
+                id: 2,
+                organization: 'Goodwill',
+                request: 'Request 2'
+            }];
 
-            // Retrieve requests from local storage
-            let storedRequests = JSON.parse(localStorage.getItem('requests'));
-
-            // If no requests are found in local storage, use default requests
-            if (!storedRequests) {
-                storedRequests = [{
-                    id: 1,
-                    organization: 'Helping Hands',
-                    request: 'Request 1'
-                }, {
-                    id: 2,
-                    organization: 'Goodwill',
-                    request: 'Request 2'
-                }];
-                localStorage.setItem('requests', JSON.stringify(storedRequests));
-            }
-
-            // Update the global requests array
-            requests = storedRequests;
-
-            // Create table rows with the retrieved requests
-            createTableRows(requests);
-
-            // localStorage.clear();
+            createTableRows(organizationRequests);
         });
 
         function createTableRows(data) {
@@ -339,7 +326,7 @@
 
         function acceptRequest(id) {
             // Find the request object with the given id
-            const request = requests.find(req => req.id === id);
+            const request = organizationRequests.find(req => req.id === id);
 
             if (request) {
                 // Extract organization information from the request object
@@ -358,45 +345,30 @@
                     contact: contact // Update with the actual contact info
                 };
 
-
-                // Retrieve organizations from localStorage and parse the JSON string
                 let organizations = JSON.parse(localStorage.getItem('organizations')) || [];
 
-                // Add the new organization to the organizations array
                 organizations.push(newOrganization);
 
-                // Store the updated organizations array back to localStorage after stringifying it
                 localStorage.setItem('organizations', JSON.stringify(organizations));
 
                 removeOrganization(id);
 
-                localStorage.setItem('requests', JSON.stringify(requests));
-
-                // Redirect to the ViewOrganizations.html page using window.location.replace()
                 window.location.replace('ViewOrganizations.html');
             }
         }
 
         function removeOrganization(id) {
-            // Find the index of the request with the given id
-            const index = requests.findIndex(request => request.id === id);
+            const index = organizationRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                requests.splice(index, 1);
+                organizationRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
                 const rowToRemove = table.querySelector(`[data-id="${id}"]`);
-                if (rowToRemove) {
-                    rowToRemove.remove();
-                    console.log(`Row with ID ${id} removed from the table.`);
-                } else {
-                    console.log(`Row with ID ${id} not found in the table.`);
-                }
-                localStorage.setItem('requests', JSON.stringify(requests));
-
+                if (rowToRemove) rowToRemove.remove();
             } else {
                 console.log(`Request with ID ${id} not found.`);
             }
@@ -404,12 +376,12 @@
 
         function rejectRequest(id) {
             // Find the index of the request with the given id
-            const index = requests.findIndex(request => request.id === id);
+            const index = organizationRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                requests.splice(index, 1);
+                organizationRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
@@ -418,18 +390,14 @@
                     rowToRemove.remove();
                 }
 
-                // Update the local storage with the modified requests array
-                localStorage.setItem('requests', JSON.stringify(requests));
-
-                // Log a message indicating the request is rejected
-                console.log(`Request ${id} rejected`);
+                localStorage.setItem('requests', JSON.stringify(organizationRequests));
             } else {
                 console.log(`Request ${id} not found`);
             }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            createTableRows(requests);
+            createTableRows(organizationRequests);
         });
     </script>
 

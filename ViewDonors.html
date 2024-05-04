@@ -270,35 +270,25 @@
     </footer>
 
     <script>
+        let donors = [];
         document.addEventListener("DOMContentLoaded", function() {
-            // Retrieve requests from local storage
-            let storedDonors = JSON.parse(localStorage.getItem('donors'));
 
             // If no requests are found in local storage, use default requests
-            if (!storedDonors) {
-                storedDonors = [{
-                    id: 324424,
-                    name: 'John Hands',
-                    donations: 430,
-                    activity: 'Active',
-                    contact: '+389348834'
-                }, {
-                    id: 4893535,
-                    name: 'John Ahmed',
-                    donations: 42,
-                    activity: 'Offline',
-                    contact: '+3893483425'
-                }];
-                localStorage.setItem('donors', JSON.stringify(storedDonors));
-            }
+            donors = [{
+                id: 324424,
+                name: 'John Hands',
+                donations: 430,
+                activity: 'Active',
+                contact: '+389348834'
+            }, {
+                id: 4893535,
+                name: 'John Ahmed',
+                donations: 42,
+                activity: 'Offline',
+                contact: '+3893483425'
+            }];
 
-            // Update the global requests array
-            donors = storedDonors;
-
-            // Create table rows with the retrieved requests
             createTableRows(donors);
-
-            localStorage.clear();
         });
 
         // Function to create table rows from JSON data
