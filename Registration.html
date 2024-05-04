@@ -11,7 +11,7 @@
     <meta name="author" content="Holger Koenemann">
     <meta name="generator" content="Eleventy v2.0.0">
     <meta name="HandheldFriendly" content="true">
-    <title>Administrator Login</title>
+    <title>Register Now</title>
     <link rel="stylesheet" href="css/theme.min.css">
 
     <style>
@@ -178,6 +178,7 @@
                                 <input type="number" class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Pro-Bono Patients">
 
                                 <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <label style="font-size: 20px;">Please upload your medical license.</label>
                                 <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
 
                             </div>
@@ -205,6 +206,7 @@
 
 
                                 <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <label style="font-size: 20px;">Please upload a letter from a school's HR.</label>
                                 <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
                             </div>
 
@@ -214,7 +216,7 @@
                             <button type="submit" id="registerButton" class="btn btn-primary btn-lg btn-block" style="background-color: #162836; color: #D5A187;">Register</button>
                         </div>
                     </form>
-
+                    <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
                 </main>
             </div>
 
@@ -326,48 +328,73 @@
                 registerButton.style.marginBottom = '10px';
             });
 
-            registerButton.addEventListener('click', function() {
+            registerButton.addEventListener('click', function(event) {
                 event.preventDefault();
+
+                // Get all input and select fields
                 const inputFields = document.querySelectorAll('input');
                 const selectFields = document.querySelectorAll('select');
-                let allFieldsFilled = true;
 
+                // Initialize a flag to track if all fields are filled
+                let allFieldsFilled = validateFill();
+
+                // Iterate over input fields
                 inputFields.forEach(field => {
-                    if (!field.value) {
+                    // Get the computed style of the field
+                    const computedStyle = window.getComputedStyle(field);
+                    // Check if the field is displayed as "block" and if it's empty or only contains whitespace
+                    if (computedStyle.display === 'block' && !field.value.trim()) {
                         field.classList.add('error');
-                        allFieldsFilled = false;
                     } else {
                         field.classList.remove('error');
                     }
                 });
 
+                // Iterate over select fields
                 selectFields.forEach(select => {
-                    select.addEventListener('change', function() {
-                        if (this.selectedIndex === 0) {
-                            this.classList.add('error');
-                        } else {
-                            this.classList.remove('error');
-                        }
-                    });
-
-                    // Add initial check for error class on page load
-                    if (select.selectedIndex === 0) {
+                    // Get the computed style of the select
+                    const computedStyle = window.getComputedStyle(select);
+                    if (computedStyle.display === 'block' && select.selectedIndex === 0) {
                         select.classList.add('error');
+                    } else {
+                        select.classList.remove('error');
                     }
                 });
+
+
+                if (allFieldsFilled) {
+                    window.location.href = 'RegistrationRequestPending.html';
+                }
+
             });
 
-            function checkForValues() {
-                const inputFields = document.querySelectorAll('input, select');
+
+
+            function validateFill() {
+                let allFieldsFilled = true;
+
+                // Get all input and select fields within divs with display: block
+                const inputFields = document.querySelectorAll('div[style*="display: block"] input');
+                const selectFields = document.querySelectorAll('div[style*="display: block"] select');
+
+                // Iterate over input fields
                 inputFields.forEach(field => {
-                    if (field.value || (field.tagName === 'SELECT' && field.selectedIndex !== 0)) {
-                        field.classList.remove('error');
+                    if (!field.value.trim()) {
+                        allFieldsFilled = false;
                     }
                 });
+
+                // Iterate over select fields
+                selectFields.forEach(select => {
+                    if (select.selectedIndex === 0) {
+                        allFieldsFilled = false;
+                    }
+                });
+
+                return allFieldsFilled;
             }
 
-            // Call the function when the page loads
-            checkForValues();
+
 
             // Event listener for input fields
             document.querySelectorAll('input').forEach(input => {
