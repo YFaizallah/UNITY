@@ -242,6 +242,7 @@ Account Settings
             localStorage.setItem("password", newPassword); // Store the new password (you can replace this with your actual password change code)
             console.log("New Password: ", newPassword); // For demonstration
             alert("Password changed successfully!");
+            window.location.href = "adminDashboard.html"; // Redirect to the dashboard
             newPasswordField.classList.remove('error'); // Remove error class from the input field
             passwordError.textContent = ''; // Clear error message
         });

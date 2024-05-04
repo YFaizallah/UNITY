@@ -72,6 +72,87 @@
         li {
             list-style: none;
         }
+        
+        .table-container {
+            margin-top: 100px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+            small {
+                font-size: 0.5em;
+            }
+        }
+        
+        .responsive-table {
+            li {
+                border-radius: 3px;
+                padding: 25px 30px;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 25px;
+            }
+            .table-header {
+                background-color: #162836;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                color: white;
+            }
+            .table-row-even {
+                background-color: white;
+                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+            }
+            .table-row-odd {
+                background-color: #D5A187;
+                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+            }
+            .col-1 {
+                flex-basis: 10%;
+            }
+            .col-2 {
+                flex-basis: 40%;
+            }
+            .col-3 {
+                flex-basis: 20%;
+            }
+            .col-4 {
+                flex-basis: 20%;
+            }
+            .col-5 {
+                flex-basis: 20%;
+            }
+            @media all and (max-width: 767px) {
+                .table-header {
+                    display: none;
+                }
+                .table-row {}
+                li {
+                    display: block;
+                }
+                .col {
+                    flex-basis: 100%;
+                }
+                .col {
+                    display: flex;
+                    padding: 10px 0;
+                    &:before {
+                        color: #6C7A89;
+                        padding-right: 10px;
+                        content: attr(data-label);
+                        flex-basis: 50%;
+                        text-align: right;
+                    }
+                }
+            }
+        }
     </style>
 
 </head>
@@ -136,13 +217,38 @@ Account Settings
     </nav>
 
     <main>
-        <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-8">
 
-                    </div>
-                </div>
+        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Organization List</div>
+        <div class="py-vh-5 w-100 overflow-hidden" id="services">
+            <div class="table-container">
+                <ul class="responsive-table" id="organizationTable">
+                    <li class="table-header">
+                        <div class="col col-1">ID</div>
+                        <div class="col col-2">Organization Name</div>
+                        <div class="col col-3">Donations</div>
+                        <div class="col col-4">Activity Status</div>
+                        <div class="col col-5">Contact</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+
+        <div style="font-size: 26px; margin: 20px; text-align: center; margin-bottom: -120px; font-weight: bold; color: #162836; margin-top: -40px;">Donors List</div>
+        <div class="py-vh-5 w-100 overflow-hidden" id="services">
+            <div class="table-container" style="margin-top: 120px;">
+                <ul class="responsive-table" id="donorTable">
+                    <li class="table-header">
+                        <div class="col col-1">Donor ID</div>
+                        <div class="col col-2">Donor Name</div>
+                        <div class="col col-3">No. of Donations</div>
+                        <div class="col col-4">Activity Status</div>
+                        <div class="col col-5">Contact</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
 
     </main>
@@ -201,6 +307,72 @@ Account Settings
         });
     </script>
 
+    <script>
+        let donors = [{
+            id: 324424,
+            name: 'John Hands',
+            donations: 430,
+            activity: 'Active',
+            contact: '+389348834'
+        }, {
+            id: 4893535,
+            name: 'John Ahmed',
+            donations: 42,
+            activity: 'Offline',
+            contact: '+3893483425'
+        }];
+
+        let organizations = [{
+            id: 42235,
+            name: 'Helping Hands',
+            donations: 350,
+            status: 'Pending',
+            contact: 'Pending'
+        }, {
+            id: 42442,
+            name: 'Goodwill',
+            donations: 220,
+            status: 'Pending',
+            contact: 'Pending'
+        }];
+
+        function createDonorTable(data) {
+            const table = document.getElementById('donorTable');
+            data.forEach((donor, index) => {
+                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
+                const newRow = document.createElement('li');
+                newRow.classList.add(rowClass);
+                newRow.innerHTML = `
+              <div class="col col-1" data-label="Donor ID">${donor.id}</div>
+              <div class="col col-2" data-label="Donor Name">${donor.name}</div>
+              <div class="col col-3" data-label="No. of Donations">${donor.donations}</div>
+              <div class="col col-4" data-label="Activity Status">${donor.activity}</div>
+              <div class="col col-5" data-label="Contact">${donor.contact}</div>
+            `;
+                table.appendChild(newRow);
+            });
+        }
+
+        function createOrganizationTable(data) {
+            const table = document.getElementById('organizationTable');
+            data.forEach((organization, index) => {
+                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
+                const newRow = document.createElement('li');
+                newRow.classList.add(rowClass);
+                newRow.innerHTML = `
+              <div class="col col-1" data-label="organization ID">${organization.id}</div>
+              <div class="col col-2" data-label="organization Name">${organization.name}</div>
+              <div class="col col-3" data-label="No. of Donations">$${organization.donations}</div>
+              <div class="col col-4" data-label="Activity Status">${organization.status}</div>
+              <div class="col col-5" data-label="Contact">${organization.contact}</div>
+            `;
+                table.appendChild(newRow);
+            });
+        }
+
+        createDonorTable(donors);
+        createOrganizationTable(organizations);
+    </script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>

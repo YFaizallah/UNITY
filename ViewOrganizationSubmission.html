@@ -294,11 +294,13 @@ Account Settings
             organizationRequests = [{
                 id: 1,
                 organization: 'Helping Hands',
-                request: 'Request 1'
+                request: 'Request 1',
+                contact: '+201110492407'
             }, {
                 id: 2,
                 organization: 'Goodwill',
-                request: 'Request 2'
+                request: 'Request 2',
+                contact: '+201110492407'
             }];
 
             createTableRows(organizationRequests);
@@ -319,7 +321,7 @@ Account Settings
                 newRow.innerHTML = `
       <div class="col col-1" data-label="Organization Name">${request.organization}</div>
       <div class="col col-2" data-label="Submission Request">${request.request}</div>
-      <div class="col col-3" data-label="Contact">Contact Info</div>
+      <div class="col col-3" data-label="Contact">${request.contact}</div>
       <div class="col col-4" data-label="Request">
         <button onclick="acceptRequest(${request.id})" class="btn btn-success">Accept</button>
         <button onclick="rejectRequest(${request.id})" class="btn btn-danger">Reject</button>
@@ -374,7 +376,10 @@ Account Settings
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
                 const rowToRemove = table.querySelector(`[data-id="${id}"]`);
-                if (rowToRemove) rowToRemove.remove();
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                }
+
             } else {
                 console.log(`Request with ID ${id} not found.`);
             }

@@ -294,11 +294,13 @@ Account Settings
             DonorRequests = [{
                 id: 1,
                 donor: 'Faizallah',
-                request: 'Request 1'
+                request: 'Request 1',
+                contact: '+201110492407'
             }, {
                 id: 2,
                 donor: 'Youssef',
-                request: 'Request 2'
+                request: 'Request 2',
+                contact: '+201110492407'
             }];
 
             createTableRows(DonorRequests);
@@ -317,9 +319,9 @@ Account Settings
                 newRow.classList.add(rowClass, 'table-row');
                 newRow.setAttribute('data-id', request.id); // Add data-id attribute
                 newRow.innerHTML = `
-      <div class="col col-1" data-label="Donor Name">${request.organization}</div>
+      <div class="col col-1" data-label="Donor Name">${request.donor}</div>
       <div class="col col-2" data-label="Submission Request">${request.request}</div>
-      <div class="col col-3" data-label="Contact">Contact Info</div>
+      <div class="col col-3" data-label="Contact">${request.contact}</div>
       <div class="col col-4" data-label="Request">
         <button onclick="acceptRequest(${request.id})" class="btn btn-success">Accept</button>
         <button onclick="rejectRequest(${request.id})" class="btn btn-danger">Reject</button>
@@ -332,44 +334,44 @@ Account Settings
 
         function acceptRequest(id) {
             // Find the request object with the given id
-            const request = organizationRequests.find(req => req.id === id);
+            const request = DonorRequests.find(req => req.id === id);
 
             if (request) {
-                // Extract organization information from the request object
+
                 const {
-                    organization,
+                    donor,
                     request: submissionRequest,
                     contact
                 } = request;
 
-                // Assuming the newly accepted organization is stored in an object called newOrganization
-                const newOrganization = {
+
+                const newDonor = {
                     id: id,
-                    name: organization,
+                    donor: donor,
                     donations: 0, // Update with the actual donations
                     status: 'New', // Update with the actual status
                     contact: contact // Update with the actual contact info
                 };
 
-                let organizations = JSON.parse(localStorage.getItem('organizations')) || [];
+                let donors = JSON.parse(localStorage.getItem('donors')) || [];
 
-                organizations.push(newOrganization);
+                donors.push(newDonor);
 
-                localStorage.setItem('organizations', JSON.stringify(organizations));
+                localStorage.setItem('donors', JSON.stringify(donors));
 
-                removeOrganization(id);
+                removeDonor(id);
 
-                window.location.replace('ViewOrganizations.html');
+                window.location.replace('ViewDonors.html');
             }
         }
 
-        function removeOrganization(id) {
-            const index = organizationRequests.findIndex(request => request.id === id);
+        function removeDonor(id) {
+            const index = DonorRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                organizationRequests.splice(index, 1);
+                DonorRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
@@ -382,12 +384,12 @@ Account Settings
 
         function rejectRequest(id) {
             // Find the index of the request with the given id
-            const index = organizationRequests.findIndex(request => request.id === id);
+            const index = DonorRequests.findIndex(request => request.id === id);
 
             // If the request is found
             if (index !== -1) {
                 // Remove the request from the array
-                organizationRequests.splice(index, 1);
+                DonorRequests.splice(index, 1);
 
                 // Remove the corresponding row from the table
                 const table = document.getElementById('submissionTable');
@@ -396,14 +398,14 @@ Account Settings
                     rowToRemove.remove();
                 }
 
-                localStorage.setItem('requests', JSON.stringify(organizationRequests));
+                localStorage.setItem('requests', JSON.stringify(DonorRequests));
             } else {
                 console.log(`Request ${id} not found`);
             }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            createTableRows(organizationRequests);
+            createTableRows(DonorRequests);
         });
     </script>
 
