@@ -1,0 +1,476 @@
+<!docType html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta Name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" Type="imAge/png" sizes="32x32" href="UnityAssets/png/logo-no-background.png">
+    <link rel="icon" Type="imAge/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" Type="imAge/png" sizes="96x96" href="img/favicon.png">
+    <meta Name="Author" content="Holger Koenemann">
+    <meta Name="generator" content="Eleventy v2.0.0">
+    <meta Name="HandheldFriendly" content="true">
+    <title>Home PAge</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+    <style>
+        /* inter-300 - latin */
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    </style>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navScroll">
+
+    <nav id="navScroll" class="navbar navbar-expand-lg navbar-light fixed-top" tabindex="0">
+        <div class="container">
+            <a class="navbar-brand pe-4 fs-4" href="/">
+                <img src="UnityAssets/png/logo-no-background.png" style="width:100px;" alt>
+            </a>
+
+            <button class="navbar-toggler" Type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#services" aria-label="Brings you to the frontpAge">
+                Services
+              </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#aboutus">
+                About us
+              </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="Registration.html">
+                Make A Change
+              </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#testimonials">
+                Seek Help
+              </a>
+                    </li>
+                    <div class="d-flex ms-auto">
+
+                        <form class="d-flex">
+                            <input class="form-control me-2 " Type="search" placeholder="Search.." aria-label="Search">
+                            <button class="btn btn-outline-success" Type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light mt-5">
+        <div class="container" style="margin-top: 50px;">
+            <div style="margin-right: 50px;">
+                Choose a category
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="clothes" checked>
+                            Clothes
+                        </label>
+                    </li>
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="schoolSupplies" checked>
+                            School Supplies
+                        </label>
+                    </li>
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="toys" checked>
+                            Toys
+                        </label>
+                    </li>
+
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="food" checked>
+                             Food
+                        </label>
+                    </li>
+
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="medicalSupplies" checked>
+                            Medical Supplies
+                        </label>
+                    </li>
+
+                    <li class="nav-item">
+                        <label class="nav-link">
+                            <input type="checkbox" class="form-check-input" id="bloodDonations" checked>
+                            Blood Donations
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <main>
+        <div class="container" style="margin-top: 150px;">
+            <div class="row" id="cardContainer">
+                <!-- Cards will be dynamically added here -->
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+    <footer>
+        <div class="container small border-top">
+            <div class="row py-5 d-flex justify-content-between">
+
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt>
+                    <Address class="text-secondary mt-3">
+              <strong>Unity</strong><br>
+              Al Rehab City, New Cairo<br>
+              Cairo, EG 103021<br>
+              <abbr title="Phone">P:</abbr>
+              (+20) 1013455666
+            </Address>
+                </div>
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <h3 class="h6 mb-3">Company</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" aria-current="pAge" href="adminLogin.html">Administrator Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" href="#">Administrator
+                  Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-3 p-5">
+                    <h3 class="h6 mb-3">SubpAges</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" aria-current="pAge" href="404.html">404 System PAge</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="pAge" href="register.html">Register System PAge</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="pAge" href="content.html">Simple Text Content PAge</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+        });
+    </script>
+
+    <script>
+        let scrollpos = window.scrollY
+        const header = document.querySelector(".navbar")
+        const header_height = header.offsetHeight
+
+        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+
+        window.addEventListener('scroll', function() {
+            scrollpos = window.scrollY;
+
+            if (scrollpos >= header_height) {
+                add_class_on_scroll()
+            } else {
+                remove_class_on_scroll()
+            }
+
+            console.log(scrollpos)
+        })
+    </script>
+
+    <script>
+        let clothes = [{
+            "Type": "T-shirt",
+            "Age": "Adult",
+            "Gender": "Male",
+            "Material": "Cotton",
+            "Quantity": 100,
+            "Season": "Summer"
+        }, {
+            "Type": "Dress",
+            "Age": "Child",
+            "Gender": "Female",
+            "Material": "Polyester",
+            "Quantity": 50,
+            "Season": "Spring"
+        }, {
+            "Type": "Jeans",
+            "Age": "Teen",
+            "Gender": "Unisex",
+            "Material": "Denim",
+            "Quantity": 80,
+            "Season": "Fall"
+        }];
+
+        let schoolSupplies = [{
+            "id": 1,
+            "Type": "Stationary",
+            "item": "Pens",
+            "Quantity": 200
+        }, {
+            "id": 2,
+            "Type": "Stationary",
+            "item": "Notebooks",
+            "Quantity": 150
+        }, {
+            "id": 3,
+            "Type": "Book",
+            "item": "Mathematics",
+            "Quantity": 100
+        }, {
+            "id": 4,
+            "Type": "Book",
+            "item": "Science",
+            "Quantity": 120
+        }, {
+            "id": 6,
+            "Type": "Book",
+            "item": "History",
+            "Quantity": 80
+        }, {
+            "id": 5,
+            "Type": "Stationary",
+            "item": "Pencils",
+            "Quantity": 250
+        }];
+
+        let books = [{
+            "id": 3,
+            "Name": "Mathematics",
+            "Author": "John Doe",
+            "Language": "English",
+            "Edition": "1st Edition",
+            "Summary": "A comprehensive guide to math covering alot of topics.",
+            "Quantity": 100
+        }, {
+            "id": 4,
+            "Name": "Science",
+            "Author": "Jane Smith",
+            "Language": "English",
+            "Edition": "2nd Edition",
+            "Summary": "An exploration of scientific principles and phenomena.",
+            "Quantity": 120
+        }, {
+            "id": 6,
+            "Name": "History",
+            "Author": "Michael Johnson",
+            "Language": "English",
+            "Edition": "3rd Edition",
+            "Summary": "A detailed account of historical events and civilizations.",
+            "Quantity": 80
+        }];
+
+        let stationeryItems = [{
+            "id": 1,
+            "Type": "Pencils",
+            "Amount": 500
+        }, {
+            "id": 2,
+            "Type": "Notebooks",
+            "Amount": 300
+        }, {
+            "id": 5,
+            "Type": "Erasers",
+            "Amount": 200
+        }];
+
+        let toys = [{
+            "Type": "Action Figure",
+            "Age": "5-7",
+            "Gender": "Male",
+            "Category": "Batman Toy",
+            "Quantity": 100
+        }, {
+            "Type": "Doll",
+            "Age": "3-5",
+            "Gender": "Female",
+            "Category": "Barbie Doll",
+            "Quantity": 150
+        }, {
+            "Type": "Cars",
+            "Age": "6-10",
+            "Gender": "Unisex",
+            "Category": "Car Track",
+            "Quantity": 200
+        }, {
+            "Type": "Board Game",
+            "Age": "8-12",
+            "Gender": "Unisex",
+            "Category": "Chess",
+            "Quantity": 80
+        }];
+
+        let food = [{
+            "Name": "Apple",
+            "Quantity": "2 kg",
+            "Type": "fruit/veg"
+        }, {
+            "Name": "Chicken",
+            "Quantity": 5,
+            "Type": "fresh meal"
+        }, {
+            "Name": "Canned Soup",
+            "Quantity": 10,
+            "Type": "canned"
+        }, {
+            "Name": "Broccoli",
+            "Quantity": "1.5 kg",
+            "Type": "fruit/veg"
+        }];
+
+        let medicalSupplies = [{
+            "Device-Type": "Thermometer",
+            "Device-Use": "Measuring body temperature",
+            "Quantity": 3
+        }, {
+            "Device-Type": "BandAges",
+            "Device Use": "Wound dressing",
+            "Quantity": 50
+        }, {
+            "Device-Type": "Syringes",
+            "Device Use": "Injecting medication",
+            "Quantity": 100
+        }];
+
+        let bloodDonations = [{
+            "Patient-Name": "John Smith",
+            "Blood-Type": "O+",
+            "Hospital-Name": "City Hospital",
+            "Area": "Downtown",
+            "Governerate": "New York",
+            "Address": "123 Main Street"
+        }, {
+            "Patient-Name": "Emily Johnson",
+            "Blood-Type": "A-",
+            "Hospital-Name": "County Hospital",
+            "Area": "Westside",
+            "Governerate": "California",
+            "Address": "456 Oak Avenue"
+        }, {
+            "Patient-Name": "David Martinez",
+            "Blood-Type": "B+",
+            "Hospital-Name": "Community Health Center",
+            "Area": "North End",
+            "Governerate": "Texas",
+            "Address": "789 Elm Street"
+        }];
+
+
+        let arrays = [
+            clothes,
+            schoolSupplies,
+            books,
+            stationeryItems,
+            toys,
+            food,
+            medicalSupplies,
+            bloodDonations
+        ];
+
+
+        function generateCards(array) {
+            let cardHtml = '';
+            array.forEach(item => {
+                        let photoHtml = '';
+                        if (array === toys) {
+                            photoHtml = `<img src="UnityAssets/126501.jpg" width="405px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                        }
+                        if (array === books) {
+                            photoHtml = `<img src="UnityAssets/126501.jpg" width="525px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                        }
+                        if (array === medicalSupplies) {
+                            photoHtml = `<img src="UnityAssets/126501.jpg" width="285px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                        }
+
+
+                        cardHtml += `
+            <div class="col-12">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                ${Object.entries(item).map(([key, value]) => `
+                                    <p class="card-text"><strong>${key}:</strong> ${value}</p>
+                                `).join('')}
+                                <button class="btn btn-primary donate-btn" style="border-radius: 15%">Donate</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
+                            ${photoHtml}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    return cardHtml;
+}
+
+    // JSON arrays
+
+    // Container for cards
+    const cardContainer = document.getElementById('cardContainer');
+
+    // Generate cards for each array
+    arrays.forEach(array => {
+        cardContainer.innerHTML += generateCards(array);
+    });
+    </script>
+</body>
+
+</html>
