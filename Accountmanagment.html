@@ -73,6 +73,17 @@
             list-style: none;
         }
         
+        .btn {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: red !important;
+            border-color: darkred !important;
+            border-width: 4px !important;
+            color: white !important;
+        }
+        
         .table-container {
             margin-top: 100px;
             max-width: 1000px;
@@ -217,17 +228,15 @@ Account Settings
     </nav>
 
     <main>
-
-        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Organization List</div>
+        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Organizations List</div>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
             <div class="table-container">
                 <ul class="responsive-table" id="organizationTable">
                     <li class="table-header">
                         <div class="col col-1">ID</div>
                         <div class="col col-2">Organization Name</div>
-                        <div class="col col-3">Donations</div>
-                        <div class="col col-4">Activity Status</div>
-                        <div class="col col-5">Contact</div>
+                        <div class="col col-3">Activity Status</div>
+                        <div class="col col-4">Account</div>
                     </li>
                 </ul>
             </div>
@@ -242,15 +251,12 @@ Account Settings
                     <li class="table-header">
                         <div class="col col-1">Donor ID</div>
                         <div class="col col-2">Donor Name</div>
-                        <div class="col col-3">No. of Donations</div>
-                        <div class="col col-4">Activity Status</div>
-                        <div class="col col-5">Contact</div>
+                        <div class="col col-3">Activity Status</div>
+                        <div class="col col-4">Account</div>
                     </li>
                 </ul>
             </div>
         </div>
-
-
     </main>
 
     <footer>
@@ -308,7 +314,7 @@ Account Settings
     </script>
 
     <script>
-        let donors = [{
+        let DonorRequest = [{
             id: 324424,
             name: 'John Hands',
             donations: 430,
@@ -318,21 +324,21 @@ Account Settings
             id: 4893535,
             name: 'John Ahmed',
             donations: 42,
-            activity: 'Offline',
+            activity: 'Active',
             contact: '+3893483425'
         }];
 
-        let organizations = [{
+        let organizationRequest = [{
             id: 42235,
             name: 'Helping Hands',
             donations: 350,
-            status: 'Pending',
+            status: 'Active',
             contact: 'Pending'
         }, {
             id: 42442,
             name: 'Goodwill',
             donations: 220,
-            status: 'Pending',
+            status: 'Active',
             contact: 'Pending'
         }];
 
@@ -345,9 +351,11 @@ Account Settings
                 newRow.innerHTML = `
               <div class="col col-1" data-label="Donor ID">${donor.id}</div>
               <div class="col col-2" data-label="Donor Name">${donor.name}</div>
-              <div class="col col-3" data-label="No. of Donations">${donor.donations}</div>
-              <div class="col col-4" data-label="Activity Status">${donor.activity}</div>
-              <div class="col col-5" data-label="Contact">${donor.contact}</div>
+              <div class="col col-3" data-label="Activity Status">${donor.activity}</div>
+              <div class="col col-4" data-label="Request">
+            <button onclick="removeDonor(${donor.id})" class="btn btn-success" style="color: black;">Delete</button>
+
+      </div>
             `;
                 table.appendChild(newRow);
             });
@@ -362,16 +370,59 @@ Account Settings
                 newRow.innerHTML = `
               <div class="col col-1" data-label="organization ID">${organization.id}</div>
               <div class="col col-2" data-label="organization Name">${organization.name}</div>
-              <div class="col col-3" data-label="No. of Donations">$${organization.donations}</div>
-              <div class="col col-4" data-label="Activity Status">${organization.status}</div>
-              <div class="col col-5" data-label="Contact">${organization.contact}</div>
+              <div class="col col-3" data-label="Activity Status">${organization.status}</div>
+              <div class="col col-4" data-label="Request">
+            <button onclick="removeOrganization(${organization.id})" class="btn btn-success" style="color: black;">Delete</button>
+
+      </div>
             `;
                 table.appendChild(newRow);
             });
         }
 
-        createDonorTable(donors);
-        createOrganizationTable(organizations);
+        function removeOrganization(id) {
+            const index = organizationRequest.findIndex(organization => organization.id === id);
+
+            // If the request is found
+            if (index !== -1) {
+                // Remove the request from the array
+                organizationRequest.splice(index, 1);
+
+                // Remove the corresponding row from the table
+                const table = document.getElementById('organizationTable');
+                const rowToRemove = table.querySelector(`[data-label="${id}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                }
+                localStorage.setItem('requests', JSON.stringify(organizationRequest));
+
+            } else {
+                console.log(`Request with ID ${id} not found.`);
+            }
+        }
+
+        function removeDonor(id) {
+            const index = DonorRequest.findIndex(request => request.id === id);
+
+            // If the request is found
+            if (index !== -1) {
+                // Remove the request from the array
+                DonorRequest.splice(index, 1);
+
+                // Remove the corresponding row from the table
+                const table = document.getElementById('donorTable');
+                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
+                if (rowToRemove) rowToRemove.remove();
+                localStorage.setItem('requests', JSON.stringify(DonorRequest));
+            } else {
+                console.log(`Request with ID ${id} not found.`);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            createDonorTable(DonorRequest);
+            createOrganizationTable(organizationRequest);
+        });
     </script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
