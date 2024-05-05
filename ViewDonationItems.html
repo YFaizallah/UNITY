@@ -156,6 +156,7 @@
         <div>
             <label for="clothesAge">Age:</label>
             <select id="clothesAge">
+                <option value="all">All</option>
                 <option value="Adult">Adult</option>
                 <option value="Child">Child</option>
                 <option value="Teen">Teen</option>
@@ -164,6 +165,7 @@
         <div>
             <label for="clothesGender">Gender:</label>
             <select id="clothesGender">
+                <option value="all">All</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Unisex">Unisex</option>
@@ -172,6 +174,7 @@
         <div>
             <label for="clothesSeason">Season:</label>
             <select id="clothesSeason">
+                <option value="all">All</option>
                 <option value="Summer">Summer</option>
                 <option value="Spring">Spring</option>
                 <option value="Fall">Fall</option>
@@ -185,6 +188,7 @@
         <div>
             <label for="schoolSuppliesType">Type:</label>
             <select id="schoolSuppliesType">
+                <option value="all">All</option>
                 <option value="Books">Books</option>
                 <option value="Stationary">Stationary</option>
             </select>
@@ -196,6 +200,7 @@
         <div>
             <label for="toysAge">Age:</label>
             <select id="toysAge">
+                <option value="all">All</option>
                 <option value="5-7">5-7</option>
                 <option value="3-5">3-5</option>
                 <option value="6-10">6-10</option>
@@ -205,6 +210,7 @@
         <div>
             <label for="toysGender">Gender:</label>
             <select id="toysGender">
+                <option value="all">All</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Unisex">Unisex</option>
@@ -213,6 +219,7 @@
         <div>
             <label for="toysCategory">Category:</label>
             <select id="toysCategory">
+                <option value="all">All</option>
                 <option value="Action Figure">Action Figure</option>
                 <option value="Doll">Doll</option>
                 <option value="Cars">Cars</option>
@@ -226,6 +233,7 @@
         <div>
             <label for="foodType">Type:</label>
             <select id="foodType">
+                <option value="all">All</option>
                 <option value="fruit/veg">Fruit/Vegetable</option>
                 <option value="canned">Canned</option>
                 <option value="fresh meal">Fresh Meal</option>
@@ -239,6 +247,7 @@
         <div>
             <label for="medicalSuppliesDeviceType">Medical Supplies Type:</label>
             <select id="medicalSuppliesDeviceType">
+                <option value="all">All</option>
                 <option value="Devices">Devices</option>
                 <option value="Equipment">Equipment</option>
                 <option value="Medication">Medication</option>
@@ -249,9 +258,11 @@
     <!-- Filter options for Medication category -->
     <div id="medicationFilterContainer" style="display: none;">
         <div>
-            <label for="medicationUse">Use:</label>
+            <label for="medicationUse">Medication use:</label>
             <select id="medicationUse">
-                <option value="Medical Use">Medical Use</option>
+                <option value="all">All</option>
+                <option value="painrelief">Pain Relief</option>
+                <option value="antibiotic">Antibiotic</option>
             </select>
         </div>
     </div>
@@ -261,6 +272,7 @@
         <div>
             <label for="bloodDonationHospital">Hospital:</label>
             <select id="bloodDonationHospital">
+                <option value="all">All</option>
                 <option value="City Hospital">City Hospital</option>
                 <option value="County Hospital">County Hospital</option>
                 <option value="Community Health Center">Community Health Center</option>
@@ -269,6 +281,7 @@
         <div>
             <label for="bloodDonationGovernorate">Governorate:</label>
             <select id="bloodDonationGovernorate">
+                <option value="all">All</option>
                 <option value="New York">New York</option>
                 <option value="California">California</option>
                 <option value="Texas">Texas</option>
@@ -277,6 +290,7 @@
         <div>
             <label for="bloodDonationArea">Area:</label>
             <select id="bloodDonationArea">
+                <option value="all">All</option>
                 <option value="Downtown">Downtown</option>
                 <option value="Westside">Westside</option>
                 <option value="North End">North End</option>
@@ -689,6 +703,205 @@
                     bloodDonationFilterContainer.style.display = 'block';
                 }
             });
+        });
+
+        // Function to filter food by types
+        function filterFoodByType(type) {
+            let filteredFood;
+            if (type === 'all') {
+                filteredFood = food;
+            } else {
+                filteredFood = food.filter(item => item.Type === type);
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredFood);
+        }
+
+        // Event listener for food type select element
+        const foodTypeSelect = document.getElementById('foodType');
+        foodTypeSelect.addEventListener('change', (event) => {
+            const selectedType = event.target.value;
+            filterFoodByType(selectedType);
+        });
+        // Function to filter school supplies by type
+        function filterSchoolSupplies(type) {
+            let filteredSupplies;
+            if (type === 'all') {
+                filteredSupplies = schoolSupplies; // Show all school supplies when 'All' is selected
+            } else {
+                filteredSupplies = schoolSupplies.filter(item => item.Type === type);
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredSupplies);
+        }
+
+        // Event listener for school supplies type select element
+        const schoolSuppliesTypeSelect = document.getElementById('schoolSuppliesType');
+        schoolSuppliesTypeSelect.addEventListener('change', (event) => {
+            const selectedType = event.target.value;
+            filterSchoolSupplies(selectedType);
+        });
+
+
+        // Function to filter clothes by age, gender, and season
+        function filterClothes(age, gender, season) {
+            let filteredClothes;
+            if (age === 'all' && gender === 'all' && season === 'all') {
+                filteredClothes = clothes; // Show all clothes when all options are selected
+            } else {
+                filteredClothes = clothes.filter(item => {
+                    return (age === 'all' || item.Age === age) &&
+                        (gender === 'all' || item.Gender === gender) &&
+                        (season === 'all' || item.Season === season);
+                });
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredClothes);
+        }
+
+        // Event listeners for select elements for age, gender, and season
+        const clothesAgeSelect = document.getElementById('clothesAge');
+        const clothesGenderSelect = document.getElementById('clothesGender');
+        const clothesSeasonSelect = document.getElementById('clothesSeason');
+
+        clothesAgeSelect.addEventListener('change', () => {
+            const selectedAge = clothesAgeSelect.value;
+            const selectedGender = clothesGenderSelect.value;
+            const selectedSeason = clothesSeasonSelect.value;
+            filterClothes(selectedAge, selectedGender, selectedSeason);
+        });
+
+        clothesGenderSelect.addEventListener('change', () => {
+            const selectedAge = clothesAgeSelect.value;
+            const selectedGender = clothesGenderSelect.value;
+            const selectedSeason = clothesSeasonSelect.value;
+            filterClothes(selectedAge, selectedGender, selectedSeason);
+        });
+
+        clothesSeasonSelect.addEventListener('change', () => {
+            const selectedAge = clothesAgeSelect.value;
+            const selectedGender = clothesGenderSelect.value;
+            const selectedSeason = clothesSeasonSelect.value;
+            filterClothes(selectedAge, selectedGender, selectedSeason);
+        });
+        // Function to filter toys by age, gender, and category
+        function filterToys(age, gender, category) {
+            let filteredToys;
+            if (age === 'all' && gender === 'all' && category === 'all') {
+                filteredToys = toys; // Show all toys when 'All' is selected for all filters
+            } else {
+                filteredToys = toys.filter(item => {
+                    return (age === 'all' || item.Age === age) &&
+                        (gender === 'all' || item.Gender === gender) &&
+                        (category === 'all' || item.Category === category);
+                });
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredToys);
+        }
+
+        // Event listeners for select elements for age, gender, and category
+        const toysAgeSelect = document.getElementById('toysAge');
+        const toysGenderSelect = document.getElementById('toysGender');
+        const toysCategorySelect = document.getElementById('toysCategory');
+
+        toysAgeSelect.addEventListener('change', () => {
+            const selectedAge = toysAgeSelect.value;
+            const selectedGender = toysGenderSelect.value;
+            const selectedCategory = toysCategorySelect.value;
+            filterToys(selectedAge, selectedGender, selectedCategory);
+        });
+
+        toysGenderSelect.addEventListener('change', () => {
+            const selectedAge = toysAgeSelect.value;
+            const selectedGender = toysGenderSelect.value;
+            const selectedCategory = toysCategorySelect.value;
+            filterToys(selectedAge, selectedGender, selectedCategory);
+        });
+
+        toysCategorySelect.addEventListener('change', () => {
+            const selectedAge = toysAgeSelect.value;
+            const selectedGender = toysGenderSelect.value;
+            const selectedCategory = toysCategorySelect.value;
+            filterToys(selectedAge, selectedGender, selectedCategory);
+        });
+        // Function to filter medical supplies by type and use
+        function filterMedicalSupplies(type, use) {
+            let filteredMedicalSupplies;
+            if (type === 'all' && use === 'all') {
+                filteredMedicalSupplies = medicalSupplies; // Show all medical supplies when 'All' is selected for both filters
+            } else {
+                filteredMedicalSupplies = medicalSupplies.filter(item => {
+                    return (type === 'all' || item.Type === type) &&
+                        (use === 'all' || item.Use === use);
+                });
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredMedicalSupplies);
+        }
+
+        // Event listeners for select elements for type and use
+        const medicalTypeSelect = document.getElementById('medicalType');
+        const medicalUseSelect = document.getElementById('medicalUse');
+
+        medicalTypeSelect.addEventListener('change', () => {
+            const selectedType = medicalTypeSelect.value;
+            const selectedUse = medicalUseSelect.value;
+            filterMedicalSupplies(selectedType, selectedUse);
+        });
+
+        medicalUseSelect.addEventListener('change', () => {
+            const selectedType = medicalTypeSelect.value;
+            const selectedUse = medicalUseSelect.value;
+            filterMedicalSupplies(selectedType, selectedUse);
+        });
+
+
+        const bloodDonationFilters = document.querySelectorAll('.blood-donation-filter');
+
+
+        // Function to filter blood donations by hospital, government, and area
+        function filterBloodDonationsByFilters(hospital, government, area) {
+            let filteredBloodDonations;
+            if (hospital === 'all' && government === 'all' && area === 'all') {
+                filteredBloodDonations = bloodDonations; // Show all blood donations when 'All' is selected for all filters
+            } else {
+                filteredBloodDonations = bloodDonations.filter(donation => {
+                    return (hospital === 'all' || donation.hospital === hospital) &&
+                        (government === 'all' || donation.government === government) &&
+                        (area === 'all' || donation.area === area);
+                });
+            }
+            // Render filtered blood donations
+            renderBloodDonations(filteredBloodDonations);
+        }
+
+
+
+        // Event listener for blood donation filters
+        const hospitalSelect = document.getElementById('bloodDonationHospital');
+        const governmentSelect = document.getElementById('bloodDonationGovernorate');
+        const areaSelect = document.getElementById('bloodDonationArea');
+
+        hospitalSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        });
+
+        governmentSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        });
+
+        areaSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
         });
     </script>
 </body>
