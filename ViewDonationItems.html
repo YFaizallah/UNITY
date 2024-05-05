@@ -46,6 +46,34 @@
             url('./fonts/inter-v12-latin-700.woff') format('woff');
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
+        
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .filter-container>div {
+            display: inline-block;
+            /* Change display property to inline-block */
+            margin-right: 20px;
+        }
+        /* Add this CSS to your stylesheet */
+        
+        .options-container {
+            float: right;
+            /* Align the container to the right */
+        }
+        
+        label,
+        select {
+            font-family: Arial, 'Inter';
+            /* Change the font family */
+            font-size: 20px;
+            /* Change the font size */
+            font-weight: bold;
+            color: #162836;
+            /* Change the font color */
+        }
     </style>
 
 </head>
@@ -152,41 +180,45 @@
         </div>
     </nav>
     <!-- Filter options for Clothes category -->
-    <div id="clothesFilterContainer" style="display: none;">
+    <!-- Filter options for Clothes category -->
+    <!-- Filter options for Clothes category -->
+    <div id="clothesFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="clothesAge">Age:</label>
             <select id="clothesAge">
-                <option value="all">All</option>
-                <option value="Adult">Adult</option>
-                <option value="Child">Child</option>
-                <option value="Teen">Teen</option>
-            </select>
+            <option value="all">All</option>
+            <option value="Adult">Adult</option>
+            <option value="Child">Child</option>
+            <option value="Teen">Teen</option>
+        </select>
         </div>
         <div>
             <label for="clothesGender">Gender:</label>
             <select id="clothesGender">
-                <option value="all">All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Unisex">Unisex</option>
-            </select>
+            <option value="all">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unisex">Unisex</option>
+        </select>
         </div>
         <div>
             <label for="clothesSeason">Season:</label>
             <select id="clothesSeason">
-                <option value="all">All</option>
-                <option value="Summer">Summer</option>
-                <option value="Spring">Spring</option>
-                <option value="Fall">Fall</option>
-                <option value="Winter">Winter</option>
-            </select>
+            <option value="all">All</option>
+            <option value="Summer">Summer</option>
+            <option value="Spring">Spring</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+        </select>
         </div>
     </div>
 
+
+
     <!-- Filter options for School Supplies category -->
-    <div id="schoolSuppliesFilterContainer" style="display: none;">
+    <div id="schoolSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="schoolSuppliesType">Type:</label>
+            <label for="schoolSuppliesType" style="margin-left: 280px;">Type:</label>
             <select id="schoolSuppliesType">
                 <option value="all">All</option>
                 <option value="Books">Books</option>
@@ -196,9 +228,9 @@
     </div>
 
     <!-- Filter options for Toy category -->
-    <div id="toysFilterContainer" style="display: none;">
+    <div id="toysFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="toysAge">Age:</label>
+            <label for="toysAge" style="margin-left: 280px;">Age:</label>
             <select id="toysAge">
                 <option value="all">All</option>
                 <option value="5-7">5-7</option>
@@ -208,7 +240,7 @@
             </select>
         </div>
         <div>
-            <label for="toysGender">Gender:</label>
+            <label for="toysGender" style="margin-left: 280px;">Gender:</label>
             <select id="toysGender">
                 <option value="all">All</option>
                 <option value="Male">Male</option>
@@ -216,8 +248,9 @@
                 <option value="Unisex">Unisex</option>
             </select>
         </div>
+        <br>
         <div>
-            <label for="toysCategory">Category:</label>
+            <label for="toysCategory" style="margin-left: 280px;">Category:</label>
             <select id="toysCategory">
                 <option value="all">All</option>
                 <option value="Action Figure">Action Figure</option>
@@ -229,9 +262,9 @@
     </div>
 
     <!-- Filter options for Food category -->
-    <div id="foodFilterContainer" style="display: none;">
+    <div id="foodFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="foodType">Type:</label>
+            <label for="foodType" style="margin-left: 280px;">Type:</label>
             <select id="foodType">
                 <option value="all">All</option>
                 <option value="fruit/veg">Fruit/Vegetable</option>
@@ -243,9 +276,9 @@
     </div>
 
     <!-- Filter options for Medical Supplies category -->
-    <div id="medicalSuppliesFilterContainer" style="display: none;">
+    <div id="medicalSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="medicalSuppliesDeviceType">Medical Supplies Type:</label>
+            <label for="medicalSuppliesDeviceType" style="margin-left: 280px;">Medical Supplies Type:</label>
             <select id="medicalSuppliesDeviceType">
                 <option value="all">All</option>
                 <option value="Devices">Devices</option>
@@ -256,9 +289,9 @@
     </div>
 
     <!-- Filter options for Medication category -->
-    <div id="medicationFilterContainer" style="display: none;">
+    <div id="medicationFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="medicationUse">Medication use:</label>
+            <label for="medicationUse" style="margin-left: 280px;">Medication use: </label>
             <select id="medicationUse">
                 <option value="all">All</option>
                 <option value="painrelief">Pain Relief</option>
@@ -268,9 +301,9 @@
     </div>
 
     <!-- Filter options for Blood Donation category -->
-    <div id="bloodDonationFilterContainer" style="display: none;">
+    <div id="bloodDonationFilterContainer" class="filter-container" style="display: none;">
         <div>
-            <label for="bloodDonationHospital">Hospital:</label>
+            <label for="bloodDonationHospital" style="margin-left: 280px;">Hospital:</label>
             <select id="bloodDonationHospital">
                 <option value="all">All</option>
                 <option value="City Hospital">City Hospital</option>
@@ -279,7 +312,7 @@
             </select>
         </div>
         <div>
-            <label for="bloodDonationGovernorate">Governorate:</label>
+            <label for="bloodDonationGovernorate" style="margin-left: 280px;">Governorate:</label>
             <select id="bloodDonationGovernorate">
                 <option value="all">All</option>
                 <option value="New York">New York</option>
@@ -288,7 +321,7 @@
             </select>
         </div>
         <div>
-            <label for="bloodDonationArea">Area:</label>
+            <label for="bloodDonationArea" style="margin-left: 280px;">Area:</label>
             <select id="bloodDonationArea">
                 <option value="all">All</option>
                 <option value="Downtown">Downtown</option>
