@@ -104,6 +104,12 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <label class="nav-link">
+                            <input type="radio" class="form-check-input" name="category" id="all" value="all" checked>
+                            All
+                        </label>
+                    </li>
+                    <li class="nav-item">
+                        <label class="nav-link">
                             <input type="radio" class="form-check-input" name="category" value="clothes" checked>
                             Clothes
                         </label>
@@ -498,9 +504,22 @@
         radioButtons.forEach(button => {
             button.addEventListener('change', (event) => {
                 const category = event.target.value;
-                filterCards(category);
+                if (category === 'all') {
+                    showAllCards();
+                } else {
+                    filterCards(category);
+                }
             });
         });
+
+        // Function to show all cards
+        function showAllCards() {
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = '';
+            arrays.forEach(array => {
+                cardContainer.innerHTML += generateCards(array);
+            });
+        }
     </script>
 </body>
 
