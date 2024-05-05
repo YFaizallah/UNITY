@@ -73,6 +73,7 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 25px;
+                align-items: center;
             }
             .table-header {
                 background-color: #162836;
@@ -102,7 +103,9 @@
                 flex-basis: 20%;
             }
             .col-5-head {
-                flex-basis: -20%;
+                flex-basis: 40%;
+                text-align: left;
+                margin-left: 10px;
             }
             .col-1 {
                 flex-basis: 10%;
@@ -114,14 +117,19 @@
                 flex-basis: 20%;
             }
             .col-4 {
-                flex-basis: 20%;
+                flex-basis: 12%;
             }
             .col-5 {
-                flex-basis: 15%;
+                flex-basis: 20%;
             }
             @media all and (max-width: 768px) {
                 .table-header {
                     display: none;
+                }
+                .col-5-head {
+                    flex-basis: 40%;
+                    text-align: left;
+                    margin-left: 10px;
                 }
                 .table-row {}
                 li {
@@ -237,8 +245,8 @@ Account Settings
                         <div class="col col-1">Donor Name</div>
                         <div class="col col-2">Submission Request</div>
                         <div class="col col-3">Contact</div>
-                        <div class="col col-4">Volunteer</div>
-                        <div class="col col-5">Request</div>
+                        <div class="col col-4" style="margin-right: 20px;">Volunteer</div>
+                        <div class="col col-5-head">Request</div>
                     </li>
                 </ul>
             </div>

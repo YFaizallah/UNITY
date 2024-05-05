@@ -48,6 +48,30 @@
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         
+        .btn {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: red !important;
+            border-color: rgb(189, 70, 70) !important;
+            border-width: 4px !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
+        .btn-accept {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .btn-accept:hover {
+            background-color: rgb(21, 163, 21) !important;
+            border-color: rgb(73, 178, 73) !important;
+            border-width: 4px !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
         .table-container {
             margin-top: 100px;
             max-width: 1000px;
@@ -73,6 +97,7 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 25px;
+                align-items: center;
             }
             .table-header {
                 background-color: #162836;
@@ -323,8 +348,8 @@ Account Settings
       <div class="col col-2" data-label="Submission Request">${request.request}</div>
       <div class="col col-3" data-label="Contact">${request.contact}</div>
       <div class="col col-4" data-label="Request">
-        <button onclick="acceptRequest(${request.id})" class="btn btn-success">Accept</button>
-        <button onclick="rejectRequest(${request.id})" class="btn btn-danger">Reject</button>
+        <button onclick="acceptRequest(${request.id})" class="btn btn-accept" style="color: black;">Accept</button>
+        <button onclick="rejectRequest(${request.id})" class="btn btn-success" style="color: black;">Reject</button>
       </div>
     `;
                 table.appendChild(newRow);
