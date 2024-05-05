@@ -93,30 +93,33 @@
                 flex-basis: 20%;
             }
             .col-2-head {
-                flex-basis: 20%;
+                flex-basis: 30%;
             }
             .col-3-head {
-                flex-basis: 10%;
+                flex-basis: 20%;
             }
             .col-4-head {
+                flex-basis: 20%;
+            }
+            .col-5-head {
                 flex-basis: -20%;
             }
             .col-1 {
-                flex-basis: 30%;
+                flex-basis: 10%;
             }
             .col-2 {
-                flex-basis: 20%;
+                flex-basis: 40%;
             }
             .col-3 {
-                flex-basis: 10%;
+                flex-basis: 20%;
             }
             .col-4 {
                 flex-basis: 20%;
             }
             .col-5 {
-                flex-basis: 20%;
+                flex-basis: 15%;
             }
-            @media all and (max-width: 767px) {
+            @media all and (max-width: 768px) {
                 .table-header {
                     display: none;
                 }
@@ -231,10 +234,11 @@ Account Settings
                 <ul class="responsive-table" id="submissionTable">
                     <li class="table-header">
 
-                        <div class="col col-1-head">Donor Name</div>
-                        <div class="col col-2-head">Submission Request</div>
-                        <div class="col col-3-head">Contact</div>
-                        <div class="col col-4-head">Request</div>
+                        <div class="col col-1">Donor Name</div>
+                        <div class="col col-2">Submission Request</div>
+                        <div class="col col-3">Contact</div>
+                        <div class="col col-4">Volunteer</div>
+                        <div class="col col-5">Request</div>
                     </li>
                 </ul>
             </div>
@@ -294,11 +298,13 @@ Account Settings
                 id: 1,
                 donor: 'Faizallah',
                 request: 'Request 1',
+                volunteer: 'Teacher',
                 contact: '+201110492407'
             }, {
                 id: 2,
                 donor: 'Youssef',
                 request: 'Request 2',
+                volunteer: 'Doctor',
                 contact: '+201110492407'
             }];
 
@@ -321,7 +327,8 @@ Account Settings
       <div class="col col-1" data-label="Donor Name">${request.donor}</div>
       <div class="col col-2" data-label="Submission Request">${request.request}</div>
       <div class="col col-3" data-label="Contact">${request.contact}</div>
-      <div class="col col-4" data-label="Request">
+      <div class="col col-4" data-label="Volunteer">${request.volunteer}</div>
+      <div class="col col-5" data-label="Request">
         <button onclick="viewRequest(${request.id})" class="btn btn-success">View</button>
         <button onclick="downloadRequest(${request.id})" class="btn btn-danger">Download</button>
       </div>
