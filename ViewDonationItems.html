@@ -151,6 +151,138 @@
             </div>
         </div>
     </nav>
+    <!-- Filter options for Clothes category -->
+    <div id="clothesFilterContainer" style="display: none;">
+        <div>
+            <label for="clothesAge">Age:</label>
+            <select id="clothesAge">
+                <option value="Adult">Adult</option>
+                <option value="Child">Child</option>
+                <option value="Teen">Teen</option>
+            </select>
+        </div>
+        <div>
+            <label for="clothesGender">Gender:</label>
+            <select id="clothesGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Unisex">Unisex</option>
+            </select>
+        </div>
+        <div>
+            <label for="clothesSeason">Season:</label>
+            <select id="clothesSeason">
+                <option value="Summer">Summer</option>
+                <option value="Spring">Spring</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for School Supplies category -->
+    <div id="schoolSuppliesFilterContainer" style="display: none;">
+        <div>
+            <label for="schoolSuppliesType">Type:</label>
+            <select id="schoolSuppliesType">
+                <option value="Books">Books</option>
+                <option value="Stationary">Stationary</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for Toy category -->
+    <div id="toysFilterContainer" style="display: none;">
+        <div>
+            <label for="toysAge">Age:</label>
+            <select id="toysAge">
+                <option value="5-7">5-7</option>
+                <option value="3-5">3-5</option>
+                <option value="6-10">6-10</option>
+                <option value="8-12">8-12</option>
+            </select>
+        </div>
+        <div>
+            <label for="toysGender">Gender:</label>
+            <select id="toysGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Unisex">Unisex</option>
+            </select>
+        </div>
+        <div>
+            <label for="toysCategory">Category:</label>
+            <select id="toysCategory">
+                <option value="Action Figure">Action Figure</option>
+                <option value="Doll">Doll</option>
+                <option value="Cars">Cars</option>
+                <option value="Board Game">Board Game</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for Food category -->
+    <div id="foodFilterContainer" style="display: none;">
+        <div>
+            <label for="foodType">Type:</label>
+            <select id="foodType">
+                <option value="fruit/veg">Fruit/Vegetable</option>
+                <option value="canned">Canned</option>
+                <option value="fresh meal">Fresh Meal</option>
+                <option value="baked">Baked Goods</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for Medical Supplies category -->
+    <div id="medicalSuppliesFilterContainer" style="display: none;">
+        <div>
+            <label for="medicalSuppliesDeviceType">Medical Supplies Type:</label>
+            <select id="medicalSuppliesDeviceType">
+                <option value="Devices">Devices</option>
+                <option value="Equipment">Equipment</option>
+                <option value="Medication">Medication</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for Medication category -->
+    <div id="medicationFilterContainer" style="display: none;">
+        <div>
+            <label for="medicationUse">Use:</label>
+            <select id="medicationUse">
+                <option value="Medical Use">Medical Use</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filter options for Blood Donation category -->
+    <div id="bloodDonationFilterContainer" style="display: none;">
+        <div>
+            <label for="bloodDonationHospital">Hospital:</label>
+            <select id="bloodDonationHospital">
+                <option value="City Hospital">City Hospital</option>
+                <option value="County Hospital">County Hospital</option>
+                <option value="Community Health Center">Community Health Center</option>
+            </select>
+        </div>
+        <div>
+            <label for="bloodDonationGovernorate">Governorate:</label>
+            <select id="bloodDonationGovernorate">
+                <option value="New York">New York</option>
+                <option value="California">California</option>
+                <option value="Texas">Texas</option>
+            </select>
+        </div>
+        <div>
+            <label for="bloodDonationArea">Area:</label>
+            <select id="bloodDonationArea">
+                <option value="Downtown">Downtown</option>
+                <option value="Westside">Westside</option>
+                <option value="North End">North End</option>
+            </select>
+        </div>
+    </div>
 
     <main>
         <div class="container" style="margin-top: 150px;">
@@ -520,6 +652,44 @@
                 cardContainer.innerHTML += generateCards(array);
             });
         }
+    </script>
+    <script>
+        const categoryRadios = document.querySelectorAll('input[name="category"]');
+        const clothesFilterContainer = document.getElementById('clothesFilterContainer');
+        const schoolSuppliesFilterContainer = document.getElementById('schoolSuppliesFilterContainer');
+        const toysFilterContainer = document.getElementById('toysFilterContainer');
+        const foodFilterContainer = document.getElementById('foodFilterContainer');
+        const medicalSuppliesFilterContainer = document.getElementById('medicalSuppliesFilterContainer');
+        const medicationFilterContainer = document.getElementById('medicationFilterContainer');
+        const bloodDonationFilterContainer = document.getElementById('bloodDonationFilterContainer');
+
+        categoryRadios.forEach(radio => {
+            radio.addEventListener('change', (event) => {
+                const selectedCategory = event.target.value;
+                clothesFilterContainer.style.display = 'none';
+                schoolSuppliesFilterContainer.style.display = 'none';
+                toysFilterContainer.style.display = 'none';
+                foodFilterContainer.style.display = 'none';
+                medicalSuppliesFilterContainer.style.display = 'none';
+                medicationFilterContainer.style.display = 'none';
+                bloodDonationFilterContainer.style.display = 'none';
+
+                if (selectedCategory === 'clothes') {
+                    clothesFilterContainer.style.display = 'block';
+                } else if (selectedCategory === 'schoolSupplies') {
+                    schoolSuppliesFilterContainer.style.display = 'block';
+                } else if (selectedCategory === 'toys') {
+                    toysFilterContainer.style.display = 'block';
+                } else if (selectedCategory === 'food') {
+                    foodFilterContainer.style.display = 'block';
+                } else if (selectedCategory === 'medicalSupplies') {
+                    medicalSuppliesFilterContainer.style.display = 'block';
+                    medicationFilterContainer.style.display = 'block';
+                } else if (selectedCategory === 'bloodDonations') {
+                    bloodDonationFilterContainer.style.display = 'block';
+                }
+            });
+        });
     </script>
 </body>
 
