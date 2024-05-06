@@ -69,6 +69,17 @@
             display: block;
         }
         
+        .badge {
+            font-size: 0.8rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            padding: 0;
+            border: none;
+            pointer-events: none;
+        }
+        
         li {
             list-style: none;
         }
@@ -82,8 +93,9 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
-
+            <a href="index.html">
+                <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -95,15 +107,15 @@
     </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="ViewDonors.html" aria-label="Brings you to the frontpage">
-    Notifications 
-  </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="fullfiledDonations.html">fullfilled donations</a>
 
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
+Fullfilled Donations 
+</a>
                     </li>
+
+
 
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
@@ -118,6 +130,13 @@
     </a>
                     </li>
 
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </li>
+
             </div>
         </div>
     </nav>
@@ -127,7 +146,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 col-lg-10 col-xl-8">
-                        <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="adminCheck" style="margin-top:150px;">Welcome to your dashboard, </h1>
+
                     </div>
                 </div>
 
