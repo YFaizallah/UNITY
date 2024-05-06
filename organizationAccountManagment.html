@@ -49,17 +49,28 @@
             url('./fonts/inter-v12-latin-700.woff') format('woff');
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
-        /* .btn {
-            transition: background-color 0.3s, border-color 0.3s;
+        
+        .x-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
         }
         
-        .btn:hover {
+        .x-btn:hover,
+        .x-btn:focus {
             background-color: red !important;
             border-color: rgb(189, 70, 70) !important;
             border-width: 1px !important;
             color: white !important;
             font-weight: bold;
-        } */
+        }
+        
+        .x-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
         
         .table-container {
             margin-top: 100px;
@@ -320,6 +331,20 @@ Fullfilled Donations
             </div>
         </div>
 
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="card" style="width: 900px;margin-left: -105px; ">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: 20px;">Delete Account</h5>
+                        <p class="card-text">Note that: You won't be able to use the website facilities when you delete the account. To continue press the Delete button below</p>
+                        <form>
+                            <button class="x-btn" id="deleteAcc" type="submit" style="border-radius: 10px; border-color: black;">Delete Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
 
@@ -376,6 +401,13 @@ Fullfilled Donations
     </script>
 
     <script>
+        deleteAcc.addEventListener('click', function(event) {
+            event.preventDefault();
+            alert("Your account has been successfully deleted");
+            window.location.href = 'index.html';
+
+        });
+
         let scrollpos = window.scrollY
         const header = document.querySelector(".navbar")
         const header_height = header.offsetHeight
