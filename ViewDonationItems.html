@@ -420,20 +420,32 @@
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 3,
-            "Type": "Book",
+            "Type": "Books",
             "item": "Mathematics",
+            "Author": "John Doe",
+            "Language": "English",
+            "Edition": "1st Edition",
+            "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 4,
-            "Type": "Book",
+            "Type": "Books",
             "item": "Science",
+            "Author": "Jane Smith",
+            "Language": "English",
+            "Edition": "2nd Edition",
+            "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 6,
-            "Type": "Book",
+            "Type": "Books",
             "item": "History",
+            "Author": "Michael Johnson",
+            "Language": "English",
+            "Edition": "3rd Edition",
+            "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
             "Category": "schoolSupplies" // Add Category property
         }, {
@@ -444,7 +456,7 @@
             "Category": "schoolSupplies" // Add Category property
         }];
 
-        let books = [{
+        let Books = [{
             "id": 3,
             "Name": "Mathematics",
             "Author": "John Doe",
@@ -516,6 +528,11 @@
             "Type": "fruit/veg",
             "Category": "food"
         }, {
+            "Name": "Bread",
+            "Quantity": 3,
+            "Type": "baked",
+            "Category": "food"
+        }, {
             "Name": "Chicken",
             "Quantity": 5,
             "Type": "fresh meal",
@@ -579,7 +596,7 @@
         let arrays = [
             clothes,
             schoolSupplies,
-            books,
+            Books,
             stationeryItems,
             toys,
             food,
@@ -595,7 +612,7 @@
                         if (array === toys) {
                             photoHtml = `<img src="UnityAssets/126501.jpg" width="405px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                         }
-                        if (array === books) {
+                        if (array === Books) {
                             photoHtml = `<img src="UnityAssets/126501.jpg" width="525px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                         }
                         if (array === medicalSupplies) {
@@ -793,7 +810,7 @@
                 filteredToys = toys.filter(item => {
                     return (age === 'all' || item.Age === age) &&
                         (gender === 'all' || item.Gender === gender) &&
-                        (category === 'all' || item.Category === category);
+                        (category === 'all' || item.Type === category);
                 });
             }
             const cardContainer = document.getElementById('cardContainer');
