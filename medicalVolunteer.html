@@ -522,7 +522,6 @@
             const orgNameSelect = document.getElementById('orgName');
             const areaSelect = document.getElementById('Area');
 
-            // Function to filter medical cases based on selected options
             function filterMedicalCases() {
                 const selectedMedSpecialty = medSpecialtySelect.value;
                 const selectedOrgName = orgNameSelect.value;
@@ -531,24 +530,22 @@
                 medicalCases.forEach((medicalCase, index) => {
                     const accordionItem = document.getElementById(`caseCollapse${index}`).parentNode;
 
-                    // Check if the medical case matches the selected options
                     const isMatch = (
                         (selectedMedSpecialty === 'all' || medicalCase.medicalSpecialty === selectedMedSpecialty) &&
                         (selectedOrgName === 'all' || medicalCase.organizationName === selectedOrgName) &&
                         (selectedArea === 'all' || medicalCase.area === selectedArea)
                     );
 
-                    // Show or hide the accordion item based on the filtering result
                     accordionItem.style.display = isMatch ? 'block' : 'none';
                 });
             }
 
-            // Event listeners for select elements
             medSpecialtySelect.addEventListener('change', filterMedicalCases);
             orgNameSelect.addEventListener('change', filterMedicalCases);
             areaSelect.addEventListener('change', filterMedicalCases);
 
-            // Initial filtering to show all medical cases
+
+
             filterMedicalCases();
         });
     </script>
