@@ -604,11 +604,12 @@
             bloodDonations
         ];
 
-
         function generateCards(array) {
             let cardHtml = '';
             array.forEach(item => {
                         let photoHtml = '';
+                        let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
+
                         if (array === toys) {
                             photoHtml = `<img src="UnityAssets/126501.jpg" width="405px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                         }
@@ -620,27 +621,33 @@
                         }
 
                         cardHtml += `
-                    <div class="col-12">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        ${Object.entries(item).map(([key, value]) => `
-                                            <p class="card-text"><strong>${key}:</strong> ${value}</p>
-                                        `).join('')}
-                                        <button class="btn btn-primary donate-btn" style="border-radius: 15%">Donate</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
-                                    ${photoHtml}
+            <div class="col-12">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                ${Object.entries(item).map(([key, value]) => `
+                                    <p class="card-text"><strong>${key}:</strong> ${value}</p>
+                                `).join('')}
+                                <div class="input-group">
+                                    <input id="quantity-input" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;">
+                                    <button class="btn btn-primary donate-btn" style="border-radius: 15%">Donate</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
+                            ${photoHtml}
+                        </div>
                     </div>
-                `;
-            });
-            return cardHtml;
-        }
+                </div>
+            </div>
+        `;
+    });
+    return cardHtml;
+}
+
+
+
 
         function filterCards(category) {
             const cardContainer = document.getElementById('cardContainer');
