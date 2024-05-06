@@ -544,7 +544,7 @@
             "Category": "food"
         }, {
             "Name": "Broccoli",
-            "Quantity": " kg",
+            "Quantity": "3 kg",
             "Type": "fruit/veg",
             "Category": "food"
         }];
@@ -630,7 +630,7 @@
                                     <p class="card-text"><strong>${key}:</strong> ${value}</p>
                                 `).join('')}
                                 <div class="input-group">
-                                    <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;">
+                                    <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
                                     <button class="btn btn-primary donate-btn" style="border-radius: 15%" onclick="donate(${item.id})">Donate</button>
                                 </div>
                             </div>
@@ -947,4 +947,4 @@ function donate(itemId) {
     </script>
 </body>
 
-</html> 
+</html>
