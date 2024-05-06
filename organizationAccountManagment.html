@@ -15,6 +15,8 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/theme.min.css">
 
+
+
     <style>
         /* inter-300 - latin */
         
@@ -48,6 +50,28 @@
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         
+        .x-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .x-btn:hover,
+        .x-btn:focus {
+            background-color: red !important;
+            border-color: rgb(189, 70, 70) !important;
+            border-width: 1px !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
+        .x-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+        
         .table-container {
             margin-top: 100px;
             max-width: 1000px;
@@ -55,6 +79,41 @@
             margin-right: auto;
             padding-left: 10px;
             padding-right: 10px;
+        }
+        
+        .card-container {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            border-image-slice: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Adding shadow effect */
+            transition: border-image 0.5s, box-shadow 0.5s;
+            /* Transition for both border image and shadow */
+        }
+        
+        .card-container:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
         }
         
         h2 {
@@ -73,7 +132,6 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 25px;
-                align-items: center;
             }
             .table-header {
                 background-color: #162836;
@@ -90,23 +148,6 @@
                 background-color: #D5A187;
                 box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
             }
-            .col-1-head {
-                flex-basis: 20%;
-            }
-            .col-2-head {
-                flex-basis: 30%;
-            }
-            .col-3-head {
-                flex-basis: 20%;
-            }
-            .col-4-head {
-                flex-basis: 20%;
-            }
-            .col-5-head {
-                flex-basis: 40%;
-                text-align: left;
-                margin-left: 10px;
-            }
             .col-1 {
                 flex-basis: 10%;
             }
@@ -117,20 +158,16 @@
                 flex-basis: 20%;
             }
             .col-4 {
-                flex-basis: 12%;
+                flex-basis: 20%;
             }
             .col-5 {
                 flex-basis: 20%;
             }
-            @media all and (max-width: 768px) {
+            @media all and (max-width: 767px) {
                 .table-header {
                     display: none;
                 }
-                .col-5-head {
-                    flex-basis: 40%;
-                    text-align: left;
-                    margin-left: 10px;
-                }
+                .table-row {}
                 li {
                     display: block;
                 }
@@ -170,6 +207,17 @@
             display: block;
         }
         
+        .badge {
+            font-size: 0.8rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            padding: 0;
+            border: none;
+            pointer-events: none;
+        }
+        
         li {
             list-style: none;
         }
@@ -179,13 +227,13 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
+
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
             <a href="index.html">
                 <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -193,90 +241,136 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
-      View Organization 
+      Create Donation Post
     </a>
                     </li>
 
+
+
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewDonors.html" aria-label="Brings you to the frontpage">
-    View Donor 
-  </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Review Submissions</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="reviewOrganization.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="reviewDonor.html">Donor</a></li>
-                        </ul>
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
+Fullfilled Donations 
+</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+
+
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Delete</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">View Donor Details</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountmanagment.html">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
       Account Management
     </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizations.html">
-      Registered Organizations
-    </a>
+
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px; margin-left: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountsettings.html">
-Account Settings
-</a>
-                    </li>
+
             </div>
         </div>
     </nav>
 
     <main>
-        <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="table-container">
-                <ul class="responsive-table" id="submissionTable">
-                    <li class="table-header">
+        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Account Details</div>
+        <div class="container" style="margin-top: 20px;">
+            <!-- Account Information Card -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6">
+                    <div class="card" style="width: 900px;margin-left: -200px; ">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-bottom: 20px;">Account Information</h5>
+                            <p class="card-text">Account Name: John Doe</p>
+                            <p class="card-text mt-3">Account Email: john.doe@example.com</p>
+                            <p class="card-text mt-3">Account Type: Organization</p>
 
-                        <div class="col col-1">Donor Name</div>
-                        <div class="col col-2">Submission Request</div>
-                        <div class="col col-3">Contact</div>
-                        <div class="col col-4" style="margin-right: 20px;">Volunteer</div>
-                        <div class="col col-5-head">Request</div>
-                    </li>
-                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Account Details Card -->
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card" style="width: 900px;margin-left: -200px; margin-bottom: 30px;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-bottom: 20px;">Edit Account Details</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="accountName" class="form-label" style="margin-bottom: 10px;">Account Name</label>
+                                    <input type="text" class="form-control" id="accountName" style="border-radius: 10px;" placeholder="Enter new name">
+                                </div>
+                                <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Name</button>
+                            </form>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="accountEmail" class="form-label" style="margin-top: 20px; margin-bottom: 10px;">Account Email</label>
+                                    <input type="email" class="form-control" id="accountEmail" style="border-radius: 10px;" placeholder="Enter new email">
+                                </div>
+                                <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Email</button>
+                            </form>
+
+                            <form>
+                                <div class="mb-3">
+                                    <label for="accountPassword" class="form-label" style="margin-bottom: 10px; margin-top: 10px;">Password</label>
+                                    <input type="text" class="form-control" id="accountName" style="border-radius: 10px;" placeholder="Enter new name">
+                                </div>
+                                <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Password</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="card" style="width: 900px;margin-left: -105px; ">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: 20px;">Delete Account</h5>
+                        <p class="card-text">Note that: You won't be able to use the website facilities when you delete the account. To continue press the Delete button below</p>
+                        <form>
+                            <button class="x-btn" id="deleteAcc" type="submit" style="border-radius: 10px; border-color: black;">Delete Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+
 
     <footer>
         <div class="container small border-top">
             <div class="row py-5 d-flex justify-content-between">
 
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
-                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt>
+                    <img src="UnityAssets/png/logo-black.png" style="width:200px" alt="">
                     <address class="text-secondary mt-3">
-                                <strong>Unity</strong><br>
-                                Al Rehab City, New Cairo<br>
-                                Cairo, EG 103021<br>
-                                <abbr title="Phone">P:</abbr>
-                                (+20) 1013455666
-                            </address>
+                <strong>Unity</strong><br>
+                Al Rehab City, New Cairo<br>
+                Cairo, EG 103021<br>
+                <abbr title="Phone">P:</abbr>
+                (+20) 1013455666
+              </address>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
                     <h3 class="h6 mb-3">Company</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="adminLogin.html">Administrator
-                                        Login</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" href="#">Administrator Dashboard</a>
+                            <a class="nav-link link-fancy ps-0" href="#">Organization Dashboard</a>
                         </li>
                     </ul>
                 </div>
@@ -285,11 +379,9 @@ Account Settings
                     <h3 class="h6 mb-3">Subpages</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="register.html">Register System
-                                        Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="content.html">Simple Text Content
-                                        Page</a>
+                            <!-- <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a> -->
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register System Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
                         </li>
                     </ul>
                 </div>
@@ -300,91 +392,6 @@ Account Settings
         </div>
     </footer>
 
-    <script>
-        let DonorRequests = [];
-        document.addEventListener("DOMContentLoaded", function() {
-            DonorRequests = [{
-                id: 1,
-                donor: 'Faizallah',
-                request: 'Request 1',
-                volunteer: 'Teacher',
-                contact: '+201110492407'
-            }, {
-                id: 2,
-                donor: 'Youssef',
-                request: 'Request 2',
-                volunteer: 'Doctor',
-                contact: '+201110492407'
-            }];
-
-            createTableRows(DonorRequests);
-        });
-
-        function createTableRows(data) {
-            const table = document.getElementById('submissionTable');
-
-            // Remove existing rows (excluding the header)
-            const existingRows = table.querySelectorAll('.table-row');
-            existingRows.forEach(row => row.remove());
-
-            data.forEach((request, index) => {
-                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
-                const newRow = document.createElement('li');
-                newRow.classList.add(rowClass, 'table-row');
-                newRow.setAttribute('data-id', request.id); // Add data-id attribute
-                newRow.innerHTML = `
-      <div class="col col-1" data-label="Donor Name">${request.donor}</div>
-      <div class="col col-2" data-label="Submission Request">${request.request}</div>
-      <div class="col col-3" data-label="Contact">${request.contact}</div>
-      <div class="col col-4" data-label="Volunteer">${request.volunteer}</div>
-      <div class="col col-5" data-label="Request">
-        <button onclick="viewRequest(${request.id})" class="btn btn-success">View</button>
-        <button onclick="downloadRequest(${request.id})" class="btn btn-danger">Download</button>
-      </div>
-    `;
-                table.appendChild(newRow);
-            });
-        }
-
-        function downloadRequest(id) {
-            // Retrieve the request object with the given id
-            const request = DonorRequests.find(req => req.id === id);
-
-            if (request) {
-                // Provide the URL of the PDF file you want to download
-                const pdfUrl = 'UnityAssets/CV.pdf';
-
-                // Create a temporary anchor element
-                const a = document.createElement('a');
-                a.href = pdfUrl;
-                a.download = `${request.donor}_request.pdf`; // Set the filename for the downloaded file
-                a.click();
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
-        }
-
-
-        function viewRequest(id) {
-            // Retrieve the request object with the given id
-            const request = DonorRequests.find(req => req.id === id);
-
-            if (request) {
-                // Provide the URL of the PDF file you want to view
-                const pdfUrl = 'UnityAssets/CV.pdf';
-
-                // Open the PDF in a new tab
-                window.open(pdfUrl, '_blank');
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            createTableRows(organizationRequests);
-        });
-    </script>
-
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script>
@@ -394,6 +401,13 @@ Account Settings
     </script>
 
     <script>
+        deleteAcc.addEventListener('click', function(event) {
+            event.preventDefault();
+            alert("Your account has been successfully deleted");
+            window.location.href = 'index.html';
+
+        });
+
         let scrollpos = window.scrollY
         const header = document.querySelector(".navbar")
         const header_height = header.offsetHeight
@@ -413,7 +427,6 @@ Account Settings
             console.log(scrollpos)
         })
     </script>
-
 </body>
 
 </html>

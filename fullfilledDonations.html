@@ -49,6 +49,115 @@
             url('./fonts/inter-v12-latin-700.woff') format('woff');
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
+        
+        .btn {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: red !important;
+            border-color: rgb(189, 70, 70) !important;
+            border-width: 1px !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
+        .table-container {
+            margin-top: 100px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .card-container {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            border-image-slice: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Adding shadow effect */
+            transition: border-image 0.5s, box-shadow 0.5s;
+            /* Transition for both border image and shadow */
+        }
+        
+        .card-container:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
+        h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+            small {
+                font-size: 0.5em;
+            }
+        }
+        
+        .responsive-table {
+            li {
+                border-radius: 3px;
+                padding: 25px 30px;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 25px;
+            }
+            .table-header {
+                background-color: #162836;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                color: white;
+            }
+            .table-row-even {
+                background-color: white;
+                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+            }
+            .table-row-odd {
+                background-color: #D5A187;
+                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+            }
+            .col-1 {
+                flex-basis: 10%;
+            }
+            .col-2 {
+                flex-basis: 40%;
+            }
+            .col-3 {
+                flex-basis: 20%;
+            }
+            .col-4 {
+                flex-basis: 20%;
+            }
+            .col-5 {
+                flex-basis: 20%;
+            }
+            @media all and (max-width: 767px) {
+                .table-header {
+                    display: none;
+                }
+                .table-row {}
+                li {
+                    display: block;
+                }
+                .col {
+                    flex-basis: 100%;
+                }
+                .col {
+                    display: flex;
+                    padding: 10px 0;
+                    &:before {
+                        color: #6C7A89;
+                        padding-right: 10px;
+                        content: attr(data-label);
+                        flex-basis: 50%;
+                        text-align: right;
+                    }
+                }
+            }
+        }
     </style>
 
     <style>
@@ -125,7 +234,7 @@ Fullfilled Donations
                         </ul>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountmanagment.html">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
       Account Management
     </a>
                     </li>
@@ -142,16 +251,15 @@ Fullfilled Donations
     </nav>
 
     <main>
+        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Fullfilled Posts</div>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-8">
-
-                    </div>
+            <div class="container" style="margin-top: 75px;">
+                <div class="row" id="cardContainer">
                 </div>
-
-
+            </div>
     </main>
+
+
 
     <footer>
         <div class="container small border-top">
@@ -196,7 +304,6 @@ Fullfilled Donations
         </div>
     </footer>
 
-
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script>
@@ -225,6 +332,399 @@ Fullfilled Donations
             console.log(scrollpos)
         })
     </script>
+
+    <script>
+        let clothes = [{
+            "Donor Name": "Emily Johnson",
+            "Donor Contact Number": "+01110492407",
+            "Donor ID": "1",
+            "Area": "Westside",
+            "Governorate": "California",
+            "Address": "456 Oak Avenue",
+            "Fullfilled": "YES", // Add Category property
+        }, {
+            "Donor Name": "Emily Johnson",
+            "Donor Contact Number": "+01110492407",
+            "Donor ID": "2",
+            "Area": "Westside",
+            "Governorate": "California",
+            "Address": "456 Oak Avenue",
+            "Fullfilled": "NO", // Add Category property
+        }, {
+            "Donor Name": "Emily Johnson",
+            "Donor Contact Number": "+01110492407",
+            "Donor ID": "3",
+            "Area": "Westside",
+            "Governorate": "California",
+            "Address": "456 Oak Avenue",
+            "Fullfilled": "NO", // Add Category property
+        }, {
+            "Donor Name": "Emily Johnson",
+            "Donor Contact Number": "+01110492407",
+            "Donor ID": "4",
+            "Area": "Westside",
+            "Governorate": "California",
+            "Address": "456 Oak Avenue",
+            "Fullfilled": "YES", // Add Category property
+        }, {
+            "Donor Name": "Emily Johnson",
+            "Donor Contact Number": "+01110492407",
+            "Donor ID": "5",
+            "Area": "Westside",
+            "Governorate": "California",
+            "Address": "456 Oak Avenue",
+            "Fullfilled": "NO", // Add Category property
+        }];
+
+
+        // let schoolSupplies = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES", // Add Category property
+        // }];
+
+        // let Books = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+        // let stationeryItems = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+        // let toys = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+        // let food = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+        // let medicalSupplies = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+        // let bloodDonations = [{
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }, {
+        //     "Donor Name": "Emily Johnson",
+        //     "Donor Contact Number": "+01110492407",
+        //     "Donor ID": "1",
+        //     "Area": "Westside",
+        //     "Governorate": "California",
+        //     "Address": "456 Oak Avenue",
+        //     "Fullfilled": "YES",
+        // }];
+
+
+        let arrays = [
+            clothes,
+            // schoolSupplies,
+            // Books,
+            // stationeryItems,
+            // toys,
+            // food,
+            // medicalSupplies,
+            // bloodDonations
+        ];
+
+        function generateCards(array) {
+            let cardHtml = '';
+            array.forEach(item => {
+                        let photoHtml = '';
+                        let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
+
+                        cardHtml += `
+        <div class="row card-container" style="margin-bottom:20px;">
+            <div class="card mb-3" style="border: none;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body" >
+                            ${Object.entries(item).map(([key, value]) => `
+                                <p class="card-text"><strong>${key}:</strong> ${value}</p>
+                            `).join('')}
+                            <div class="input-group">
+                                <button onclick="deleteItem(${item.id})" class="btn btn-success" style="color: black;border: 1px solid rgb(22,40,54);">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
+                        ${photoHtml}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+});
+return cardHtml;
+}
+
+// Function to handle donation
+    // function deleteItem(itemId) {
+    // const quantityInput = document.getElementById(`quantity-input-${itemId}`);
+    // const quantity = parseInt(quantityInput.value);
+
+    // // Perform donation logic here
+    // console.log(`Donating ${quantity} items of item with ID ${itemId}`);
+
+    // // Ensure that the quantity is within the valid range
+    // if (quantity < parseInt(quantityInput.min)) {
+    //     quantityInput.value = quantityInput.min;
+    // } else if (quantity > parseInt(quantityInput.max)) {
+    //     quantityInput.value = quantityInput.max;
+    // }
+    // }
+
+    function deleteItem(itemId) {
+    // Find the index of the item with the given ID
+        let index = clothes.findIndex(item => item.id === itemId);
+        
+        // If the item is found and is fulfilled, remove it
+        if (index !== -1 && clothes[index].Fullfilled === "YES") {
+            clothes.splice(index, 1); // Remove the item from the array
+            // Regenerate the cards
+            document.getElementById('cardContainer').innerHTML = generateCards(clothes);
+        } else {
+            // Display a message if the item is not found or not fulfilled
+            alert("Can't delete unfullfilled request or item not found.");
+        }
+    }
+
+    function filterCards(category) {
+        const cardContainer = document.getElementById('cardContainer');
+        cardContainer.innerHTML = '';
+        arrays.forEach(array => {
+            if (array[0].Category === category) {
+                cardContainer.innerHTML += generateCards(array);
+            }
+        });
+    }
+
+    // JSON arrays
+
+    // Container for cards
+    const cardContainer = document.getElementById('cardContainer');
+
+    // Generate cards for each array
+    arrays.forEach(array => {
+        cardContainer.innerHTML += generateCards(array);
+    });
+
+    // Radio button change event listener
+    const radioButtons = document.querySelectorAll('input[name="category"]');
+    radioButtons.forEach(button => {
+        button.addEventListener('change', (event) => {
+            const category = event.target.value;
+            if (category === 'all') {
+                showAllCards();
+            } else {
+                filterCards(category);
+            }
+        });
+    });
+
+    // Function to show all cards
+    function showAllCards() {
+        const cardContainer = document.getElementById('cardContainer');
+        cardContainer.innerHTML = '';
+        arrays.forEach(array => {
+            cardContainer.innerHTML += generateCards(array);
+        });
+    }
+    </script>
+
+
 
 
 </body>
