@@ -106,8 +106,8 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="buttondoner" style="display:none; background-color: #162836; color: #D5A187; width: 250px; margin-left: 4%;">Login</button>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="buttonorganizayion" style="display:none; background-color: #162836; color: #D5A187; width: 250x; margin-left: 4%">Login</button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="buttondoner" style="display:none; background-color: #162836; color: #D5A187; width: 200px; margin-left: 4%;">Login </button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="buttonorganization" style="display:none; background-color: #162836; color: #D5A187; width: 200px; margin-left: 4%">Login </button>
                     </form>
                     <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
                 </main>
@@ -152,15 +152,15 @@
                 }
             });
 
-            buttonDonor.addEventListener('click', function(event) {
+            Buttondoner.addEventListener('click', function(event) {
                 event.preventDefault();
-                // Redirect to the donor login page
+                // Redirect to the donor dashboard page
                 window.location.href = 'donorDashboard.html';
             });
 
-            buttonOrganization.addEventListener('click', function(event) {
+            Buttonorganization.addEventListener('click', function(event) {
                 event.preventDefault();
-                // Redirect to the organization login page
+                // Redirect to the organization dashboard page
                 window.location.href = 'organizationDashboard.html';
             });
         });
