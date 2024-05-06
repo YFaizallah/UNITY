@@ -91,49 +91,33 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
-      View Organization 
+      Create Donation Post
     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewDonors.html" aria-label="Brings you to the frontpage">
-    View Donor 
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="ViewDonors.html" aria-label="Brings you to the frontpage">
+    Notifications 
   </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Review Submissions</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="reviewOrganization.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="reviewDonor.html">Donor</a></li>
-                        </ul>
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">fullfilled donations</a>
+
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Organization</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">Donor</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Delete</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">View Donor Details</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountmanagment.html">
       Account Management
     </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizations.html">
-      Registered Organizations
-    </a>
 
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountsettings.html">
-Account Settings
-</a>
-
-
-                    </li>
             </div>
         </div>
     </nav>
@@ -195,11 +179,12 @@ Account Settings
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const adminName = localStorage.getItem('adminName');
+            localStorage.setItem('organizationName', 'Resala');
+            const organizationName = localStorage.getItem('organizationName');
 
-            const adminElement = document.querySelector("#adminCheck");
+            const organizationElem = document.querySelector("#adminCheck");
 
-            adminElement.textContent = `Welcome to your dashboard, ${adminName}`
+            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
 
         });
     </script>
