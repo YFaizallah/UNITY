@@ -73,6 +73,7 @@
             list-style: none;
         }
     </style>
+    
 
 </head>
 
@@ -90,7 +91,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="CreateDonationOrganization.html" aria-label="Brings you to the frontpage">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
       Create Donation Post
     </a>
                     </li>
@@ -176,28 +177,6 @@
         <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            localStorage.setItem('organizationName', 'Resala');
-            const organizationName = localStorage.getItem('organizationName');
-
-            const organizationElem = document.querySelector("#adminCheck");
-
-            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
-
-        });
-    </script>
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800, // values from 0 to 3000, with step 50ms
-        });
-    </script>
-
     <script>
         let scrollpos = window.scrollY
         const header = document.querySelector(".navbar")
@@ -219,7 +198,5 @@
         })
     </script>
 
-
 </body>
-
 </html>
