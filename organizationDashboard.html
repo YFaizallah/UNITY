@@ -72,100 +72,6 @@
         li {
             list-style: none;
         }
-        
-        .btn {
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: red !important;
-            border-color: rgb(189, 70, 70) !important;
-            border-width: 1px !important;
-            color: white !important;
-            font-weight: bold;
-        }
-        
-        .table-container {
-            margin-top: 100px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-        
-        h2 {
-            font-size: 26px;
-            margin: 20px 0;
-            text-align: center;
-            small {
-                font-size: 0.5em;
-            }
-        }
-        
-        .responsive-table {
-            li {
-                border-radius: 3px;
-                padding: 25px 30px;
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 25px;
-                align-items: center;
-            }
-            .table-header {
-                background-color: #162836;
-                font-size: 14px;
-                text-transform: uppercase;
-                letter-spacing: 0.03em;
-                color: white;
-            }
-            .table-row-even {
-                background-color: white;
-                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-            }
-            .table-row-odd {
-                background-color: #D5A187;
-                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-            }
-            .col-1 {
-                flex-basis: 10%;
-            }
-            .col-2 {
-                flex-basis: 40%;
-            }
-            .col-3 {
-                flex-basis: 20%;
-            }
-            .col-4 {
-                flex-basis: 20%;
-            }
-            .col-5 {
-                flex-basis: 20%;
-            }
-            @media all and (max-width: 767px) {
-                .table-header {
-                    display: none;
-                }
-                .table-row {}
-                li {
-                    display: block;
-                }
-                .col {
-                    flex-basis: 100%;
-                }
-                .col {
-                    display: flex;
-                    padding: 10px 0;
-                    &:before {
-                        color: #6C7A89;
-                        padding-right: 10px;
-                        content: attr(data-label);
-                        flex-basis: 50%;
-                        text-align: right;
-                    }
-                }
-            }
-        }
     </style>
 
 </head>
@@ -176,7 +82,7 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px; margin-top:10px;" alt="" href="index.html">
+            <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="" href="index.html">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -218,47 +124,30 @@
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizations.html">
       Registered Organizations
     </a>
+
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="Accountsettings.html">
 Account Settings
 </a>
+
+
                     </li>
             </div>
         </div>
     </nav>
 
     <main>
-        <div style="font-size: 26px; text-align: center; margin-top: 170px; margin-bottom: -120px; font-weight: bold; color: #162836;">Organizations Accounts List</div>
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="table-container">
-                <ul class="responsive-table" id="organizationTable">
-                    <li class="table-header">
-                        <div class="col col-1">ID</div>
-                        <div class="col col-2">Organization Name</div>
-                        <div class="col col-3">Activity Status</div>
-                        <div class="col col-4">Account</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="adminCheck" style="margin-top:150px;">Welcome to your dashboard, </h1>
+                    </div>
+                </div>
 
-        <br>
 
-        <div style="font-size: 26px; margin: 20px; text-align: center; margin-bottom: -120px; font-weight: bold; color: #162836; margin-top: -40px;">Donors Accounts List</div>
-        <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="table-container" style="margin-top: 120px;">
-                <ul class="responsive-table" id="donorTable">
-                    <li class="table-header">
-                        <div class="col col-1">Donor ID</div>
-                        <div class="col col-2">Donor Name</div>
-                        <div class="col col-3">Activity Status</div>
-                        <div class="col col-4">Account</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -315,117 +204,6 @@ Account Settings
         });
     </script>
 
-    <script>
-        let DonorRequest = [{
-            id: 324424,
-            name: 'John Hands',
-            donations: 430,
-            activity: 'Active',
-            contact: '+389348834'
-        }, {
-            id: 4893535,
-            name: 'John Ahmed',
-            donations: 42,
-            activity: 'Active',
-            contact: '+3893483425'
-        }];
-
-        let organizationRequest = [{
-            id: 42235,
-            name: 'Helping Hands',
-            donations: 350,
-            status: 'Active',
-            contact: 'Pending'
-        }, {
-            id: 42442,
-            name: 'Goodwill',
-            donations: 220,
-            status: 'Active',
-            contact: 'Pending'
-        }];
-
-        function createDonorTable(data) {
-            const table = document.getElementById('donorTable');
-            data.forEach((donor, index) => {
-                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
-                const newRow = document.createElement('li');
-                newRow.classList.add(rowClass);
-                newRow.innerHTML = `
-              <div class="col col-1" data-label="Donor ID">${donor.id}</div>
-              <div class="col col-2" data-label="Donor Name">${donor.name}</div>
-              <div class="col col-3" data-label="Activity Status">${donor.activity}</div>
-              <div class="col col-4" data-label="Request">
-            <button onclick="removeDonor(${donor.id})" class="btn btn-success" style="color: black;">Delete</button>
-
-      </div>
-            `;
-                table.appendChild(newRow);
-            });
-        }
-
-        function createOrganizationTable(data) {
-            const table = document.getElementById('organizationTable');
-            data.forEach((organization, index) => {
-                const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
-                const newRow = document.createElement('li');
-                newRow.classList.add(rowClass);
-                newRow.innerHTML = `
-              <div class="col col-1" data-label="organization ID">${organization.id}</div>
-              <div class="col col-2" data-label="organization Name">${organization.name}</div>
-              <div class="col col-3" data-label="Activity Status">${organization.status}</div>
-              <div class="col col-4" data-label="Request">
-            <button onclick="removeOrganization(${organization.id})" class="btn btn-success" style="color: black;">Delete</button>
-
-      </div>
-            `;
-                table.appendChild(newRow);
-            });
-        }
-
-        function removeOrganization(id) {
-            const index = organizationRequest.findIndex(organization => organization.id === id);
-
-            // If the request is found
-            if (index !== -1) {
-                // Remove the request from the array
-                organizationRequest.splice(index, 1);
-
-                // Remove the corresponding row from the table
-                const table = document.getElementById('organizationTable');
-                const rowToRemove = table.querySelector(`[data-label="${id}"]`);
-                if (rowToRemove) {
-                    rowToRemove.remove();
-                }
-                localStorage.setItem('requests', JSON.stringify(organizationRequest));
-
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
-        }
-
-        function removeDonor(id) {
-            const index = DonorRequest.findIndex(request => request.id === id);
-
-            // If the request is found
-            if (index !== -1) {
-                // Remove the request from the array
-                DonorRequest.splice(index, 1);
-
-                // Remove the corresponding row from the table
-                const table = document.getElementById('donorTable');
-                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
-                if (rowToRemove) rowToRemove.remove();
-                localStorage.setItem('requests', JSON.stringify(DonorRequest));
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            createDonorTable(DonorRequest);
-            createOrganizationTable(organizationRequest);
-        });
-    </script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>
