@@ -229,7 +229,6 @@
 
 
 
-    <!-- Filter options for School Supplies category -->
     <div id="schoolSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="schoolSuppliesType" style="margin-left: 212px;">Type:</label>
@@ -244,7 +243,6 @@
         </div>
     </div>
 
-    <!-- Filter options for Toy category -->
     <div id="toysFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="toysAge" style="margin-left: 212px;">Age:</label>
@@ -286,7 +284,6 @@
         </div>
     </div>
 
-    <!-- Filter options for Food category -->
     <div id="foodFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="foodType" style="margin-left: 212px;">Type:</label>
@@ -303,7 +300,6 @@
         </div>
     </div>
 
-    <!-- Filter options for Medical Supplies category -->
     <div id="medicalSuppliesFilterContainer" class="filter-container">
         <div>
             <label for="medicalSuppliesDeviceType" style="margin-left: 212px;">Medical Supplies Type:</label>
@@ -331,7 +327,6 @@
             </div>
         </div>
     </div>
-    <!-- Filter options for Blood Donation category -->
     <div id="bloodDonationFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="bloodDonationHospital" style="margin-left: 212px;">Hospital:</label>
@@ -703,7 +698,7 @@
                                 `).join('')}
                                 <div class="input-group">
                                     <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
-                                    <button class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top:8px; color:rgb(213, 161, 135);" onclick="donate(${item.id})">Donate</button>
+                                    <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="scheduleDonation.html">Donate</a>
                                 </div>
                             </div>
                         </div>
@@ -718,25 +713,6 @@
     return cardHtml;
 }
 
-// Function to handle donation
-function donate(itemId) {
-    const quantityInput = document.getElementById(`quantity-input-${itemId}`);
-    const quantity = parseInt(quantityInput.value);
-
-    // Perform donation logic here
-    console.log(`Donating ${quantity} items of item with ID ${itemId}`);
-    
-    // Ensure that the quantity is within the valid range
-    if (quantity < parseInt(quantityInput.min)) {
-        quantityInput.value = quantityInput.min;
-    } else if (quantity > parseInt(quantityInput.max)) {
-        quantityInput.value = quantityInput.max;
-    }
-}
-
-
-
-
 
         function filterCards(category) {
             const cardContainer = document.getElementById('cardContainer');
@@ -748,7 +724,7 @@ function donate(itemId) {
             });
         }
 
-        // JSON arrays
+        
 
         // Container for cards
         const cardContainer = document.getElementById('cardContainer');

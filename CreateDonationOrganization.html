@@ -74,6 +74,21 @@
         }
     </style>
 
+    <style>
+
+        .center {
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+        }
+
+        input[type="radio"],
+        label {
+            display: inline-block;
+            margin-right: 10px; }
+    </style>
+    
 
 </head>
 
@@ -93,7 +108,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="CreateDonationOrganization.html" aria-label="Brings you to the frontpage">
       Create Donation Post
     </a>
                     </li>
@@ -126,17 +141,57 @@
     </nav>
 
     <main>
-        <div class="py-vh-5 w-100 overflow-hidden" id="services">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-8">
-                        <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="adminCheck" style="margin-top:150px;">Welcome to your dashboard, </h1>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-light mt-5" style="margin-top: 150px;">
+            <div class="container" style="margin-top: 60px;">
+                <div style="margin-right: 50px;">
+                    Choose a donation category
                 </div>
-
-
-    </main>
-
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="clothes">
+                                Clothes
+                            </label>
+                        </li>
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="schoolSupplies">
+                                School Supplies
+                            </label>
+                        </li>
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="toys">
+                                Toys
+                            </label>
+                        </li>
+    
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="food">
+                                Food
+                            </label>
+                        </li>
+    
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="medicalSupplies" style="align-items: right;">
+                                Medical Supplies
+                            </label>
+                        </li>
+    
+                        <li class="nav-item">
+                            <label class="nav-link">
+                                <input type="radio" class="form-check-input" name="donationType" value="bloodDonations">
+                                Blood Donations
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </main>    
     <footer>
         <div class="container small border-top">
             <div class="row py-5 d-flex justify-content-between">
