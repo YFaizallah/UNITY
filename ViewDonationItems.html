@@ -169,7 +169,10 @@
     <div id="clothesFilterContainer" class="filter-container" style="display: none; margin-left: 212px;">
         <div>
             <label for="clothesAge">Age:</label>
-            <select id="clothesAge">
+            <select id="clothesAge" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
             <option value="all">All</option>
             <option value="Adult">Adult</option>
             <option value="Child">Child</option>
@@ -178,7 +181,10 @@
         </div>
         <div>
             <label for="clothesGender">Gender:</label>
-            <select id="clothesGender">
+            <select id="clothesGender" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
             <option value="all">All</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -187,7 +193,10 @@
         </div>
         <div>
             <label for="clothesSeason">Season:</label>
-            <select id="clothesSeason">
+            <select id="clothesSeason" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
             <option value="all">All</option>
             <option value="Summer">Summer</option>
             <option value="Spring">Spring</option>
@@ -203,7 +212,10 @@
     <div id="schoolSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="schoolSuppliesType" style="margin-left: 212px;">Type:</label>
-            <select id="schoolSuppliesType">
+            <select id="schoolSuppliesType" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Books">Books</option>
                 <option value="Stationary">Stationary</option>
@@ -215,7 +227,10 @@
     <div id="toysFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="toysAge" style="margin-left: 212px;">Age:</label>
-            <select id="toysAge">
+            <select id="toysAge" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="5-7">5-7</option>
                 <option value="3-5">3-5</option>
@@ -225,7 +240,10 @@
         </div>
         <div>
             <label for="toysGender">Gender:</label>
-            <select id="toysGender">
+            <select id="toysGender" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -234,7 +252,10 @@
         </div>
         <div>
             <label for="toysCategory">Category:</label>
-            <select id="toysCategory">
+            <select id="toysCategory" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Action Figure">Action Figure</option>
                 <option value="Doll">Doll</option>
@@ -248,7 +269,10 @@
     <div id="foodFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="foodType" style="margin-left: 212px;">Type:</label>
-            <select id="foodType">
+            <select id="foodType" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="fruit/veg">Fruit/Vegetable</option>
                 <option value="canned">Canned</option>
@@ -259,33 +283,41 @@
     </div>
 
     <!-- Filter options for Medical Supplies category -->
-    <div id="medicalSuppliesFilterContainer" class="filter-container" style="display: none;">
+    <div id="medicalSuppliesFilterContainer">
         <div>
             <label for="medicalSuppliesDeviceType" style="margin-left: 212px;">Medical Supplies Type:</label>
-            <select id="medicalSuppliesDeviceType">
+            <select id="medicalSuppliesDeviceType" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Devices">Devices</option>
                 <option value="Equipment">Equipment</option>
                 <option value="Medication">Medication</option>
             </select>
         </div>
-    </div>
-    <div id="medicationFilterContainer" style="margin-left: 212px;">
-        <div>
-            <label for="medicationUse">Medication Use: </label>
-            <select id="medicationUse">
+        <div id="medicationFilterContainer" style="margin-left: 212px;">
+            <div>
+                <label for="medicationUse">Medication Use: </label>
+                <select id="medicationUse" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="painrelief">Pain Relief</option>
                 <option value="antibiotic">Antibiotic</option>
             </select>
+            </div>
         </div>
     </div>
-
     <!-- Filter options for Blood Donation category -->
     <div id="bloodDonationFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="bloodDonationHospital" style="margin-left: 212px;">Hospital:</label>
-            <select id="bloodDonationHospital">
+            <select id="bloodDonationHospital" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="City Hospital">City Hospital</option>
                 <option value="County Hospital">County Hospital</option>
@@ -294,7 +326,10 @@
         </div>
         <div>
             <label for="bloodDonationGovernorate">Governorate:</label>
-            <select id="bloodDonationGovernorate">
+            <select id="bloodDonationGovernorate" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="New York">New York</option>
                 <option value="California">California</option>
@@ -303,7 +338,10 @@
         </div>
         <div>
             <label for="bloodDonationArea">Area:</label>
-            <select id="bloodDonationArea">
+            <select id="bloodDonationArea" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Downtown">Downtown</option>
                 <option value="Westside">Westside</option>
@@ -751,8 +789,8 @@ function donate(itemId) {
                 } else if (selectedCategory === 'food') {
                     foodFilterContainer.style.display = 'block';
                 } else if (selectedCategory === 'medicalSupplies') {
-                    medicalSuppliesFilterContainer.style.display = 'block';
-                    medicationFilterContainer.style.display = 'block';
+                    medicalSuppliesFilterContainer.style.display = 'inline-block';
+                    medicationFilterContainer.style.display = 'inline-block';
                 } else if (selectedCategory === 'bloodDonations') {
                     bloodDonationFilterContainer.style.display = 'block';
                 }
