@@ -176,7 +176,7 @@
     
                         <li class="nav-item">
                             <label class="nav-link">
-                                <input type="radio" class="form-check-input" name="donationType" value="medicalSupplies" style="align-items: right;">
+                                <input type="radio" class="form-check-input" name="donationType" value="medicalSupplies">
                                 Medical Supplies
                             </label>
                         </li>
@@ -184,13 +184,268 @@
                         <li class="nav-item">
                             <label class="nav-link">
                                 <input type="radio" class="form-check-input" name="donationType" value="bloodDonations">
-                                Blood Donations
+                                Blood
                             </label>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <div id="formContainer" style="margin-top: 20px;"></div>
+
+        <script>
+            function createForm(formType){
+                let formContent= '';
+                switch (formType){
+                    case 'clothes' :
+                        formContent=`
+                        <form>
+                            <label> Type: </label>
+                            <input type="text" name="type" placeholder="Shirt">
+                            <br>
+                            <label> Age Group: </label>
+                            <select name="ageGroup">
+                                <option value="adult"> Adult </option>
+                                <option value="child"> Child </option>
+                                <option value="teen"> Teen </option>
+                            </select>
+                            <br>
+                            <label> Gender: </label>
+                            <select name="gender">
+                                <option value="male"> Male </option>
+                                <option value="female"> Female </option>
+                                <option value="unisex"> Unisex </option>
+                            </select>
+                            <br>
+                            <label> Season: </label>
+                            <select name="season">
+                                <option value="summer"> Summer </option>
+                                <option value="winter"> Winter </option>
+                                <option value="spring"> Spring </option>
+                                <option value="fall"> Fall </option>
+                            </select>
+                            <br>
+
+                            <label> Material: </label>
+                            <input type="text" name="material" placeholder="Cotton">
+                            <br>
+                            
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+
+                            </form>
+                            `; break;
+                    case 'toys':
+                        formContent=`
+                        <form>
+                        <label> Type: </label>
+                            <input type="text" name="type" placeholder="Doll">
+                            <br>
+                            <label> Age Group: </label>
+                            <select name="ageGroup">
+                                <option value="mini"> 3-5 </option>
+                                <option value="small"> 5-7 </option>
+                                <option value="medium"> 7-10 </option>
+                                <option value="large"> 10-12 </option>
+                            </select>
+                            <br>
+                            <label> Gender: </label>
+                            <select name="gender">
+                                <option value="male"> Male </option>
+                                <option value="female"> Female </option>
+                                <option value="unisex"> Unisex </option>
+                            </select>
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+
+                            </form>
+                            `;break;
+                    case 'food' :
+                        formContent=`
+                        <form>
+                            <label> Name: </label>
+                            <input type="text" name="type" placeholder="Bread">
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <br>
+                            <label> Measuring unit: </label>
+                            <select name="unit">
+                                <option value="kg"> kg </option>
+                                <option value="g"> g </option>
+                                <option value="food"> Food Items </option>
+                            </select>
+                            <br>
+                            <label> Type: </label>
+                            <select name="type">
+                                <option value="greens"> Fruit/Vegetables </option>
+                                <option value="canned"> Canned </option>
+                                <option value="freshMeal"> Fresh Meal </option>
+                                <option value="bakedGoods"> Baked Goods </option>
+                            </select>
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                        </form>
+                        `;break;
+                    case 'bloodDonations':
+                        formContent=`
+                        <form>
+                            <label> Blood Type: </label>
+                            <select name="bloodType">
+                                <option value="all"> All </option>
+                                <option value="a+"> A+ </option>
+                                <option value="a-"> A- </option>
+                                <option value="b+"> B+ </option>
+                                <option value="b-"> B- </option>
+                                <option value="o-"> O- </option>
+                                <option value="o+"> O+ </option>
+                                <option value="AB-"> AB- </option>
+                                <option value="AB+"> AB+ </option>
+                            </select>
+                            <br>
+                            <label> Hospital Name: </label>
+                            <select name="hospitalName">
+                                <option value="city"> City Hospital </option>
+                                <option value="country"> Country Hospital </option>
+                                <option value="community"> Community Hospital </option>
+                            </select>
+                            <br>
+                            <label> Area: </label>
+                            <select name="area">
+                                <option value="downtown"> Downtown </option>
+                                <option value="westside"> Westside </option>
+                                <option value="northside"> North Side </option>
+                            </select>
+                            <br>
+                            <label> Governorate: </label>
+                            <select name="governorate">
+                                <option value="nyc"> New York </option>
+                                <option value="cali"> California </option>
+                                <option value="texas"> Texas </option>
+                            </select>
+                            <br>
+                            <label> Address: </label>
+                            <input type="text" name="address" placeholder="122 Vampire st.">
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                        </form>
+                        `;break;
+                    case 'schoolSupplies' :
+                        formContent=`
+                        <form>
+                            <label> Type: </label>
+                            <select name="stype">
+                                <option value="stationary"> Stationary </option>
+                                <option value="books"> Books </option>
+                            </select>
+                            <br>
+                            <div id="additionalFields"></div> <!-- Placeholder for additional fields -->
+                        </form>
+                        
+                        `;
+                        
+
+                       document.getElementById('formContainer').innerHTML = formContent;
+
+                        const stypeSelect = document.querySelector('select[name="stype"]');
+
+                        stypeSelect.addEventListener('change', function() {
+                            const selectedType = this.value;
+                            let additionalFields = '';
+
+                            if (selectedType === 'books') {
+                                additionalFields += `
+                                    <label>Genre:</label>
+                                    <input type="text" name="genre" placeholder="Mathematics">
+                                    <br>
+                                    <label>Author:</label>
+                                    <input type="text" name="author" placeholder="John Doe">
+                                    <br>            
+                                    <label>Edition:</label>
+                                    <input type="text" name="edition" placeholder="1st edition">
+                                    <br>
+                                    <label>Summary:</label>
+                                    <input type="text" name="summary" placeholder="A book about numbers">
+                                    <br>
+                                `;
+                            } else if (selectedType === 'stationary') {
+                                additionalFields += `
+                                    <label>Item:</label>
+                                    <input type="text" name="item" placeholder="Pen">
+                                    <br>
+                                `;
+                            }
+
+                            additionalFields += `
+                                <label>Quantity:</label>
+                                <input type="number" name="quantity" placeholder="Enter quantity">
+                                <br>
+                                <label> Details: </label>
+                                <input type="text" name="details" placeholder="optional">
+                            `;
+
+                            document.getElementById('additionalFields').innerHTML = additionalFields;
+                        });
+    
+                             
+                         
+                        break;
+                    case 'medicalSupplies' :
+                        formContent=`
+                        <form>
+                            <label> Device-Type: </label>
+                            <input type="text" name="deviceType" placeholder="syringe">
+                            <br>
+                            <label> Device-Use: </label>
+                            <input type="text" name="deviceUse" placeholder="Injections">
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                        </form>
+                        `;break;
+
+
+                }
+                document.getElementById('formContainer').innerHTML = formContent;
+                if(formType === 'schoolSupplies'){
+                   
+                    //document.getElementById('formContainer').innerHTML = formContent;
+                }
+
+                document.getElementById('formContainer').innerHTML = formContent;
+            
+                }
+
+            
+        
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioButtons = document.getElementsByName('donationType');
+        radioButtons.forEach(button => {
+        button.addEventListener('change', function() {
+            createForm(this.value);
+        });
+        });
+    });
+
+        </script>
+    
     </main>    
     <footer>
         <div class="container small border-top">
