@@ -62,6 +62,29 @@
         }
     </style>
 
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+    </style>
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
@@ -78,25 +101,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#services" aria-label="Brings you to the frontpage">
-                            Services
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="ViewDonationItems.html" aria-label="Brings you to the frontpage">
+                            View Donation Requests
                         </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteer</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="link link-fancy dropdown-item" href="medicalVolunteer.html">Medical</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="teacherVolunteer.html">Teaching</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#aboutus">
-                            About us
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="donorAccountSettings.html">
+                            Account Settings
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="Registration.html">
-                            Make A Change
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="#testimonials">
-                            Seek Help
-                        </a>
-                    </li>
+
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
@@ -109,8 +130,8 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-lg navbar-light mt-5">
-        <div class="container" style="margin-top: 50px;">
+    <nav class="navbar navbar-expand-lg navbar-light mt-5" style="margin-top: 150px;">
+        <div class="container" style="margin-top: 60px;">
             <div style="margin-right: 50px;">
                 Choose a category
             </div>
@@ -296,7 +317,7 @@
                 <option value="Medication">Medication</option>
             </select>
         </div>
-        <div id="medicationFilterContainer" style="margin-left: 212px;">
+        <div id="medicationFilterContainer">
             <div>
                 <label for="medicationUse">Medication Use: </label>
                 <select id="medicationUse" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
