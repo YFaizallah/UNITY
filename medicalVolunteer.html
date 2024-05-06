@@ -302,8 +302,51 @@
     </nav>
 
 
+    <div id="medicalFilterContainer" class="filter-container" style="margin-left: 212px; margin-top: 100px;">
+        <div>
+            <label for="specialty">Medical Specialty:</label>
+            <select id="medSpecialty" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
+            <option value="all">All</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Neurology">Neurology</option>
+        </select>
+        </div>
+        <div>
+            <label for="organization">Organization:</label>
+            <select id="orgName" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
+            <option value="all">All</option>
+            <option value="Unity Health Clinic">Unity Health Clinic</option>
+            <option value="Hope Hospital">Hope Hospital</option>
+            <option value="Heal Health Center">Heal Health Center</option>
+            <option value="Sunshine Clinic">Sunshine Clinic</option>
+            <option value="Bright Health Hospital">Bright Health Hospital</option>
+        </select>
+        </div>
+        <div>
+            <label for="area">Area:</label>
+            <select id="Area" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
+            padding: .5rem 1rem;
+            font-size: 12.5px;
+            border-radius: .5rem;">
+            <option value="all">All</option>
+            <option value="Downtown">Downtown</option>
+            <option value="Uptown">Uptown</option>
+            <option value="Subrbia">Subrbia</option>
+            <option value="Rural">Rural</option>
+            <option value="Urban">Urban</option>
+        </select>
+        </div>
+    </div>
     <main>
-        <ul id="medicalCasesAccordion" style="margin-top: 150px; width: 80vw; margin-left: 150px;">
+        <ul id="medicalCasesAccordion" style="margin-top: 60px; width: 80vw; margin-left: 150px;">
         </ul>
     </main>
 
@@ -474,6 +517,39 @@
                     }
                 });
             });
+
+            const medSpecialtySelect = document.getElementById('medSpecialty');
+            const orgNameSelect = document.getElementById('orgName');
+            const areaSelect = document.getElementById('Area');
+
+            // Function to filter medical cases based on selected options
+            function filterMedicalCases() {
+                const selectedMedSpecialty = medSpecialtySelect.value;
+                const selectedOrgName = orgNameSelect.value;
+                const selectedArea = areaSelect.value;
+
+                medicalCases.forEach((medicalCase, index) => {
+                    const accordionItem = document.getElementById(`caseCollapse${index}`).parentNode;
+
+                    // Check if the medical case matches the selected options
+                    const isMatch = (
+                        (selectedMedSpecialty === 'all' || medicalCase.medicalSpecialty === selectedMedSpecialty) &&
+                        (selectedOrgName === 'all' || medicalCase.organizationName === selectedOrgName) &&
+                        (selectedArea === 'all' || medicalCase.area === selectedArea)
+                    );
+
+                    // Show or hide the accordion item based on the filtering result
+                    accordionItem.style.display = isMatch ? 'block' : 'none';
+                });
+            }
+
+            // Event listeners for select elements
+            medSpecialtySelect.addEventListener('change', filterMedicalCases);
+            orgNameSelect.addEventListener('change', filterMedicalCases);
+            areaSelect.addEventListener('change', filterMedicalCases);
+
+            // Initial filtering to show all medical cases
+            filterMedicalCases();
         });
     </script>
 </body>
