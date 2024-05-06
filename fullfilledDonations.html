@@ -69,6 +69,17 @@
             display: block;
         }
         
+        .badge {
+            font-size: 0.8rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            padding: 0;
+            border: none;
+            pointer-events: none;
+        }
+        
         li {
             list-style: none;
         }
@@ -85,26 +96,26 @@
             <a href="index.html">
                 <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="CreateDonationOrganization.html" aria-label="Brings you to the frontpage">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="ViewOrganizations.html" aria-label="Brings you to the frontpage">
       Create Donation Post
     </a>
                     </li>
 
-                    </a>
-                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
 Fullfilled Donations 
 </a>
                     </li>
+
+
 
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
@@ -126,7 +137,6 @@ Fullfilled Donations
                         </a>
                     </li>
 
-
             </div>
         </div>
     </nav>
@@ -136,7 +146,7 @@ Fullfilled Donations
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 col-lg-10 col-xl-8">
-                        <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="adminCheck" style="margin-top:150px;">Welcome to your dashboard, </h1>
+
                     </div>
                 </div>
 
@@ -185,18 +195,6 @@ Fullfilled Donations
         <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            localStorage.setItem('organizationName', 'Resala');
-            const organizationName = localStorage.getItem('organizationName');
-
-            const organizationElem = document.querySelector("#adminCheck");
-
-            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
-
-        });
-    </script>
 
 
     <script src="js/bootstrap.bundle.min.js"></script>

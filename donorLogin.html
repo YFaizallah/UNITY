@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Register Now</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+    <style>
+        /* inter-300 - latin */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+
+</head>
+
+<body class="d-flex h-100 w-100" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+    <div class="h-100 container-fluid">
+        <div class="h-100 row d-flex align-items-stretch">
+
+            <div class="col-12 col-md-7 col-lg-6 d-flex align-items-start flex-column px-vw-5">
+
+                <header class="mb-auto py-vh-2 col-12">
+                    <a class="navbar-brand pe-4 fs-4" href="/">
+                        <img src="UnityAssets/png/logo-no-background.png" style="width:150px;" alt>
+                    </a>
+
+                </header>
+                <main class="mb-auto col-12">
+                    <h1>Login</h1>
+
+                    <form class="row" id="loginForm">
+                        <div class="col-12 col-lg-10 col-xl-8">
+                            <div class="mb-3">
+                                <label for="userType" id="Loginlabel" class="form-label">login as</label>
+                                <select class="form-select form-select-lg form-control-lg form-control-color" id="userType" aria-label="Default select example" style="display: block;">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="donor">Donor</option>
+                                    <option value="organization">Organization</option>
+                                </select>
+                            </div>
+
+                            <div id="donorFields" style="display:none;">
+                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                            </div>
+
+                            <div id="organizationRepFields" style="display:none;">
+                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
+                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="buttondoner" style="display:none; background-color: #162836; color: #D5A187; width: 200px; margin-left: 4%;">Login </button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="buttonorganization" style="display:none; background-color: #162836; color: #D5A187; width: 200px; margin-left: 4%">Login </button>
+                    </form>
+                    <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
+                </main>
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-6 bg-cover" style="background-image: url(UnityAssets/126501.jpg);"></div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userTypeSelect = document.getElementById('userType');
+            const donorFields = document.getElementById('donorFields');
+            const organizationRepFields = document.getElementById('organizationRepFields');
+            const loginLabel = document.getElementById('Loginlabel');
+            const Buttondoner = document.getElementById('buttondoner');
+            const Buttonorganization = document.getElementById('buttonorganization');
+
+            userTypeSelect.addEventListener('change', function() {
+                const selectedUserType = userTypeSelect.value;
+
+                if (selectedUserType === 'donor') {
+                    donorFields.style.display = 'block';
+                    organizationRepFields.style.display = 'none';
+                    userTypeSelect.style.display = 'none';
+                    loginLabel.style.display = 'none';
+                    Buttondoner.style.display = 'block';
+                } else if (selectedUserType === 'organization') {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'block';
+                    userTypeSelect.style.display = 'none';
+                    loginLabel.style.display = 'none';
+                    Buttonorganization.style.display = 'block';
+                } else {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'none';
+                }
+            });
+
+            Buttondoner.addEventListener('click', function(event) {
+                event.preventDefault();
+                // Redirect to the donor dashboard page
+                window.location.href = 'donorDashboard.html';
+            });
+
+            Buttonorganization.addEventListener('click', function(event) {
+                event.preventDefault();
+                // Redirect to the organization dashboard page
+                window.location.href = 'organizationDashboard.html';
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
