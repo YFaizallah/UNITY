@@ -453,20 +453,32 @@
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 3,
-            "Type": "Book",
+            "Type": "Books",
             "item": "Mathematics",
+            "Author": "John Doe",
+            "Language": "English",
+            "Edition": "1st Edition",
+            "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 4,
-            "Type": "Book",
+            "Type": "Books",
             "item": "Science",
+            "Author": "Jane Smith",
+            "Language": "English",
+            "Edition": "2nd Edition",
+            "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
             "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 6,
-            "Type": "Book",
+            "Type": "Books",
             "item": "History",
+            "Author": "Michael Johnson",
+            "Language": "English",
+            "Edition": "3rd Edition",
+            "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
             "Category": "schoolSupplies" // Add Category property
         }, {
@@ -477,7 +489,7 @@
             "Category": "schoolSupplies" // Add Category property
         }];
 
-        let books = [{
+        let Books = [{
             "id": 3,
             "Name": "Mathematics",
             "Author": "John Doe",
@@ -549,6 +561,11 @@
             "Type": "fruit/veg",
             "Category": "food"
         }, {
+            "Name": "Bread",
+            "Quantity": 3,
+            "Type": "baked",
+            "Category": "food"
+        }, {
             "Name": "Chicken",
             "Quantity": 5,
             "Type": "fresh meal",
@@ -560,7 +577,7 @@
             "Category": "food"
         }, {
             "Name": "Broccoli",
-            "Quantity": "1.5 kg",
+            "Quantity": "3 kg",
             "Type": "fruit/veg",
             "Category": "food"
         }];
@@ -612,7 +629,7 @@
         let arrays = [
             clothes,
             schoolSupplies,
-            books,
+            Books,
             stationeryItems,
             toys,
             food,
@@ -620,15 +637,16 @@
             bloodDonations
         ];
 
-
         function generateCards(array) {
             let cardHtml = '';
             array.forEach(item => {
                         let photoHtml = '';
+                        let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
+
                         if (array === toys) {
                             photoHtml = `<img src="UnityAssets/126501.jpg" width="405px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                         }
-                        if (array === books) {
+                        if (array === Books) {
                             photoHtml = `<img src="UnityAssets/126501.jpg" width="525px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                         }
                         if (array === medicalSupplies) {
@@ -636,27 +654,50 @@
                         }
 
                         cardHtml += `
-                    <div class="col-12">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        ${Object.entries(item).map(([key, value]) => `
-                                            <p class="card-text"><strong>${key}:</strong> ${value}</p>
-                                        `).join('')}
-                                        <button class="btn btn-primary donate-btn" style="border-radius: 15%">Donate</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
-                                    ${photoHtml}
+            <div class="col-12">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                ${Object.entries(item).map(([key, value]) => `
+                                    <p class="card-text"><strong>${key}:</strong> ${value}</p>
+                                `).join('')}
+                                <div class="input-group">
+                                    <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
+                                    <button class="btn btn-primary donate-btn" style="border-radius: 15%" onclick="donate(${item.id})">Donate</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
+                            ${photoHtml}
+                        </div>
                     </div>
-                `;
-            });
-            return cardHtml;
-        }
+                </div>
+            </div>
+        `;
+    });
+    return cardHtml;
+}
+
+// Function to handle donation
+function donate(itemId) {
+    const quantityInput = document.getElementById(`quantity-input-${itemId}`);
+    const quantity = parseInt(quantityInput.value);
+
+    // Perform donation logic here
+    console.log(`Donating ${quantity} items of item with ID ${itemId}`);
+    
+    // Ensure that the quantity is within the valid range
+    if (quantity < parseInt(quantityInput.min)) {
+        quantityInput.value = quantityInput.min;
+    } else if (quantity > parseInt(quantityInput.max)) {
+        quantityInput.value = quantityInput.max;
+    }
+}
+
+
+
+
 
         function filterCards(category) {
             const cardContainer = document.getElementById('cardContainer');
@@ -826,7 +867,7 @@
                 filteredToys = toys.filter(item => {
                     return (age === 'all' || item.Age === age) &&
                         (gender === 'all' || item.Gender === gender) &&
-                        (category === 'all' || item.Category === category);
+                        (category === 'all' || item.Type === category);
                 });
             }
             const cardContainer = document.getElementById('cardContainer');
