@@ -75,20 +75,21 @@
     </style>
 
     <style>
-
         .center {
             text-align: center;
         }
+        
         form {
             display: inline-block;
         }
-
+        
         input[type="radio"],
         label {
             display: inline-block;
-            margin-right: 10px; }
+            margin-right: 10px;
+        }
     </style>
-    
+
 
 </head>
 
@@ -113,27 +114,22 @@
     </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="ViewDonors.html" aria-label="Brings you to the frontpage">
-    Notifications 
-  </a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">fullfilled donations</a>
 
                     </li>
 
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Delete</a></li>
-                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">View Donor Details</a></li>
-                        </ul>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
       Account Management
     </a>
+                    </li>
+
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px; margin-left: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
                     </li>
 
             </div>
@@ -166,21 +162,21 @@
                                 Toys
                             </label>
                         </li>
-    
+
                         <li class="nav-item">
                             <label class="nav-link">
                                 <input type="radio" class="form-check-input" name="donationType" value="food">
                                 Food
                             </label>
                         </li>
-    
+
                         <li class="nav-item">
                             <label class="nav-link">
                                 <input type="radio" class="form-check-input" name="donationType" value="medicalSupplies">
                                 Medical Supplies
                             </label>
                         </li>
-    
+
                         <li class="nav-item">
                             <label class="nav-link">
                                 <input type="radio" class="form-check-input" name="donationType" value="bloodDonations">
@@ -195,11 +191,11 @@
         <div id="formContainer" style="margin-top: 20px;"></div>
 
         <script>
-            function createForm(formType){
-                let formContent= '';
-                switch (formType){
-                    case 'clothes' :
-                        formContent=`
+            function createForm(formType) {
+                let formContent = '';
+                switch (formType) {
+                    case 'clothes':
+                        formContent = `
                         <form>
                             <label> Type: </label>
                             <input type="text" name="type" placeholder="Shirt">
@@ -238,9 +234,10 @@
                             <input type="text" name="details" placeholder="optional">
 
                             </form>
-                            `; break;
+                            `;
+                        break;
                     case 'toys':
-                        formContent=`
+                        formContent = `
                         <form>
                         <label> Type: </label>
                             <input type="text" name="type" placeholder="Doll">
@@ -267,9 +264,10 @@
                             <input type="text" name="details" placeholder="optional">
 
                             </form>
-                            `;break;
-                    case 'food' :
-                        formContent=`
+                            `;
+                        break;
+                    case 'food':
+                        formContent = `
                         <form>
                             <label> Name: </label>
                             <input type="text" name="type" placeholder="Bread">
@@ -295,9 +293,10 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
-                        `;break;
+                        `;
+                        break;
                     case 'bloodDonations':
-                        formContent=`
+                        formContent = `
                         <form>
                             <label> Blood Type: </label>
                             <select name="bloodType">
@@ -342,9 +341,10 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
-                        `;break;
-                    case 'schoolSupplies' :
-                        formContent=`
+                        `;
+                        break;
+                    case 'schoolSupplies':
+                        formContent = `
                         <form>
                             <label> Type: </label>
                             <select name="stype">
@@ -356,9 +356,9 @@
                         </form>
                         
                         `;
-                        
 
-                       document.getElementById('formContainer').innerHTML = formContent;
+
+                        document.getElementById('formContainer').innerHTML = formContent;
 
                         const stypeSelect = document.querySelector('select[name="stype"]');
 
@@ -399,12 +399,12 @@
 
                             document.getElementById('additionalFields').innerHTML = additionalFields;
                         });
-    
-                             
-                         
+
+
+
                         break;
-                    case 'medicalSupplies' :
-                        formContent=`
+                    case 'medicalSupplies':
+                        formContent = `
                         <form>
                             <label> Device-Type: </label>
                             <input type="text" name="deviceType" placeholder="syringe">
@@ -418,35 +418,35 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
-                        `;break;
+                        `;
+                        break;
 
 
                 }
                 document.getElementById('formContainer').innerHTML = formContent;
-                if(formType === 'schoolSupplies'){
-                   
+                if (formType === 'schoolSupplies') {
+
                     //document.getElementById('formContainer').innerHTML = formContent;
                 }
 
                 document.getElementById('formContainer').innerHTML = formContent;
-            
-                }
 
-            
-        
+            }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const radioButtons = document.getElementsByName('donationType');
-        radioButtons.forEach(button => {
-        button.addEventListener('change', function() {
-            createForm(this.value);
-        });
-        });
-    });
 
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const radioButtons = document.getElementsByName('donationType');
+                radioButtons.forEach(button => {
+                    button.addEventListener('change', function() {
+                        createForm(this.value);
+                    });
+                });
+            });
         </script>
-    
-    </main>    
+
+    </main>
     <footer>
         <div class="container small border-top">
             <div class="row py-5 d-flex justify-content-between">
