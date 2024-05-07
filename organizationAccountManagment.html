@@ -288,10 +288,10 @@ Fullfilled Donations
                     <div class="card" style="width: 900px;margin-left: -200px; ">
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom: 20px;">Account Information</h5>
-                            <p class="card-text">Account Name: John Doe</p>
-                            <p class="card-text mt-3">Account Email: john.doe@example.com</p>
+                            <p class="card-text" id="accountNameDisplay">Account Name: John Doe</p>
+                            <p class="card-text mt-3" id="accountEmailDisplay">Account Email: john.doe@example.com</p>
                             <p class="card-text mt-3">Account Type: Organization</p>
-
+                            <p class="card-text mt-3">Account Type: <input type="password" id="accountPasswordDisplay" style="border-radius:5px; background-color: white; width: 140px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-left: 5px;" value="Organization" disabled></p>
                         </div>
                     </div>
                 </div>
@@ -302,29 +302,31 @@ Fullfilled Donations
                     <div class="card" style="width: 900px;margin-left: -200px; margin-bottom: 30px;">
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom: 20px;">Edit Account Details</h5>
-                            <form>
+                            <form id="editAccountForm">
                                 <div class="mb-3">
-                                    <label for="accountName" class="form-label" style="margin-bottom: 10px;">Account Name</label>
-                                    <input type="text" class="form-control" id="accountName" style="border-radius: 10px;" placeholder="Enter new name">
+                                    <label for="newAccountName" class="form-label" style="margin-bottom: 10px;">Account Name</label>
+                                    <input type="text" class="form-control" id="newAccountName" style="border-radius: 10px;" placeholder="Enter new name">
+                                    <div id="nameError" style="color: red;"></div>
                                 </div>
                                 <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Name</button>
                             </form>
-                            <form>
+                            <form id="editEmailForm">
                                 <div class="mb-3">
-                                    <label for="accountEmail" class="form-label" style="margin-top: 20px; margin-bottom: 10px;">Account Email</label>
-                                    <input type="email" class="form-control" id="accountEmail" style="border-radius: 10px;" placeholder="Enter new email">
+                                    <label for="newAccountEmail" class="form-label" style="margin-top: 20px; margin-bottom: 10px;">Account Email</label>
+                                    <input type="email" class="form-control" id="newAccountEmail" style="border-radius: 10px;" placeholder="Enter new email">
+                                    <div id="emailError" style="color: red;"></div>
                                 </div>
                                 <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Email</button>
                             </form>
 
-                            <form>
+                            <form id="editPasswordForm">
                                 <div class="mb-3">
-                                    <label for="accountPassword" class="form-label" style="margin-bottom: 10px; margin-top: 10px;">Password</label>
-                                    <input type="text" class="form-control" id="accountName" style="border-radius: 10px;" placeholder="Enter new name">
+                                    <label for="newAccountPassword" class="form-label" style="margin-bottom: 10px; margin-top: 10px;">Password</label>
+                                    <input type="password" class="form-control" id="newAccountPassword" style="border-radius: 10px;" placeholder="Enter new password">
+                                    <div id="passwordError" style="color: red;"></div>
                                 </div>
                                 <button class="btn custom-btn" type="submit" class="btn btn-primary">Save Password</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -336,7 +338,7 @@ Fullfilled Donations
                 <div class="card" style="width: 900px;margin-left: -105px; ">
                     <div class="card-body">
                         <h5 class="card-title" style="margin-bottom: 20px;">Delete Account</h5>
-                        <p class="card-text">Note that: You won't be able to use the website facilities when you delete the account. To continue press the Delete button below</p>
+                        <p class="card-text">Note that: You won't be able to use the website facilities when you delete the account. To continue press the Delete button below.</p>
                         <form>
                             <button class="x-btn" id="deleteAcc" type="submit" style="border-radius: 10px; border-color: black;">Delete Account</button>
                         </form>
@@ -401,6 +403,100 @@ Fullfilled Donations
     </script>
 
     <script>
+        document.getElementById('editAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var newName = document.getElementById('newAccountName').value;
+            const newNameField = document.getElementById("newAccountName"); // Get the new name field
+            const nameError = document.getElementById("nameError"); // Get the error message element
+
+            // Check if the new name field is empty
+            if (newName.trim() === '') {
+                newNameField.classList.add('error'); // Add error class to the input field
+                nameError.textContent = 'Please enter a new name'; // Set error message
+                return; // Stop further execution
+            }
+
+            document.getElementById('accountNameDisplay').innerText = "Account Name: " + newName;
+            newNameField.classList.remove('error'); // Remove error class from the input field
+            nameError.textContent = ''; // Clear error message
+        });
+
+        document.getElementById('editEmailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var newEmail = document.getElementById('newAccountEmail').value;
+            const newEmailField = document.getElementById("newAccountEmail"); // Get the new email field
+            const emailError = document.getElementById("emailError"); // Get the error message element
+            // Regular expression to validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Check if the new email field is empty
+            if (newEmail.trim() === '') {
+                newEmailField.classList.add('error'); // Add error class to the input field
+                emailError.textContent = 'Please enter a new email'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Check if the new email is valid
+            if (!emailRegex.test(newEmail)) {
+                newEmailField.classList.add('error'); // Add error class to the input field
+                emailError.textContent = 'Please enter a valid email'; // Set error message
+                return; // Stop further execution
+            }
+
+            document.getElementById('accountEmailDisplay').innerText = "Account Email: " + newEmail;
+            newEmailField.classList.remove('error'); // Remove error class from the input field
+            emailError.textContent = ''; // Clear error message
+        });
+
+        document.getElementById('editPasswordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var newPassword = document.getElementById('newAccountPassword').value;
+            const newPasswordField = document.getElementById("newAccountPassword"); // Get the new password field
+            const passwordError = document.getElementById("passwordError"); // Get the error message element
+            // Regular expression to check if password contains at least 7 characters and at least one capital letter
+            const passwordRegex = /^(?=.*[A-Z]).{7,}$/;
+
+            // Check if the new password field is empty
+            if (newPassword.trim() === '') {
+                newPasswordField.classList.add('error'); // Add error class to the input field
+                passwordError.textContent = 'Please enter a new password'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Check if the new password meets the constraints
+            if (!passwordRegex.test(newPassword)) {
+                newPasswordField.classList.add('error'); // Add error class to the input field
+                passwordError.textContent = 'Password should contain at least 7 characters and at least one capital letter'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Simulate password change
+            document.getElementById('accountPasswordDisplay').value = newPassword;
+            alert("New password saved: " + newPassword);
+            newPasswordField.classList.remove('error'); // Remove error class from the input field
+            passwordError.textContent = ''; // Clear error message
+        });
+
+        document.getElementById("newAccountName").addEventListener("input", function() {
+            const newNameField = document.getElementById("newAccountName"); // Get the new name field
+            newNameField.classList.remove('error'); // Remove error class from the input field
+            document.getElementById("nameError").textContent = ''; // Clear error message
+        });
+
+        document.getElementById("newAccountEmail").addEventListener("input", function() {
+            const newEmailField = document.getElementById("newAccountEmail"); // Get the new email field
+            newEmailField.classList.remove('error'); // Remove error class from the input field
+            document.getElementById("emailError").textContent = ''; // Clear error message
+        });
+
+        document.getElementById("newAccountPassword").addEventListener("input", function() {
+            const newPasswordField = document.getElementById("newAccountPassword"); // Get the new password field
+            newPasswordField.classList.remove('error'); // Remove error class from the input field
+            document.getElementById("passwordError").textContent = ''; // Clear error message
+        });
+    </script>
+
+    <script>
         deleteAcc.addEventListener('click', function(event) {
             event.preventDefault();
             alert("Your account has been successfully deleted");
@@ -427,6 +523,7 @@ Fullfilled Donations
             console.log(scrollpos)
         })
     </script>
+
 </body>
 
 </html>

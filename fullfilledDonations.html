@@ -50,16 +50,45 @@
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         
-        .btn {
-            transition: background-color 0.3s, border-color 0.3s;
+        .x-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
         }
         
-        .btn:hover {
+        .x-btn:hover,
+        .x-btn:focus {
             background-color: red !important;
             border-color: rgb(189, 70, 70) !important;
             border-width: 1px !important;
             color: white !important;
             font-weight: bold;
+        }
+        
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+        
+        .x-btn:hover::before {
+            background-color: rgb(213, 161, 135);
         }
         
         .table-container {
@@ -623,7 +652,7 @@ Fullfilled Donations
                                     <p class="card-text"><strong>${key}:</strong> ${value}</p>
                                 `).join('')}
                                 <div class="input-group">
-                                    <button data-item-id="${item['Donor ID']}" class="btn btn-success delete-button" style="color: black;border: 1px solid rgb(22,40,54);">Delete</button>
+                                    <button data-item-id="${item['Donor ID']}" class="x-btn delete-button" style="border-radius: 10px; border-color: black;">Delete</button>
                                 </div>
                             </div>
                         </div>
