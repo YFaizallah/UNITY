@@ -209,6 +209,7 @@
                             <br>
                             <label> Gender: </label>
                             <select name="gender">
+                                <option value="" disabled selected hidden>Select Gender</option>
                                 <option value="male"> Male </option>
                                 <option value="female"> Female </option>
                                 <option value="unisex"> Unisex </option>
@@ -216,6 +217,7 @@
                             <br>
                             <label> Season: </label>
                             <select name="season">
+                                <option value="" disabled selected hidden>Select Season</option>
                                 <option value="summer"> Summer </option>
                                 <option value="winter"> Winter </option>
                                 <option value="spring"> Spring </option>
@@ -244,6 +246,7 @@
                             <br>
                             <label> Age Group: </label>
                             <select name="ageGroup">
+                                <option value="" disabled selected hidden>Select Age Group</option>
                                 <option value="mini"> 3-5 </option>
                                 <option value="small"> 5-7 </option>
                                 <option value="medium"> 7-10 </option>
@@ -252,6 +255,7 @@
                             <br>
                             <label> Gender: </label>
                             <select name="gender">
+                                <option value="" disabled selected hidden>Select Gender</option>
                                 <option value="male"> Male </option>
                                 <option value="female"> Female </option>
                                 <option value="unisex"> Unisex </option>
@@ -277,6 +281,7 @@
                             <br>
                             <label> Measuring unit: </label>
                             <select name="unit">
+                                <option value="" disabled selected hidden>Select measuring unit</option>
                                 <option value="kg"> kg </option>
                                 <option value="g"> g </option>
                                 <option value="food"> Food Items </option>
@@ -356,52 +361,6 @@
                         </form>
                         
                         `;
-
-
-                        document.getElementById('formContainer').innerHTML = formContent;
-
-                        const stypeSelect = document.querySelector('select[name="stype"]');
-
-                        stypeSelect.addEventListener('change', function() {
-                            const selectedType = this.value;
-                            let additionalFields = '';
-
-                            if (selectedType === 'books') {
-                                additionalFields += `
-                                    <label>Genre:</label>
-                                    <input type="text" name="genre" placeholder="Mathematics">
-                                    <br>
-                                    <label>Author:</label>
-                                    <input type="text" name="author" placeholder="John Doe">
-                                    <br>            
-                                    <label>Edition:</label>
-                                    <input type="text" name="edition" placeholder="1st edition">
-                                    <br>
-                                    <label>Summary:</label>
-                                    <input type="text" name="summary" placeholder="A book about numbers">
-                                    <br>
-                                `;
-                            } else if (selectedType === 'stationary') {
-                                additionalFields += `
-                                    <label>Item:</label>
-                                    <input type="text" name="item" placeholder="Pen">
-                                    <br>
-                                `;
-                            }
-
-                            additionalFields += `
-                                <label>Quantity:</label>
-                                <input type="number" name="quantity" placeholder="Enter quantity">
-                                <br>
-                                <label> Details: </label>
-                                <input type="text" name="details" placeholder="optional">
-                            `;
-
-                            document.getElementById('additionalFields').innerHTML = additionalFields;
-                        });
-
-
-
                         break;
                     case 'medicalSupplies':
                         formContent = `
@@ -433,6 +392,53 @@
 
             }
 
+            function createFormSchools(Type){
+                let formContent='';
+                switch (Type){
+                    case 'stationary' : formContent=`
+                    <form>
+                        <label> Item: </label>
+                        <input type="text" name="statItem" placeholder="Pen">
+                        <br>
+                        <label>Quantity:</label>
+                        <input type="number" name="quantity" placeholder="Enter quantity">
+                        <br>
+                        <label> Details: </label>
+                        <input type="text" name="details" placeholder="optional">
+                    </form>    
+                    `;break;
+                    case 'books' :formContent=`
+                    <form>
+                        <label> Title: </label>
+                        <input type="text" name="title" placeholder="se7en">
+                        <br>
+                        <label> Author: </label>
+                        <input type="text" name="author" placeholder="John Doe">
+                        <br>
+                        <label> Language: </label>
+                        <input type="text" name="lang" placeholder="English">
+                        <br>
+                        <label> Edition: </label>
+                        <input type="text" name="edition" placeholder="1st">
+                        <br>
+                        <label> Summary: </label>
+                        <input type="text" name="summary" placeholder="7 mysterious murders need to be solved">
+                        <br>
+
+                        <label>Quantity:</label>
+                        <input type="number" name="quantity" placeholder="Enter quantity">
+                        <br>
+                        <label> Details: </label>
+                        <input type="text" name="details" placeholder="optional">
+                    </form>
+                    
+                    `;break;
+
+                }
+                document.getElementById('additionalFields').innerHTML = formContent;
+
+            }
+
 
 
 
@@ -443,7 +449,15 @@
                         createForm(this.value);
                     });
                 });
-            });
+
+                const schoolTypeDropdown = document.getElementsByName('stype')[0]; // Assuming only one dropdown with name 'stype'
+                 schoolTypeDropdown.addEventListener('change', function() {
+                 createFormSchools(this.value);
+                 });
+             });
+
+            
+
         </script>
 
     </main>
