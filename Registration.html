@@ -213,7 +213,7 @@
                             <div class="mb-3 form-check py-3">
 
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" href="donorDashboard.html" id="registerButton" style="background-color: #162836; color: #D5A187;">Register</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" href="donorDashboard.html" id="registerButton" style=" display: none; background-color: #162836; color: #D5A187;">Register</button>
                             <div>
                                 <a class="nav-link link-fancy ps-0" aria-current="page" href="donorLogin.html" style="margin-bottom: 30px; margin-top: 20px;">Already have an account</a>
                             </div>
@@ -261,12 +261,14 @@
                     organizationRepFields.style.display = 'none';
                     userTypeSelect.style.display = 'none';
                     registerLabel.style.display = 'none';
+                    registerButton.style.display = 'block';
                 } else if (selectedUserType === 'organization') {
                     donorFields.style.display = 'none';
                     organizationRepFields.style.display = 'block';
                     userTypeSelect.style.display = 'none';
                     registerLabel.style.display = 'none';
                     registerButton.style.display = 'none';
+                    registerButton.style.display = 'block';
 
                 } else {
                     donorFields.style.display = 'none';
