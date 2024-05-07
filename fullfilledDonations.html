@@ -607,18 +607,6 @@ Fullfilled Donations
         //     "Fullfilled": "YES",
         // }];
 
-
-        let arrays = [
-            clothes,
-            // schoolSupplies,
-            // Books,
-            // stationeryItems,
-            // toys,
-            // food,
-            // medicalSupplies,
-            // bloodDonations
-        ];
-
         function generateCards(array) {
             let cardHtml = '';
             array.forEach(item => {
@@ -626,102 +614,78 @@ Fullfilled Donations
                         let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
 
                         cardHtml += `
-        <div class="row card-container" style="margin-bottom:20px;">
-            <div class="card mb-3" style="border: none;">
-                <div class="row g-0">
-                    <div class="col-md-8">
-                        <div class="card-body" >
-                            ${Object.entries(item).map(([key, value]) => `
-                                <p class="card-text"><strong>${key}:</strong> ${value}</p>
-                            `).join('')}
-                            <div class="input-group">
-                                <button onclick="deleteItem(${item.id})" class="btn btn-success" style="color: black;border: 1px solid rgb(22,40,54);">Delete</button>
+            <div class="row card-container" style="margin-bottom:20px;">
+                <div class="card mb-3" style="border: none;">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body" >
+                                ${Object.entries(item).map(([key, value]) => `
+                                    <p class="card-text"><strong>${key}:</strong> ${value}</p>
+                                `).join('')}
+                                <div class="input-group">
+                                    <button data-item-id="${item['Donor ID']}" class="btn btn-success delete-button" style="color: black;border: 1px solid rgb(22,40,54);">Delete</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
-                        ${photoHtml}
+                        <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
+                            ${photoHtml}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `;
-});
-return cardHtml;
+        `;
+    });
+    return cardHtml;
 }
 
-// Function to handle donation
-    // function deleteItem(itemId) {
-    // const quantityInput = document.getElementById(`quantity-input-${itemId}`);
-    // const quantity = parseInt(quantityInput.value);
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('delete-button')) {
+        const itemId = event.target.dataset.itemId;
+        deleteItem(itemId);
+    }
+});
 
-    // // Perform donation logic here
-    // console.log(`Donating ${quantity} items of item with ID ${itemId}`);
-
-    // // Ensure that the quantity is within the valid range
-    // if (quantity < parseInt(quantityInput.min)) {
-    //     quantityInput.value = quantityInput.min;
-    // } else if (quantity > parseInt(quantityInput.max)) {
-    //     quantityInput.value = quantityInput.max;
-    // }
-    // }
-
-    function deleteItem(itemId) {
+function deleteItem(itemId) {
     // Find the index of the item with the given ID
-        let index = clothes.findIndex(item => item.id === itemId);
-        
-        // If the item is found and is fulfilled, remove it
-        if (index !== -1 && clothes[index].Fullfilled === "YES") {
-            clothes.splice(index, 1); // Remove the item from the array
-            // Regenerate the cards
-            document.getElementById('cardContainer').innerHTML = generateCards(clothes);
-        } else {
-            // Display a message if the item is not found or not fulfilled
-            alert("Can't delete unfullfilled request or item not found.");
-        }
+    let index = clothes.findIndex(item => item['Donor ID'] === itemId);
+    
+    // If the item is found and is fulfilled, remove it
+    if (index !== -1 && clothes[index].Fullfilled === "YES") {
+        clothes.splice(index, 1); // Remove the item from the array
+        // Regenerate the cards
+        document.getElementById('cardContainer').innerHTML = generateCards(clothes);
+    } else {
+        // Display a message if the item is not found or not fulfilled
+        alert("Can't delete unfulfilled request or item not found.");
     }
+}
 
-    function filterCards(category) {
-        const cardContainer = document.getElementById('cardContainer');
-        cardContainer.innerHTML = '';
-        arrays.forEach(array => {
-            if (array[0].Category === category) {
-                cardContainer.innerHTML += generateCards(array);
-            }
-        });
-    }
-
-    // JSON arrays
-
-    // Container for cards
+function filterCards(category) {
     const cardContainer = document.getElementById('cardContainer');
-
-    // Generate cards for each array
-    arrays.forEach(array => {
-        cardContainer.innerHTML += generateCards(array);
+    cardContainer.innerHTML = '';
+    clothes.forEach(item => {
+        if (item.Fullfilled === category || category === 'all') {
+            cardContainer.innerHTML += generateCards([item]);
+        }
     });
+}
 
-    // Radio button change event listener
-    const radioButtons = document.querySelectorAll('input[name="category"]');
-    radioButtons.forEach(button => {
-        button.addEventListener('change', (event) => {
-            const category = event.target.value;
-            if (category === 'all') {
-                showAllCards();
-            } else {
-                filterCards(category);
-            }
-        });
+// JSON arrays
+
+// Container for cards
+const cardContainer = document.getElementById('cardContainer');
+
+// Generate cards for the clothes array
+cardContainer.innerHTML = generateCards(clothes);
+
+// Radio button change event listener
+const radioButtons = document.querySelectorAll('input[name="category"]');
+radioButtons.forEach(button => {
+    button.addEventListener('change', (event) => {
+        const category = event.target.value;
+        filterCards(category);
     });
-
-    // Function to show all cards
-    function showAllCards() {
-        const cardContainer = document.getElementById('cardContainer');
-        cardContainer.innerHTML = '';
-        arrays.forEach(array => {
-            cardContainer.innerHTML += generateCards(array);
-        });
-    }
+});
     </script>
 
 
