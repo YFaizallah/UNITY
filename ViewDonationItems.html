@@ -47,6 +47,22 @@
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
         
+        .card-container {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            border-image-slice: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Adding shadow effect */
+            transition: border-image 0.5s, box-shadow 0.5s;
+            /* Transition for both border image and shadow */
+        }
+        
+        .card-container:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
         .filter-container {
             display: flex;
             flex-wrap: wrap;
@@ -703,7 +719,7 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-8">
-                            <div class="card-body">
+                            <div class="card-body card-container">
                                 ${Object.entries(item).map(([key, value]) => `
                                     <p class="card-text"><strong>${key}:</strong> ${value}</p>
                                 `).join('')}

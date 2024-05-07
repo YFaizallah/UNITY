@@ -274,7 +274,7 @@ Fullfilled Donations
             <!-- Account Information Card -->
             <div class="row justify-content-center mb-4">
                 <div class="col-md-6">
-                    <div class="card" style="width: 900px;margin-left: -200px; ">
+                    <div class="card card-container" style="width: 900px;margin-left: -200px; ">
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom: 20px;">Account Information</h5>
                             <p class="card-text" id="accountNameDisplay">Account Name: John Doe</p>
@@ -288,7 +288,7 @@ Fullfilled Donations
             <!-- Edit Account Details Card -->
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="card" style="width: 900px;margin-left: -200px; margin-bottom: 30px;">
+                    <div class="card card-container" style="width: 900px;margin-left: -200px; margin-bottom: 30px;">
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom: 20px;">Edit Account Details</h5>
                             <form id="editAccountForm">
@@ -324,7 +324,7 @@ Fullfilled Donations
 
         <div class="row justify-content-center mb-4">
             <div class="col-md-6">
-                <div class="card" style="width: 900px;margin-left: -105px; ">
+                <div class="card card-container" style="width: 900px;margin-left: -105px; ">
                     <div class="card-body">
                         <h5 class="card-title" style="margin-bottom: 20px;">Delete Account</h5>
                         <p class="card-text">Note that: You won't be able to use the website facilities when you delete the account. To continue press the Delete button below.</p>
@@ -461,7 +461,7 @@ Fullfilled Donations
 
             // Simulate password change
             document.getElementById('accountPasswordDisplay').value = newPassword;
-            alert("New password saved: " + newPassword);
+            alert("New password saved successfully");
             newPasswordField.classList.remove('error'); // Remove error class from the input field
             passwordError.textContent = ''; // Clear error message
         });
