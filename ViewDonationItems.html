@@ -337,8 +337,8 @@
             font-size: 12.5px;
             border-radius: .5rem;">
                 <option value="all">All</option>
-                <option value="painrelief">Pain Relief</option>
-                <option value="antibiotic">Antibiotic</option>
+                <option value="Pain relief">Pain Relief</option>
+                <option value="Antibiotic">Antibiotic</option>
             </select>
             </div>
         </div>
@@ -634,30 +634,34 @@
 
         let medicalSupplies = [{
             id: 1,
-            "type": "Medical Device",
-            "category": "medicalSupplies",
-            "use": "Surgery",
-            "quantity": 10,
+            "Name": "heart rate monitor",
+            "Type": "Devices",
+            "Use": "heart rate monitor",
+            "Quantity": 10,
+            "Category": "medicalSupplies",
 
         }, {
             id: 2,
-            "type": "Syringe",
-            "category": "medicalSupplies",
-            "use": "Injection",
-            "quantity": 50,
+            "Name": "Insulin pen",
+            "Type": "Equipment",
+            "Use": "Insulin pen",
+            "Quantity": 50,
+            "Category": "medicalSupplies",
 
         }, {
             id: 3,
-            "type": "Pain Relief",
-            "category": "medicalSupplies",
-            "use": "Pain Relief",
-            "quantity": 30,
+            "Name": "Pandol",
+            "Type": "Medication",
+            "Use": "Pain relief",
+            "Quantity": 30,
+            "Category": "medicalSupplies",
         }, {
             id: 4,
-            "type": "Antibiotic",
-            "category": "medicalSupplies",
-            "use": "Antibiotic",
-            "quantity": 20,
+            "Name": "Amoxicillin",
+            "Type": "Medication",
+            "Use": "Antibiotic",
+            "Quantity": 20,
+            "Category": "medicalSupplies",
         }];
 
         let bloodDonations = [{
@@ -984,8 +988,6 @@
             const selectedArea = areaSelect.value;
             filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
         });
-
-
         // Function to filter medical supplies by type and use
         function filterMedicalSupplies(type, use) {
             let filteredMedicalSupplies;
@@ -1002,8 +1004,8 @@
         }
 
         // Event listeners for select elements for type and use
-        const medicalTypeSelect = document.getElementById('medicalType');
-        const medicalUseSelect = document.getElementById('medicalUse');
+        const medicalTypeSelect = document.getElementById('medicalSuppliesDeviceType');
+        const medicalUseSelect = document.getElementById('medicationUse');
 
         medicalTypeSelect.addEventListener('change', () => {
             const selectedType = medicalTypeSelect.value;
@@ -1016,8 +1018,6 @@
             const selectedUse = medicalUseSelect.value;
             filterMedicalSupplies(selectedType, selectedUse);
         });
-
-        // Function to filter blood donations by hospital, government, and area
     </script>
 </body>
 
