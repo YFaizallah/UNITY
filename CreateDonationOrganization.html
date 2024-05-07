@@ -202,6 +202,7 @@
                             <br>
                             <label> Age Group: </label>
                             <select name="ageGroup">
+                                <option value="" disabled selected hidden>Select Age Group</option>
                                 <option value="adult"> Adult </option>
                                 <option value="child"> Child </option>
                                 <option value="teen"> Teen </option>
@@ -289,6 +290,7 @@
                             <br>
                             <label> Type: </label>
                             <select name="type">
+                                <option value="" disabled selected hidden>Select Type of Food</option>
                                 <option value="greens"> Fruit/Vegetables </option>
                                 <option value="canned"> Canned </option>
                                 <option value="freshMeal"> Fresh Meal </option>
@@ -305,6 +307,7 @@
                         <form>
                             <label> Blood Type: </label>
                             <select name="bloodType">
+                                <option value="" disabled selected hidden>Select Blood Type</option>
                                 <option value="all"> All </option>
                                 <option value="a+"> A+ </option>
                                 <option value="a-"> A- </option>
@@ -318,6 +321,7 @@
                             <br>
                             <label> Hospital Name: </label>
                             <select name="hospitalName">
+                                <option value="" disabled selected hidden>Select Hospital</option>
                                 <option value="city"> City Hospital </option>
                                 <option value="country"> Country Hospital </option>
                                 <option value="community"> Community Hospital </option>
@@ -325,6 +329,7 @@
                             <br>
                             <label> Area: </label>
                             <select name="area">
+                                <option value="" disabled selected hidden>Select Area</option>
                                 <option value="downtown"> Downtown </option>
                                 <option value="westside"> Westside </option>
                                 <option value="northside"> North Side </option>
@@ -332,9 +337,10 @@
                             <br>
                             <label> Governorate: </label>
                             <select name="governorate">
-                                <option value="nyc"> New York </option>
-                                <option value="cali"> California </option>
-                                <option value="texas"> Texas </option>
+                                <option value="" disabled selected hidden>Select Governorate</option>
+                                <option value="nyc"> Cairo </option>
+                                <option value="cali"> Alexandria </option>
+                                <option value="texas"> Mansoura </option>
                             </select>
                             <br>
                             <label> Address: </label>
@@ -352,7 +358,8 @@
                         formContent = `
                         <form>
                             <label> Type: </label>
-                            <select name="stype">
+                            <select id="mata69" name="stype">
+                                <option value="" disabled selected hidden>Select Supplies Type</option>
                                 <option value="stationary"> Stationary </option>
                                 <option value="books"> Books </option>
                             </select>
@@ -382,11 +389,7 @@
 
 
                 }
-                document.getElementById('formContainer').innerHTML = formContent;
-                if (formType === 'schoolSupplies') {
-
-                    //document.getElementById('formContainer').innerHTML = formContent;
-                }
+               
 
                 document.getElementById('formContainer').innerHTML = formContent;
 
@@ -437,24 +440,36 @@
                 }
                 document.getElementById('additionalFields').innerHTML = formContent;
 
+               
             }
 
 
 
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const radioButtons = document.getElementsByName('donationType');
-                radioButtons.forEach(button => {
-                    button.addEventListener('change', function() {
-                        createForm(this.value);
-                    });
+                    document.addEventListener('DOMContentLoaded', function() {
+            const radioButtons = document.getElementsByName('donationType');
+            radioButtons.forEach(button => {
+                button.addEventListener('change', function() {
+                    createForm(this.value);
+                    if (this.value === 'schoolSupplies') {
+                        // Check if the dropdown exists before adding the event listener
+                        const schoolTypeDropdown = document.querySelector('select[id="mata69"]');
+                        if (schoolTypeDropdown) {
+                            schoolTypeDropdown.addEventListener('change', function() {
+                                console.log("Dropdown value changed:", this.value);
+                                createFormSchools(this.value);
+                            });
+                        } else {
+                            console.error("Dropdown element not found");
+                        }
+                    }
                 });
+            });
+        });
 
-                const schoolTypeDropdown = document.getElementsByName('stype')[0]; // Assuming only one dropdown with name 'stype'
-                 schoolTypeDropdown.addEventListener('change', function() {
-                 createFormSchools(this.value);
-                 });
-             });
+
+            
+
 
             
 
