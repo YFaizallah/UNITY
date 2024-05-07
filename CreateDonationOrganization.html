@@ -49,7 +49,18 @@
             url('./fonts/inter-v12-latin-700.woff') format('woff');
             /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
     </style>
+   
 
     <style>
         /* Add custom CSS to hide dropdown by default */
@@ -188,7 +199,7 @@
             </div>
         </nav>
 
-        <div id="formContainer" style="margin-top: 20px;"></div>
+        <div id="formContainer" ></div>
 
         <script>
             function createForm(formType) {
@@ -237,6 +248,7 @@
                             <input type="text" name="details" placeholder="optional">
 
                             </form>
+                            <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                             `;
                         break;
                     case 'toys':
@@ -269,6 +281,7 @@
                             <input type="text" name="details" placeholder="optional">
 
                             </form>
+                            <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                             `;
                         break;
                     case 'food':
@@ -300,6 +313,7 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
+                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                         `;
                         break;
                     case 'bloodDonations':
@@ -352,6 +366,7 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
+                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                         `;
                         break;
                     case 'schoolSupplies':
@@ -366,7 +381,6 @@
                             <br>
                             <div id="additionalFields"></div> <!-- Placeholder for additional fields -->
                         </form>
-                        
                         `;
                         break;
                     case 'medicalSupplies':
@@ -384,6 +398,7 @@
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
                         </form>
+                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                         `;
                         break;
 
@@ -408,7 +423,8 @@
                         <br>
                         <label> Details: </label>
                         <input type="text" name="details" placeholder="optional">
-                    </form>    
+                    </form> 
+                    <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>   
                     `;break;
                     case 'books' :formContent=`
                     <form>
@@ -434,7 +450,7 @@
                         <label> Details: </label>
                         <input type="text" name="details" placeholder="optional">
                     </form>
-                    
+                    <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                     `;break;
 
                 }
