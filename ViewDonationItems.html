@@ -617,26 +617,37 @@
         }];
 
         let medicalSupplies = [{
-            "Device-Type": "Thermometer",
-            "Device-Use": "Measuring body temperature",
-            "Quantity": 3,
-            "Category": "medicalSupplies"
+            id: 1,
+            "type": "Medical Device",
+            "category": "medicalSupplies",
+            "use": "Surgery",
+            "quantity": 10,
+
         }, {
-            "Device-Type": "Bandages",
-            "Device Use": "Wound dressing",
-            "Quantity": 50,
-            "Category": "medicalSupplies"
+            id: 2,
+            "type": "Syringe",
+            "category": "medicalSupplies",
+            "use": "Injection",
+            "quantity": 50,
+
         }, {
-            "Device-Type": "Syringes",
-            "Device Use": "Injecting medication",
-            "Quantity": 100,
-            "Category": "medicalSupplies"
+            id: 3,
+            "type": "Pain Relief",
+            "category": "medicalSupplies",
+            "use": "Pain Relief",
+            "quantity": 30,
+        }, {
+            id: 4,
+            "type": "Antibiotic",
+            "category": "medicalSupplies",
+            "use": "Antibiotic",
+            "quantity": 20,
         }];
 
         let bloodDonations = [{
             "Patient-Name": "John Smith",
             "Blood-Type": "O+",
-            "Hospital-Name": "City Hospital",
+            "Hospital": "City Hospital",
             "Area": "Downtown",
             "Governorate": "New York",
             "Address": "123 Main Street",
@@ -644,7 +655,7 @@
         }, {
             "Patient-Name": "Emily Johnson",
             "Blood-Type": "A-",
-            "Hospital-Name": "County Hospital",
+            "Hospital": "County Hospital",
             "Area": "Westside",
             "Governorate": "California",
             "Address": "456 Oak Avenue",
@@ -652,7 +663,7 @@
         }, {
             "Patient-Name": "David Martinez",
             "Blood-Type": "B+",
-            "Hospital-Name": "Community Health Center",
+            "Hospital": "Community Health Center",
             "Area": "North End",
             "Governorate": "Texas",
             "Address": "789 Elm Street",
@@ -914,6 +925,51 @@
             const selectedCategory = toysCategorySelect.value;
             filterToys(selectedAge, selectedGender, selectedCategory);
         });
+
+        function filterBloodDonationsByFilters(hospital, government, area) {
+            let filteredBloodDonations;
+            if (hospital === 'all' && government === 'all' && area === 'all') {
+                filteredBloodDonations = bloodDonations; // Show all blood donations when 'All' is selected for all filters
+            } else {
+                filteredBloodDonations = bloodDonations.filter(item => {
+                    return (hospital === 'all' || item.Hospital === hospital) &&
+                        (government === 'all' || item.Governorate === government) &&
+                        (area === 'all' || item.Area === area);
+                });
+            }
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = generateCards(filteredBloodDonations);
+        }
+
+
+
+        // Event listener for blood donation filters
+        const hospitalSelect = document.getElementById('bloodDonationHospital');
+        const governmentSelect = document.getElementById('bloodDonationGovernorate');
+        const areaSelect = document.getElementById('bloodDonationArea');
+
+        hospitalSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        });
+
+        governmentSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        });
+
+        areaSelect.addEventListener('change', () => {
+            const selectedHospital = hospitalSelect.value;
+            const selectedGovernment = governmentSelect.value;
+            const selectedArea = areaSelect.value;
+            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        });
+
+
         // Function to filter medical supplies by type and use
         function filterMedicalSupplies(type, use) {
             let filteredMedicalSupplies;
@@ -945,53 +1001,7 @@
             filterMedicalSupplies(selectedType, selectedUse);
         });
 
-
-        const bloodDonationFilters = document.querySelectorAll('.blood-donation-filter');
-
-
         // Function to filter blood donations by hospital, government, and area
-        function filterBloodDonationsByFilters(hospital, government, area) {
-            let filteredBloodDonations;
-            if (hospital === 'all' && government === 'all' && area === 'all') {
-                filteredBloodDonations = bloodDonations; // Show all blood donations when 'All' is selected for all filters
-            } else {
-                filteredBloodDonations = bloodDonations.filter(donation => {
-                    return (hospital === 'all' || donation.hospital === hospital) &&
-                        (government === 'all' || donation.government === government) &&
-                        (area === 'all' || donation.area === area);
-                });
-            }
-            // Render filtered blood donations
-            renderBloodDonations(filteredBloodDonations);
-        }
-
-
-
-        // Event listener for blood donation filters
-        const hospitalSelect = document.getElementById('bloodDonationHospital');
-        const governmentSelect = document.getElementById('bloodDonationGovernorate');
-        const areaSelect = document.getElementById('bloodDonationArea');
-
-        hospitalSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
-
-        governmentSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
-
-        areaSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
     </script>
 </body>
 
