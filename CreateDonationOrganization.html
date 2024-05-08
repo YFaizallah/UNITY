@@ -213,10 +213,10 @@
                         formContent = `
                         <form>
                             <label> Type: </label>
-                            <input type="text" name="type" placeholder="Shirt">
+                            <input type="text" name="type" placeholder="Shirt" required>
                             <br>
                             <label> Age Group: </label>
-                            <select name="ageGroup">
+                            <select name="ageGroup" required>
                                 <option value="" disabled selected hidden>Select Age Group</option>
                                 <option value="adult"> Adult </option>
                                 <option value="child"> Child </option>
@@ -224,7 +224,7 @@
                             </select>
                             <br>
                             <label> Gender: </label>
-                            <select name="gender">
+                            <select name="gender" required>
                                 <option value="" disabled selected hidden>Select Gender</option>
                                 <option value="male"> Male </option>
                                 <option value="female"> Female </option>
@@ -232,7 +232,7 @@
                             </select>
                             <br>
                             <label> Season: </label>
-                            <select name="season">
+                            <select name="season" required>
                                 <option value="" disabled selected hidden>Select Season</option>
                                 <option value="summer"> Summer </option>
                                 <option value="winter"> Winter </option>
@@ -242,27 +242,26 @@
                             <br>
 
                             <label> Material: </label>
-                            <input type="text" name="material" placeholder="Cotton">
+                            <input type="text" name="material" placeholder="Cotton" required>
                             <br>
                             
                             <label>Quantity:</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
                             <br>
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
-
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>  
                             </form>
-                            <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                             `;
                         break;
                     case 'toys':
                         formContent = `
                         <form>
                         <label> Type: </label>
-                            <input type="text" name="type" placeholder="Doll">
+                            <input type="text" name="type" placeholder="Doll" required>
                             <br>
                             <label> Age Group: </label>
-                            <select name="ageGroup">
+                            <select name="ageGroup" required>
                                 <option value="" disabled selected hidden>Select Age Group</option>
                                 <option value="mini"> 3-5 </option>
                                 <option value="small"> 5-7 </option>
@@ -271,7 +270,7 @@
                             </select>
                             <br>
                             <label> Gender: </label>
-                            <select name="gender">
+                            <select name="gender" required>
                                 <option value="" disabled selected hidden>Select Gender</option>
                                 <option value="male"> Male </option>
                                 <option value="female"> Female </option>
@@ -279,26 +278,25 @@
                             </select>
                             <br>
                             <label>Quantity:</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
                             <br>
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
-
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>  
                             </form>
-                            <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                             `;
                         break;
                     case 'food':
                         formContent = `
                         <form>
                             <label> Name: </label>
-                            <input type="text" name="type" placeholder="Bread">
+                            <input type="text" name="type" placeholder="Bread" required>
                             <br>
                             <label>Quantity:</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
                             <br>
                             <label> Measuring unit: </label>
-                            <select name="unit">
+                            <select name="unit" required>
                                 <option value="" disabled selected hidden>Select measuring unit</option>
                                 <option value="kg"> kg </option>
                                 <option value="g"> g </option>
@@ -306,7 +304,7 @@
                             </select>
                             <br>
                             <label> Type: </label>
-                            <select name="type">
+                            <select name="type" required>
                                 <option value="" disabled selected hidden>Select Type of Food</option>
                                 <option value="greens"> Fruit/Vegetables </option>
                                 <option value="canned"> Canned </option>
@@ -316,15 +314,15 @@
                             <br>
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>  
                         </form>
-                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                         `;
                         break;
                     case 'bloodDonations':
                         formContent = `
                         <form>
                             <label> Blood Type: </label>
-                            <select name="bloodType">
+                            <select name="bloodType" required>
                                 <option value="" disabled selected hidden>Select Blood Type</option>
                                 <option value="all"> All </option>
                                 <option value="a+"> A+ </option>
@@ -338,7 +336,7 @@
                             </select>
                             <br>
                             <label> Hospital Name: </label>
-                            <select name="hospitalName">
+                            <select name="hospitalName" required>
                                 <option value="" disabled selected hidden>Select Hospital</option>
                                 <option value="city"> City Hospital </option>
                                 <option value="country"> Country Hospital </option>
@@ -346,7 +344,7 @@
                             </select>
                             <br>
                             <label> Area: </label>
-                            <select name="area">
+                            <select name="area" required>
                                 <option value="" disabled selected hidden>Select Area</option>
                                 <option value="downtown"> Downtown </option>
                                 <option value="westside"> Westside </option>
@@ -354,7 +352,7 @@
                             </select>
                             <br>
                             <label> Governorate: </label>
-                            <select name="governorate">
+                            <select name="governorate" required>
                                 <option value="" disabled selected hidden>Select Governorate</option>
                                 <option value="nyc"> Cairo </option>
                                 <option value="cali"> Alexandria </option>
@@ -362,22 +360,22 @@
                             </select>
                             <br>
                             <label> Address: </label>
-                            <input type="text" name="address" placeholder="122 Vampire st.">
+                            <input type="text" name="address" placeholder="122 Vampire st." required>
                             <br>
                             <label>Quantity:</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity">
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
                             <br>
                             <label> Details: </label>
                             <input type="text" name="details" placeholder="optional">
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>  
                         </form>
-                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
                         `;
                         break;
                     case 'schoolSupplies':
                         formContent = `
                         <form>
-                            <label> Type: </label>
-                            <select id="mata69" name="stype">
+                            <label>  Type: </label>
+                            <select id="mata69" name="stype" required>
                                 <option value="" disabled selected hidden>Select Supplies Type</option>
                                 <option value="stationary"> Stationary </option>
                                 <option value="books"> Books </option>
@@ -390,19 +388,17 @@
                     case 'medicalSupplies':
                         formContent = `
                         <form>
-                            <label> Device-Type: </label>
-                            <input type="text" name="deviceType" placeholder="syringe">
+                            <label> Type: </label>
+                            <select name="mtype" required>
+                                <option value="" disabled selected hidden>Select Supplies Type</option>
+                                <option value="devices"> Devices </option>
+                                <option value="equipment"> Equipment </option>
+                                <option value="medication"> Medication </option>
+                            </select>
                             <br>
-                            <label> Device-Use: </label>
-                            <input type="text" name="deviceUse" placeholder="Injections">
-                            <br>
-                            <label>Quantity:</label>
-                            <input type="number" name="quantity" placeholder="Enter quantity">
-                            <br>
-                            <label> Details: </label>
-                            <input type="text" name="details" placeholder="optional">
+                            <div id="medical"></div>
                         </form>
-                        <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
+                        
                         `;
                         break;
 
@@ -414,47 +410,110 @@
 
             }
 
+            function createFormMedical(Type){
+                let formContent='';
+                switch (Type) {
+                    case 'medication':formContent=`
+                    <form>
+                        <label> Name: </label>
+                        <input type="text" name="medname" placeholder="paracetamol" required>
+                        <br>
+                        <label> Use: </label>
+                        <select name="use" required>
+                                <option value="" disabled selected hidden>Select medication use</option>
+                                <option value="antibiotic"> Antibiotic </option>
+                                <option value="painkiller"> Pain relief </option>
+                            </select>
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>
+                    </form>   
+                    `;break;
+                    case 'devices':formContent=`
+                        <form>
+                            <label> Name: </label>
+                            <input type="text" name="dname" placeholder="heart rate monitor" required>
+                            <br>
+                            <label> Use: </label>
+                            <input type="text" name="duse" placeholder="monitor heart rate" required>
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>
+                        </form>
+                    `;break;
+                    case 'equipment':formContent=`
+                        <form>
+                            <label> Name: </label>
+                            <input type="text" name="ename" placeholder="insulin pen" required>
+                            <br>
+                            <label> Use: </label>
+                            <input type="text" name="duse" placeholder="for diabetes" required>
+                            <br>
+                            <label>Quantity:</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
+                            <br>
+                            <label> Details: </label>
+                            <input type="text" name="details" placeholder="optional">
+                            <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>
+                        </form>
+                    `;break;  
+                }
+                document.getElementById('medical').innerHTML = formContent;
+
+            }
+           
+
             function createFormSchools(Type){
                 let formContent='';
                 switch (Type){
                     case 'stationary' : formContent=`
                     <form>
                         <label> Item: </label>
-                        <input type="text" name="statItem" placeholder="Pen">
+                        <input type="text" name="statItem" placeholder="Pen" required>
                         <br>
                         <label>Quantity:</label>
-                        <input type="number" name="quantity" placeholder="Enter quantity">
+                        <input type="number" name="quantity" placeholder="Enter quantity" required>
                         <br>
                         <label> Details: </label>
                         <input type="text" name="details" placeholder="optional">
+                        <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>   
                     </form> 
-                    <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>   
+                   
                     `;break;
                     case 'books' :formContent=`
                     <form>
                         <label> Title: </label>
-                        <input type="text" name="title" placeholder="se7en">
+                        <input type="text" name="title" placeholder="se7en" required>
                         <br>
                         <label> Author: </label>
-                        <input type="text" name="author" placeholder="John Doe">
+                        <input type="text" name="author" placeholder="John Doe" required>
                         <br>
                         <label> Language: </label>
-                        <input type="text" name="lang" placeholder="English">
+                        <input type="text" name="lang" placeholder="English" required>
                         <br>
                         <label> Edition: </label>
-                        <input type="text" name="edition" placeholder="1st">
+                        <input type="text" name="edition" placeholder="1st" required>
                         <br>
                         <label> Summary: </label>
-                        <input type="text" name="summary" placeholder="7 mysterious murders need to be solved">
+                        <input type="text" name="summary" placeholder="7 mysterious murders need to be solved" required>
                         <br>
 
                         <label>Quantity:</label>
-                        <input type="number" name="quantity" placeholder="Enter quantity">
+                        <input type="number" name="quantity" placeholder="Enter quantity" required>
                         <br>
                         <label> Details: </label>
                         <input type="text" name="details" placeholder="optional">
-                    </form>
-                    <a href="OrganizationDonationSumbited.html"><button>Submit</button></a>
+                        <a href="OrganizationDonationSumbited.html"><button type="submit">Submit</button></a>  
+                        </form>
+                   
                     `;break;
 
                 }
@@ -483,6 +542,18 @@
                             console.error("Dropdown element not found");
                         }
                     }
+                    if(this.value === 'medicalSupplies'){
+                        const medicalTypeDropdown = document.querySelector('select[name="mtype"]');
+                        if (medicalTypeDropdown) {
+                            medicalTypeDropdown.addEventListener('change', function() {
+                                console.log("Dropdown value changed:", this.value);
+                                createFormMedical(this.value);
+                            });
+                        } else {
+                            console.error("Dropdown element not found");
+                        }
+                    }
+
                 });
             });
         });
