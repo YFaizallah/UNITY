@@ -281,6 +281,43 @@
 
             console.log(scrollpos)
         })
+
+
+        function calculateTimeRemaining() {
+            // Get the pick-up date and time
+            const pickUpDate = new Date(document.querySelector('#date').value);
+            const pickUpTime = new Date(`2000-01-01T${document.querySelector('#time').value}`);
+
+            // Combine date and time
+            const pickUpDateTime = new Date(pickUpDate.getFullYear(), pickUpDate.getMonth(), pickUpDate.getDate(), pickUpTime.getHours(), pickUpTime.getMinutes(), pickUpTime.getSeconds());
+
+            // Update the timeLeft div every second
+            const timerInterval = setInterval(() => {
+                // Get the current date and time
+                const now = new Date();
+
+                // Calculate the time difference in milliseconds
+                const timeDiff = pickUpDateTime - now;
+
+                if (timeDiff <= 0) {
+                    // Time is up, display an alert message
+                    clearInterval(timerInterval); // Stop the timer
+                    alert("The driver has arrived!"); // Display the alert message
+                    return; // Exit the function
+                }
+
+                // Convert time difference to hours, minutes, and seconds
+                const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                // Update the timeLeft div with the calculated time remaining
+                const timeLeftDiv = document.querySelector('.timeLeft');
+                timeLeftDiv.innerHTML = `<h3>Time left until pick-up: ${hours} hours, ${minutes} minutes, ${seconds} seconds </h3>`;
+            }, 1000); // Update every second
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
     </script>
 
 
