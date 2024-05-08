@@ -316,7 +316,7 @@
         </div>
     </div>
 
-    <div id="medicalSuppliesFilterContainer" class="filter-container">
+    <div id="medicalSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="medicalSuppliesDeviceType" style="margin-left: 212px;">Medical Supplies Type:</label>
             <select id="medicalSuppliesDeviceType" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
@@ -394,23 +394,23 @@
             <div class="row py-5 d-flex justify-content-between">
 
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
-                    <img src="UnityAssets/png/logo-black.png" style="width:150px" alt>
+                    <img src="UnityAssets/png/logo-black.png" style="width:200px" alt="">
                     <address class="text-secondary mt-3">
-              <strong>Unity</strong><br>
-              Al Rehab City, New Cairo<br>
-              Cairo, EG 103021<br>
-              <abbr title="Phone">P:</abbr>
-              (+20) 1013455666
-            </address>
+                <strong>Unity</strong><br>
+                Al Rehab City, New Cairo<br>
+                Cairo, EG 103021<br>
+                <abbr title="Phone">P:</abbr>
+                (+20) 1013455666
+              </address>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
                     <h3 class="h6 mb-3">Company</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="adminLogin.html">Administrator Login</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home page</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" href="#">Administrator Dashboard</a>
+                            <a class="nav-link link-fancy ps-0" href="#">Donor Dashboard</a>
                         </li>
                     </ul>
                 </div>
@@ -419,9 +419,9 @@
                     <h3 class="h6 mb-3">Subpages</h3>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="register.html">Register System Page</a>
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="content.html">Simple Text Content Page</a>
+                            <!-- <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a> -->
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register System Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
                         </li>
                     </ul>
                 </div>
@@ -431,6 +431,7 @@
         <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
+
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/aos.js"></script>
@@ -817,7 +818,7 @@
                 } else if (selectedCategory === 'food') {
                     foodFilterContainer.style.display = 'block';
                 } else if (selectedCategory === 'medicalSupplies') {
-                    medicalSuppliesFilterContainer.style.display = 'inline-block';
+                    medicalSuppliesFilterContainer.style.display = 'block';
                     medicationFilterContainer.style.display = 'inline-block';
                 } else if (selectedCategory === 'bloodDonations') {
                     bloodDonationFilterContainer.style.display = 'block';
