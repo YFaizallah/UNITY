@@ -148,7 +148,8 @@
         <input type="time" style="display: block; margin-bottom: 20px; border-radius: 5px; border-color: rgb(22, 40, 54); border-width: 2px;" id="time">
 
 
-        <a class="btn btn-primary" style="border-radius: 5px; margin-bottom: 10px;" id="submitBtn" onclick="calculateTimeRemaining()">Submit pick up</a>
+        <a class="btn btn-primary" style="border-radius: 5px; margin-bottom: 10px;" id="submitBtn">Submit pick up</a>
+
 
         <br>
         <div class="timeLeft">
@@ -281,7 +282,7 @@
 
             console.log(scrollpos)
         })
-
+        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
 
         function calculateTimeRemaining() {
             // Get the pick-up date and time
@@ -316,9 +317,8 @@
                 timeLeftDiv.innerHTML = `<h3>Time left until pick-up: ${hours} hours, ${minutes} minutes, ${seconds} seconds </h3>`;
             }, 1000); // Update every second
         }
-
-        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
     </script>
+
 
 
 </body>
