@@ -79,6 +79,38 @@
         .options-container {
             float: right;
         }
+
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+
+        .delete-btn {
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .delete-btn:hover {
+        background-color: red;
+        color: white;
+    }
+        
     </style>
 
     <style>
@@ -292,31 +324,33 @@ Fullfilled Donations
         document.addEventListener('DOMContentLoaded', function() {
         let donations = [
             {
+                "Category": "clothes",
                 "Type": "T-shirt",
                 "Age": "Adult",
                 "Gender": "Male",
                 "Material": "Cotton",
                 "Quantity": 100,
                 "Season": "Summer",
-                "Category": "clothes"
+                
             },{
+                "Category": "schoolSupplies",
                 "Type": "Stationary",
                 "item": "Pens",
                 "Quantity": 200,
-                "Category": "schoolSupplies" 
+                 
             },{
+                "Category": "medicalSupplies",
                 "Type": "Devices",
                 "Name": "heart rate monitor",
                 "Use": "heart rate monitor",
                 "Quantity": 10,
-                "Category": "medicalSupplies",
             },{
+                "Category": "bloodDonations",
                 "Blood-Type": "O+",
                 "Hospital": "City Hospital",
                 "Area": "Downtown",
                 "Governorate": "New York",
                 "Address": "123 Main Street",
-                "Category": "bloodDonations"
             }
         ];
 
@@ -334,7 +368,7 @@ Fullfilled Donations
             Object.entries(donation).forEach(([key, value]) => {
                 htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
             });
-            htmlContent += `<button class="btn btn-primary btn-sm modify-btn">Modify</button>`;
+            htmlContent += `<button class="custom-btn" >Modify</button>`;
             htmlContent += `<button class="btn btn-danger btn-sm delete-btn">Delete</button>`;
             htmlContent += '</div>';
            
