@@ -165,7 +165,7 @@ Fullfilled Donations
         <input type="time" style="display: block; margin-bottom: 20px; border-radius: 5px; border-color: rgb(22, 40, 54); border-width: 2px;" id="time">
 
 
-        <a class="btn btn-primary" style="border-radius: 5px; margin-bottom: 10px;" id="submitBtn" onclick="calculateTimeRemaining()">Submit Drop-off</a>
+        <a class="btn btn-primary" style="border-radius: 5px; margin-bottom: 10px;" id="submitBtn">Submit Drop-off</a>
 
         <br>
         <div class="timeLeft">
@@ -298,6 +298,36 @@ Fullfilled Donations
 
             console.log(scrollpos)
         })
+
+        function calculateTimeRemaining() {
+            const pickUpDate = new Date(document.querySelector('#date').value);
+            const pickUpTime = new Date(`2000-01-01T${document.querySelector('#time').value}`);
+            const pickUpDateTime = new Date(pickUpDate.getFullYear(), pickUpDate.getMonth(), pickUpDate.getDate(), pickUpTime.getHours(), pickUpTime.getMinutes(), pickUpTime.getSeconds());
+
+            const updateTimer = () => {
+                const now = new Date();
+                const timeDiff = pickUpDateTime - now;
+
+                if (timeDiff <= 0) {
+                    clearInterval(timerInterval); // Stop the timer
+                    alert("The driver has arrived to drop-off your donation !");
+                } else {
+                    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                    const timeLeftDiv = document.querySelector('.timeLeft');
+                    timeLeftDiv.innerHTML = `<h3>Time left until pick-up: ${hours} hours, ${minutes} minutes, ${seconds} seconds </h3>`;
+                }
+            };
+
+            // Call updateTimer initially to avoid delay
+            updateTimer();
+
+            // Update the timer every second
+            const timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
     </script>
 
 
