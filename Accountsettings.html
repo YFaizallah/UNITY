@@ -93,7 +93,7 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <a href="index.html">
+            <a href="adminDashboard.html">
                 <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
             </a>
 
@@ -164,6 +164,11 @@ Account Settings
                                     <input type="password" class="form-control form-control-lg" id="newPassword" name="newPassword">
                                     <div id="passwordError" class="error-message"></div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control form-control-lg" id="confirmPassword" name="confirmPassword">
+                                    <div id="confirmPasswordError" class="error-message"></div>
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color: #162836; color: #D5A187;">Submit</button>
                             </form>
                         </div>
@@ -220,8 +225,11 @@ Account Settings
         document.getElementById("passwordForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent default form submission
             const newPassword = document.getElementById("newPassword").value; // Get the new password
+            const confirmPassword = document.getElementById("confirmPassword").value; // Get the confirmed password
             const newPasswordField = document.getElementById("newPassword"); // Get the new password field
+            const confirmPasswordField = document.getElementById("confirmPassword"); // Get the confirmed password field
             const passwordError = document.getElementById("passwordError"); // Get the error message element
+            const confirmPasswordError = document.getElementById("confirmPasswordError"); // Get the confirm password error message element
 
             // Regular expression to check if password contains at least 7 characters and at least one capital letter
             const passwordRegex = /^(?=.*[A-Z]).{7,}$/;
@@ -240,19 +248,41 @@ Account Settings
                 return; // Stop further execution
             }
 
+            // Check if the confirmed password field is empty
+            if (confirmPassword.trim() === '') {
+                confirmPasswordField.classList.add('error'); // Add error class to the input field
+                confirmPasswordError.textContent = 'Please confirm your password'; // Set error message
+                return; // Stop further execution
+            }
+
+            // Check if passwords match
+            if (newPassword !== confirmPassword) {
+                confirmPasswordField.classList.add('error'); // Add error class to the input field
+                confirmPasswordError.textContent = 'Passwords do not match'; // Set error message
+                return; // Stop further execution
+            }
+
             // Simulate password change
             localStorage.setItem("password", newPassword); // Store the new password (you can replace this with your actual password change code)
             console.log("New Password: ", newPassword); // For demonstration
             alert("Password changed successfully!");
             window.location.href = "adminDashboard.html"; // Redirect to the dashboard
             newPasswordField.classList.remove('error'); // Remove error class from the input field
+            confirmPasswordField.classList.remove('error'); // Remove error class from the input field
             passwordError.textContent = ''; // Clear error message
+            confirmPasswordError.textContent = ''; // Clear error message
         });
 
         document.getElementById("newPassword").addEventListener("input", function() {
             const newPasswordField = document.getElementById("newPassword"); // Get the new password field
             newPasswordField.classList.remove('error'); // Remove error class from the input field
             document.getElementById("passwordError").textContent = ''; // Clear error message
+        });
+
+        document.getElementById("confirmPassword").addEventListener("input", function() {
+            const confirmPasswordField = document.getElementById("confirmPassword"); // Get the confirmed password field
+            confirmPasswordField.classList.remove('error'); // Remove error class from the input field
+            document.getElementById("confirmPasswordError").textContent = ''; // Clear error message
         });
     </script>
 
