@@ -12,7 +12,7 @@
     <meta name="author" content="Holger Koenemann">
     <meta name="generator" content="Eleventy v2.0.0">
     <meta name="HandheldFriendly" content="true">
-    <title>Create Donation</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/theme.min.css">
 
 
@@ -63,6 +63,17 @@
             position: absolute;
             /* Adjust as needed */
         }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
         /* Show dropdown when hovering over the dropdown item */
         
         .nav-item.dropdown:hover .dropdown-menu {
@@ -73,23 +84,6 @@
             list-style: none;
         }
     </style>
-
-    <style>
-        .center {
-            text-align: center;
-        }
-        
-        form {
-            display: inline-block;
-        }
-        
-        input[type="radio"],
-        label {
-            display: inline-block;
-            margin-right: 10px;
-        }
-    </style>
-
 
 </head>
 
@@ -114,27 +108,48 @@
     </a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">fullfilled donations</a>
-
+                    </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
+Fullfilled Donations 
+</a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="OrganizationCurrentDonations.html">Your donation posts</a>
 
                     </li>
 
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Delete</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">View Donor Details</a></li>
+                        </ul>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
       Account Management
     </a>
                     </li>
 
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px; margin-left: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </li>
+
+
             </div>
         </div>
     </nav>
 
     <main>
-
+       <div>work in progress</div> 
+       
 
 
     </main>
@@ -181,6 +196,28 @@
         <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.setItem('organizationName', 'Resala');
+            const organizationName = localStorage.getItem('organizationName');
+
+            const organizationElem = document.querySelector("#adminCheck");
+
+            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
+
+        });
+    </script>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+        });
+    </script>
+
     <script>
         let scrollpos = window.scrollY
         const header = document.querySelector(".navbar")
@@ -201,6 +238,7 @@
             console.log(scrollpos)
         })
     </script>
+
 
 </body>
 
