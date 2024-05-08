@@ -316,7 +316,7 @@
         </div>
     </div>
 
-    <div id="medicalSuppliesFilterContainer" class="filter-container">
+    <div id="medicalSuppliesFilterContainer" class="filter-container" style="display: none;">
         <div>
             <label for="medicalSuppliesDeviceType" style="margin-left: 212px;">Medical Supplies Type:</label>
             <select id="medicalSuppliesDeviceType" class="form-select form-select-lg" style="min-height: 10px; height: 30px;
@@ -818,7 +818,7 @@
                 } else if (selectedCategory === 'food') {
                     foodFilterContainer.style.display = 'block';
                 } else if (selectedCategory === 'medicalSupplies') {
-                    medicalSuppliesFilterContainer.style.display = 'inline-block';
+                    medicalSuppliesFilterContainer.style.display = 'block';
                     medicationFilterContainer.style.display = 'inline-block';
                 } else if (selectedCategory === 'bloodDonations') {
                     bloodDonationFilterContainer.style.display = 'block';
