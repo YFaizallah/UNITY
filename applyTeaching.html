@@ -261,7 +261,7 @@
 
     <nav id="navScroll" class="navbar navbar-expand-lg navbar-light fixed-top" tabindex="0">
         <div class="container">
-            <a class="navbar-brand pe-4 fs-4" href="teacherdashboard.html">
+            <a class="navbar-brand pe-4 fs-4" href="donorDashboard.html">
                 <img src="UnityAssets/png/logo-no-background.png" style="width:140px;  " alt>
             </a>
 
@@ -271,30 +271,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="teacherViewDonations.html" aria-label="Brings you to the frontpage">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="ViewDonationItems.html" aria-label="Brings you to the frontpage">
                             View Donation Requests
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteer</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="link link-fancy dropdown-item" href="teacherVolunteer.html">Teaching</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="applyMedical.html">Medical</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="applyTeaching.html">Teaching</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right:10px;" href="teacherAccountSettings.html">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="donorAccountSettings.html">
                             Account Settings
                         </a>
                     </li>
 
-                    <div class="d-flex ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right:10px;" href="volunteering.html">
+                            Apply volunteering
+                        </a>
+                    </li>
 
-                        <form class="d-flex">
-                            <input class="form-control me-2 " type="search" placeholder="Search.." aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-
-                    </div>
                 </ul>
             </div>
         </div>
@@ -478,7 +477,8 @@
                     <p><strong>Address:</strong> ${teachingPosition.address}</p>
                     <p><strong>Area:</strong> ${teachingPosition.area}</p>
                     <p><strong>Governorate:</strong> ${teachingPosition.governorate}</p>
-                    <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="donorDashboard.html">Fulfill</a>
+                    <p>If you are interested, apply for volunteering.</p>
+
                 </div>
                 <div class='map'>
                 <iframe style="height: 300px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.177366607132!2d31.481983075061947!3d30.060450017813046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458187b4604288b%3A0x9c6858efa20c0bf6!2s26%20El-Nasir%20Salah%20El-Deen%2C%20Second%20New%20Cairo%2C%20Cairo%20Governorate%204750150!5e0!3m2!1sen!2seg!4v1715005022496!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -534,6 +534,7 @@
             filterAccordionItems();
         });
     </script>
+
 </body>
 
 </html>
