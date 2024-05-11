@@ -102,20 +102,20 @@
         /* Add your provided styles here */
         /* Add your provided styles here */
         
-        #teachingAccordion {
+        #organizationAccordion {
             list-style: none;
             padding: 0;
             margin: 0;
         }
         
-        #teachingAccordion li {
+        #organizationAccordion li {
             position: relative;
             padding-bottom: 4px;
             padding-top: 18px;
             border-top: 1px solid #dce7eb;
         }
         
-        #teachingAccordion li input[type="checkbox"] {
+        #organizationAccordion li input[type="checkbox"] {
             position: absolute;
             cursor: pointer;
             width: 100%;
@@ -124,30 +124,30 @@
             opacity: 0;
         }
         
-        #teachingAccordion li i {
+        #organizationAccordion li i {
             position: absolute;
             transform: translate(-6px, 0);
             margin-top: 16px;
             right: 0;
         }
         
-        #teachingAccordion li input[type=checkbox]:checked~p {
+        #organizationAccordion li input[type=checkbox]:checked~p {
             margin-top: 0;
             max-height: 0;
             opacity: 0;
             transform: translateX(-50%);
         }
         
-        #teachingAccordion li input[type="checkbox"]:checked~i::before {
+        #organizationAccordion li input[type="checkbox"]:checked~i::before {
             transform: translate(2px, 0) rotate(45deg);
         }
         
-        #teachingAccordion li input[type="checkbox"]:checked~i::after {
+        #organizationAccordion li input[type="checkbox"]:checked~i::after {
             transform: translate(-2px, 0) rotate(-45deg);
         }
         
-        #teachingAccordion li i::before,
-        #teachingAccordion li i::after {
+        #organizationAccordion li i::before,
+        #organizationAccordion li i::after {
             content: "";
             position: absolute;
             background: #333;
@@ -155,15 +155,15 @@
             height: 9px;
         }
         
-        #teachingAccordion li i::before {
+        #organizationAccordion li i::before {
             transform: translate(-2px, 0) rotate(45deg);
         }
         
-        #teachingAccordion li i:after {
+        #organizationAccordion li i:after {
             transform: translate(2px, 0) rotate(-45deg);
         }
         
-        #teachingAccordion p {
+        #organizationAccordion p {
             font-size: 16px;
             color: rgba(48, 69, 92, 0.8);
             line-height: 26px;
@@ -177,32 +177,32 @@
             overflow: hidden;
         }
         
-        #teachingAccordion .transition,
-        #teachingAccordion p,
-        #teachingAccordion li i:before,
-        #teachingAccordion li i:after {
+        #organizationAccordion .transition,
+        #organizationAccordion p,
+        #organizationAccordion li i:before,
+        #organizationAccordion li i:after {
             transition: all 0.25s ease-in-out;
         }
         
-        #teachingAccordion .flipIn,
-        #teachingAccordion h1,
-        #teachingAccordion li {
+        #organizationAccordion .flipIn,
+        #organizationAccordion h1,
+        #organizationAccordion li {
             animation: flipdown 0.5s ease both;
         }
         
-        #teachingAccordion li:nth-of-type(1) {
+        #organizationAccordion li:nth-of-type(1) {
             animation-delay: 0.5s;
         }
         
-        #teachingAccordion li:nth-of-type(2) {
+        #organizationAccordion li:nth-of-type(2) {
             animation-delay: 0.75s;
         }
         
-        #teachingAccordion li:nth-of-type(3) {
+        #organizationAccordion li:nth-of-type(3) {
             animation-delay: 1s;
         }
         
-        #teachingAccordion li:last-of-type {
+        #organizationAccordion li:last-of-type {
             padding-bottom: 0;
         }
         
@@ -282,6 +282,10 @@
                             <li><a class="link link-fancy dropdown-item" href="teacherVolunteer.html">Teaching</a></li>
                         </ul>
                     </li>
+
+                    <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizationsdoner.html" aria-label="Brings you to the frontpage">
+                        View Organization 
+                      </a>
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right:10px;" href="donorAccountSettings.html">
                             Account Settings
@@ -291,8 +295,8 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control me-2 " type="search" placeholder="Search.." aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <input class="form-control form-control-lg" style="margin-right: 15px; width: 250px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="#">Search</a>
                         </form>
 
                     </div>
@@ -304,22 +308,14 @@
 
     <div id="medicalFilterContainer" class="filter-container" style="margin-left: 212px; margin-top: 150px;">
         <div>
-            <label for="specialty">Subjects:</label>
+            <label for="specialty">organization name:</label>
             <select id="medSpecialty" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
             <option value="all">All</option>
-            <option value="Mathematics">Mathematics</option>
-            <option value="Physics">Physics</option>
-            <option value="English">English</option>
-            <option value="History">History</option>
-            <option value="Biology">Biology</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Art">Art</option>
-            <option value="Music">Music</option>
-            <option value="Computer Science">Computer Science</option>
-            <option value="Programming">Programming</option>
+            <option value="Resala">Resala</option>
+            <option value="Physics">baa</option>
             
         </select>
         </div>
@@ -353,7 +349,7 @@
         </div>
     </div>
     <main>
-        <ul id="teachingAccordion" style="margin-top: 60px; width: 80vw; margin-left: 150px;">
+        <ul id="organizationAccordion" style="margin-top: 60px; width: 80vw; margin-left: 150px;">
         </ul>
     </main>
 
@@ -431,54 +427,102 @@
     </script>
 
     <script>
-        let teachingPositions = [{
-            "numOfStudents": 25,
-            "subjects": ["Mathematics", "Physics"],
+        let organization = [{
+            "contact number": "012345678901",
+            "email": "resala@gmail.com",
+            "organization type": "food",
             "area": "Downtown",
             "governorate": "New York",
             "address": "123 Main St"
         }, {
-            "numOfStudents": 30,
-            "subjects": ["English", "History"],
+            "contact number": "01066645678",
+            "email": "masrelkheer@gmail.com",
+            "organization type": "food",
             "area": "Uptown",
             "governorate": "Los Angeles",
             "address": "456 Elm St"
         }, {
-            "numOfStudents": 20,
-            "subjects": ["Biology", "Chemistry"],
+            "contact number": "01234567891",
+            "email": "aaa@gmail.com",
+            "organization type": "food",
             "area": "Suburbia",
             "governorate": "Chicago",
             "address": "789 Oak St"
         }, {
-            "numOfStudents": 15,
-            "subjects": ["Art", "Music"],
+            "contact number": "0000000000",
+            "email": "yossef@gmail.com",
+            "organization type": "food",
             "area": "Rural",
             "governorate": "Houston",
             "address": "101 Pine St"
         }, {
-            "numOfStudents": 35,
-            "subjects": ["Computer Science", "Programming"],
+            "contact number": "01009434791",
+            "email": "yossef@gmail.com",
+            "organization type": "food",
             "area": "Urban",
             "governorate": "Philadelphia",
             "address": "222 Maple St"
         }];
 
         document.addEventListener('DOMContentLoaded', function() {
-            const teachingAccordion = document.getElementById('teachingAccordion');
+            const organizationAccordion = document.getElementById('organizationAccordion');
 
-            teachingPositions.forEach((teachingPosition, index) => {
+            let organization = [{
+                "name": "Resala",
+                "contact number": "012345678901",
+                "email": "resala@gmail.com",
+                "organization type": "Clothes",
+                "area": "Downtown",
+                "governorate": "Cairo",
+                "address": "123 Main St"
+            }, {
+                "name": "Baheya",
+                "contact number": "01066645678",
+                "email": "Baheya@gmail.com",
+                "organization type": "Hospital",
+                "area": "El Haram",
+                "governorate": "Giza",
+                "address": "456 Elm St"
+            }, {
+                "name" : "Masr elkheer",
+                "contact number": "01234567891",
+                "email": "aaa@gmail.com",
+                "organization type": "food",
+                "area": "Suburbia",
+                "governorate": "Chicago",
+                "address": "789 Oak St"
+            }, {
+                "name": "Magdy Yacoub Heart Foundation",
+                "contact number": "0100000000",
+                "email": "Magdyyacoub@gmail.com",
+                "organization type": "Hospital",
+                "area": "Isis temple",
+                "governorate": "Aswan",
+                "address": "101 Pine St"
+            }, {
+                "name": "Bethna orphanage",
+                "contact number": "01009434791",
+                "email": "yossef@gmail.com",
+                "organization type": "orphanage",
+                "area": "Samalout",
+                "governorate": "Minya",
+                "address": "markez shosha"
+            }];
+
+            organization.forEach((org, index) => {
                 const accordionItem = document.createElement('li');
                 accordionItem.innerHTML = `
-            <input type="checkbox" id="teachingCollapse${index}">
+            <input type="checkbox" id="organizationCollapse${index}">
             <i></i>
-            <h2 style='font-size: 18px; font-weight: 400;'>Teaching Position ${index + 1}</h2>
+            <h2 style='font-size: 18px; font-weight: 400;'>${org["name"]}</h2>
             <div class="accordion-content" style="display: none;">
                 <div class='content'>
-                    <p><strong>Number of Students:</strong> ${teachingPosition.numOfStudents}</p>
-                    <p><strong>Subjects:</strong> ${teachingPosition.subjects.join(', ')}</p>
-                    <p><strong>Address:</strong> ${teachingPosition.address}</p>
-                    <p><strong>Area:</strong> ${teachingPosition.area}</p>
-                    <p><strong>Governorate:</strong> ${teachingPosition.governorate}</p>
+                    <p><strong>Contact Number:</strong> ${org["contact number"]}</p>
+                    <p><strong>Email:</strong> ${org.email}</p>
+                    <p><strong>Organization Type:</strong> ${org["organization type"]}</p>
+                    <p><strong>Area:</strong> ${org.area}</p>
+                    <p><strong>Governorate:</strong> ${org.governorate}</p>
+                    <p><strong>Address:</strong> ${org.address}</p>
                     <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="donorDashboard.html">Fulfill</a>
                 </div>
                 <div class='map'>
@@ -486,9 +530,9 @@
             </div>
             </div>
         `;
-                teachingAccordion.appendChild(accordionItem);
+                organizationAccordion.appendChild(accordionItem);
 
-                const checkbox = accordionItem.querySelector(`#teachingCollapse${index}`);
+                const checkbox = accordionItem.querySelector(`#organizationCollapse${index}`);
                 checkbox.addEventListener('change', function() {
                     const content = accordionItem.querySelector('.accordion-content');
                     if (this.checked) {
@@ -498,41 +542,53 @@
                     }
                 });
             });
+        });
 
-            const medSpecialtySelect = document.getElementById('medSpecialty');
-            const orgNameSelect = document.getElementById('orgName');
-            const areaSelect = document.getElementById('Area');
+        const medSpecialtySelect = document.getElementById('medSpecialty');
+        const orgNameSelect = document.getElementById('orgName');
+        const areaSelect = document.getElementById('Area');
 
-            function filterAccordionItems() {
-                const selectedSubject = medSpecialtySelect.value;
-                const selectedGovernorate = orgNameSelect.value;
-                const selectedArea = areaSelect.value;
+        function filterAccordionItems() {
+            const selectedSubject = medSpecialtySelect.value;
+            const selectedGovernorate = orgNameSelect.value;
+            const selectedArea = areaSelect.value;
 
-                const accordionItems = teachingAccordion.querySelectorAll('li');
+            const accordionItems = organizationAccordion.querySelectorAll('li');
 
-                accordionItems.forEach(item => {
-                    const subjects = item.querySelector('p:nth-child(2)').innerText.split(': ')[1].split(', ');
-                    const governorate = item.querySelector('p:nth-child(5)').innerText.split(': ')[1];
-                    const area = item.querySelector('p:nth-child(4)').innerText.split(': ')[1];
+            accordionItems.forEach(item => {
+                const subjects = item.querySelector('p:nth-child(2)').innerText.split(': ')[1].split(', ');
+                const governorate = item.querySelector('p:nth-child(5)').innerText.split(': ')[1];
+                const area = item.querySelector('p:nth-child(4)').innerText.split(': ')[1];
 
-                    const matchesSubject = selectedSubject === 'all' || subjects.includes(selectedSubject);
-                    const matchesGovernorate = selectedGovernorate === 'all' || governorate === selectedGovernorate;
-                    const matchesArea = selectedArea === 'all' || area === selectedArea;
+                const matchesSubject = selectedSubject === 'all' || subjects.includes(selectedSubject);
+                const matchesGovernorate = selectedGovernorate === 'all' || governorate === selectedGovernorate;
+                const matchesArea = selectedArea === 'all' || area === selectedArea;
 
-                    if (matchesSubject && matchesGovernorate && matchesArea) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
+                if (matchesSubject && matchesGovernorate && matchesArea) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
-            medSpecialtySelect.addEventListener('change', filterAccordionItems);
-            orgNameSelect.addEventListener('change', filterAccordionItems);
-            areaSelect.addEventListener('change', filterAccordionItems);
+        medSpecialtySelect.addEventListener('change', filterAccordionItems);
+        orgNameSelect.addEventListener('change', filterAccordionItems);
+        areaSelect.addEventListener('change', filterAccordionItems);
 
-            // Initial filter
-            filterAccordionItems();
+        // Initial filter
+        filterAccordionItems();
+
+        const searchButton = document.getElementById('searchButton');
+
+        // Add event listener to the search button
+        searchButton.addEventListener('click', () => {
+            // Get the input from the search bar
+            const searchTerm = document.getElementById('searchBar').value;
+
+
+            // Call the filterCards function with the search term
+            filterCards(searchTerm);
         });
     </script>
 </body>
