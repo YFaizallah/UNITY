@@ -54,12 +54,20 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             /* Adding shadow effect */
             transition: border-image 0.5s, box-shadow 0.5s;
+            display: flex;
+            flex-direction: column;
             /* Transition for both border image and shadow */
         }
         
         .card-container:hover {
             border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
+        .xxx:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
             /* Changing shadow on hover */
         }
         
@@ -137,9 +145,8 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control form-control-lg" style="margin-right: 15px; width: 250px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="#">Search</a>
-
+                            <input class="form-control form-control-sm xxx" style="margin-right: 15px; width: 270px;height:40px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                            <a id="searchButton" class="btn xxx " style="margin:0px 15px 0px 0px; width:80px;height: 38px;" href="#">Search</a>
 
                         </form>
 
@@ -732,11 +739,11 @@
                 let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
 
                 if (item.photoUrl) {
-                    photoHtml = `<img src="${item.photoUrl}" width="300px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                    photoHtml = `<img src="${item.photoUrl}" width="352px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                 }
 
                 if (item.photoUrl && item.type) {
-                    photoHtml = `<img src="${item.photoUrl}" width="50px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                    photoHtml = `<img src="${item.photoUrl}" width="300px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                 }
 
                 const cardTextHtml = Object.entries(item)

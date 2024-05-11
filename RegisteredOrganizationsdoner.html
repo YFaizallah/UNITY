@@ -283,8 +283,8 @@
                         </ul>
                     </li>
 
-                    <a class="nav-link link-fancy" style="margin-right: 10px;" href="RegisteredOrganizationsdoner.html" aria-label="Brings you to the frontpage">
-                        View Organization 
+                    <a class="nav-link link-fancy" style="margin-right: 10px; margin-bottom: 15px;" role="button" href="RegisteredOrganizationsdoner.html">
+                        Organizations
                       </a>
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right:10px;" href="donorAccountSettings.html">
@@ -295,8 +295,8 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control form-control-lg" style="margin-right: 15px; width: 250px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="#">Search</a>
+                            <input class="form-control form-control-lg" style=" height: 13px; width: 200px; margin-right: 20px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px;margin-top: 5px; margin-bottom: 3px;  color: rgb(213, 161, 135); height: 45x;  " href="#">Search</a>
                         </form>
 
                     </div>
@@ -308,14 +308,16 @@
 
     <div id="medicalFilterContainer" class="filter-container" style="margin-left: 212px; margin-top: 150px;">
         <div>
-            <label for="specialty">organization name:</label>
+            <label for="specialty">organization Type:</label>
             <select id="medSpecialty" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
             <option value="all">All</option>
-            <option value="Resala">Resala</option>
-            <option value="Physics">baa</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Orphanage">Orphanage</option>
+            <option value="Hospital">Hospital</option>
+            <option value="Food">Food</option>
             
         </select>
         </div>
@@ -326,11 +328,10 @@
             font-size: 12.5px;
             border-radius: .5rem;">
             <option value="all">All</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Houston">Houston</option>
-            <option value="Philadelphia">Philadelphia</option>
+            <option value="Cairo">Cairo</option>
+            <option value="Giza">Giza</option>
+            <option value="Minya">Minya</option>
+            <option value="Aswan">Aswan</option>
         </select>
         </div>
         <div>
@@ -340,11 +341,11 @@
             font-size: 12.5px;
             border-radius: .5rem;">
             <option value="all">All</option>
-            <option value="Downtown">Downtown</option>
-            <option value="Uptown">Uptown</option>
-            <option value="Subrbia">Subrbia</option>
-            <option value="Rural">Rural</option>
-            <option value="Urban">Urban</option>
+            <option value="El Haram">El Haram</option>
+            <option value="Fifth settlement">Fifth settlement</option>
+            <option value="Nasr city">Nasr city</option>
+            <option value="Isis temple">Rural</option>
+            <option value="Samalout">Samalout</option>
         </select>
         </div>
     </div>
@@ -428,86 +429,51 @@
 
     <script>
         let organization = [{
+            "name": "Resala",
             "contact number": "012345678901",
             "email": "resala@gmail.com",
-            "organization type": "food",
-            "area": "Downtown",
-            "governorate": "New York",
+            "organization type": "Clothes",
+            "area": "Fifth settlement",
+            "governorate": "Cairo",
             "address": "123 Main St"
         }, {
+            "name": "Baheya",
             "contact number": "01066645678",
-            "email": "masrelkheer@gmail.com",
-            "organization type": "food",
-            "area": "Uptown",
-            "governorate": "Los Angeles",
+            "email": "Baheya@gmail.com",
+            "organization type": "Hospital",
+            "area": "El Haram",
+            "governorate": "Giza",
             "address": "456 Elm St"
         }, {
+            "name": "Masr elkheer",
             "contact number": "01234567891",
             "email": "aaa@gmail.com",
-            "organization type": "food",
-            "area": "Suburbia",
-            "governorate": "Chicago",
+            "organization type": "Food",
+            "area": "Madient nasr",
+            "governorate": "Cairo",
             "address": "789 Oak St"
         }, {
-            "contact number": "0000000000",
-            "email": "yossef@gmail.com",
-            "organization type": "food",
-            "area": "Rural",
-            "governorate": "Houston",
+            "name": "Magdy Yacoub Heart Foundation",
+            "contact number": "0100000000",
+            "email": "Magdyyacoub@gmail.com",
+            "organization type": "Hospital",
+            "area": "Isis temple",
+            "governorate": "Aswan",
             "address": "101 Pine St"
         }, {
+            "name": "Bethna orphanage",
             "contact number": "01009434791",
             "email": "yossef@gmail.com",
-            "organization type": "food",
-            "area": "Urban",
-            "governorate": "Philadelphia",
-            "address": "222 Maple St"
+            "organization type": "Orphanage",
+            "area": "Samalout",
+            "governorate": "Minya",
+            "address": "markez shosha"
         }];
+
 
         document.addEventListener('DOMContentLoaded', function() {
             const organizationAccordion = document.getElementById('organizationAccordion');
 
-            let organization = [{
-                "name": "Resala",
-                "contact number": "012345678901",
-                "email": "resala@gmail.com",
-                "organization type": "Clothes",
-                "area": "Downtown",
-                "governorate": "Cairo",
-                "address": "123 Main St"
-            }, {
-                "name": "Baheya",
-                "contact number": "01066645678",
-                "email": "Baheya@gmail.com",
-                "organization type": "Hospital",
-                "area": "El Haram",
-                "governorate": "Giza",
-                "address": "456 Elm St"
-            }, {
-                "name" : "Masr elkheer",
-                "contact number": "01234567891",
-                "email": "aaa@gmail.com",
-                "organization type": "food",
-                "area": "Suburbia",
-                "governorate": "Chicago",
-                "address": "789 Oak St"
-            }, {
-                "name": "Magdy Yacoub Heart Foundation",
-                "contact number": "0100000000",
-                "email": "Magdyyacoub@gmail.com",
-                "organization type": "Hospital",
-                "area": "Isis temple",
-                "governorate": "Aswan",
-                "address": "101 Pine St"
-            }, {
-                "name": "Bethna orphanage",
-                "contact number": "01009434791",
-                "email": "yossef@gmail.com",
-                "organization type": "orphanage",
-                "area": "Samalout",
-                "governorate": "Minya",
-                "address": "markez shosha"
-            }];
 
             organization.forEach((org, index) => {
                 const accordionItem = document.createElement('li');
@@ -523,7 +489,7 @@
                     <p><strong>Area:</strong> ${org.area}</p>
                     <p><strong>Governorate:</strong> ${org.governorate}</p>
                     <p><strong>Address:</strong> ${org.address}</p>
-                    <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="donorDashboard.html">Fulfill</a>
+                    
                 </div>
                 <div class='map'>
                 <iframe style="height: 300px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.177366607132!2d31.481983075061947!3d30.060450017813046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458187b4604288b%3A0x9c6858efa20c0bf6!2s26%20El-Nasir%20Salah%20El-Deen%2C%20Second%20New%20Cairo%2C%20Cairo%20Governorate%204750150!5e0!3m2!1sen!2seg!4v1715005022496!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -556,7 +522,7 @@
             const accordionItems = organizationAccordion.querySelectorAll('li');
 
             accordionItems.forEach(item => {
-                const subjects = item.querySelector('p:nth-child(2)').innerText.split(': ')[1].split(', ');
+                const subjects = item.querySelector('p:nth-child(3)').innerText.split(': ')[1];
                 const governorate = item.querySelector('p:nth-child(5)').innerText.split(': ')[1];
                 const area = item.querySelector('p:nth-child(4)').innerText.split(': ')[1];
 
@@ -590,6 +556,20 @@
             // Call the filterCards function with the search term
             filterCards(searchTerm);
         });
+
+        function filterCards(searchTerm) {
+            const accordionItems = organizationAccordion.querySelectorAll('li');
+
+            accordionItems.forEach(item => {
+                const name = item.querySelector('h2').innerText;
+
+                if (name.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 
