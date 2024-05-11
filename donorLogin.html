@@ -191,9 +191,10 @@
 
             Buttonorganization.addEventListener('click', function(event) {
                 event.preventDefault();
-                const email = document.getElementById('organizationEmail').value;
-                const password = document.getElementById('organizationPassword').value;
-                checkUser(email, password);
+                // const email = document.getElementById('organizationEmail').value;
+                // const password = document.getElementById('organizationPassword').value;
+                //  checkUser(email, password);
+                window.location.href = 'organizationDashboard.html';
             });
 
             function checkUser(email, password) {
