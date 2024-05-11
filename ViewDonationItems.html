@@ -137,8 +137,9 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control me-2 " type="search" placeholder="Search.." aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <input class="form-control form-control-lg" style="margin-right: 15px; width: 250px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="#">Search</a>
+
                         </form>
 
                     </div>
@@ -1018,6 +1019,19 @@
             const selectedType = medicalTypeSelect.value;
             const selectedUse = medicalUseSelect.value;
             filterMedicalSupplies(selectedType, selectedUse);
+        });
+
+        // Get the search button element
+        const searchButton = document.getElementById('searchButton');
+
+        // Add event listener to the search button
+        searchButton.addEventListener('click', () => {
+            // Get the input from the search bar
+            const searchTerm = document.getElementById('searchBar').value;
+
+
+            // Call the filterCards function with the search term
+            filterCards(searchTerm);
         });
     </script>
 </body>
