@@ -363,21 +363,18 @@
 
     <script>
         let clothes = [{
-            "Congrats!": "You have a new donation request!",
             "Donor Name": "Youssef Faizallah",
             "Donor ID": "1",
             "Donor Contact Number": "+01004449321",
             "Area": "Westvirginia",
             "Donation Type": "Medical Supplies", // Add Category property
         }, {
-            "Congrats!": "You have a new donation request!",
             "Donor Name": "Mostafa Faizallah",
             "Donor ID": "2",
             "Donor Contact Number": "+01110492407",
             "Area": "Yasmeen",
             "Donation Type": "School Supplies", // Add Category property
         }, {
-            "Congrats!": "You have a new donation request!",
             "Donor Name": "Emily Johnson",
             "Donor ID": "3",
             "Donor Contact Number": "+01552727193",
@@ -628,6 +625,7 @@
                     <div class="row g-0">
                         <div class="col-md-8">
                             <div class="card-body" >
+                                <h5 class="card-title" style="margin-bottom:25px;">Congrats! You have a new donation</h5>
                                 ${Object.entries(item).map(([key, value]) => `
                                     <p class="card-text"><strong>${key}:</strong> ${value}</p>
                                 `).join('')}
