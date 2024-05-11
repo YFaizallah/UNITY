@@ -82,7 +82,7 @@
     <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
         <div class="container">
 
-            <a href="donorDashboard.html">
+            <a href="donationsonlydashboard.html">
                 <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
             </a>
 
@@ -123,13 +123,81 @@
     </nav>
 
     <main>
+
+        <!-- Commented out the selected code -->
+
         <div class="py-vh-5 w-100 overflow-hidden" id="services">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 col-lg-10 col-xl-8">
-                        <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="donorCheck" style="margin-top:150px;">Welcome to your dashboard, </h1>
+                        <label style="font-size: 20px;">How are you interested in helping?</label>
+                        <select class="form-control-lg" id="donorTypeSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                            <option selected disabled style="opacity: 0.5;">Choose..</option>
+                            <option value="teacher">Pro-Bono Teacher</option>
+                            <option value="doctor">Pro-Bono Doctor</option>
+                        </select>
+                        <!-- <h1 class="display-1 fw-bold border-bottom border-dark pb-4" id="donorCheck" style="margin-top:150px;">Welcome to your dashboard, </h1> -->
                     </div>
                 </div>
+            </div>
+            <div id="doctorDonor" style="display: none;">
+                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Address">
+                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Area">
+                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+
+                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Medical Specialty">
+
+                <label style="font-size: 20px;">Specify the clinic's location</label>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                <label style="font-size: 20px;">How many patients would you be able to help?</label>
+                <input type="number" class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Pro-Bono Patients">
+
+                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                <label style="font-size: 20px;">Please upload your medical license.</label>
+                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+
+            </div>
+
+            <div id="teacherDonor" style="display: none;">
+                <label style="font-size: 20px;">How many subjects can you teach?</label>
+                <input type="number" id='numOfSubjects' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="How many subjects can you teach?">
+
+                <div id="subjectFields"></div>
+
+                <label style="font-size: 20px;">How many classes can you help?</label>
+                <input type="number" id='numOfClasses' class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Of Classes">
+
+                <label style="font-size: 20px;">Would you be interested in private tutoring?</label>
+                <select class="form-control-lg" id="privateTutorSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                    <option selected disabled style="opacity: 0.5;">Choose..</option>
+                    <option value="yesPrivate">Yes</option>
+                    <option value="noPrivate">No</option>
+                </select>
+
+                <div id="numOfStudent" style="display: none;">
+                    <label style="font-size: 20px;">Specify the number of students</label>
+                    <input type="number" id='numOfStudents' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="# Of Students">
+                </div>
+
+
+                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                <label style="font-size: 20px;">Please upload a letter from a school's HR.</label>
+                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+            </div>
+
+            <div class="mb-3 form-check py-3">
+
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" href="donationsonlydashboard.html" id="registerButton" style=" display: none; background-color: #162836; color: #D5A187;">Register</button>
+
+        </div>
+        </form>
+        <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
+
+        </div>
 
 
     </main>
@@ -179,13 +247,192 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            localStorage.setItem('donorName', 'Kamilia');
+            const userTypeSelect = document.getElementById('userType');
+            const donorFields = document.getElementById('donorFields');
+            const organizationRepFields = document.getElementById('organizationRepFields');
+            const registerLabel = document.getElementById('registerLabel');
 
-            const donorName = localStorage.getItem('donorName');
+            const donorTypeSelect = document.getElementById('donorTypeSelect');
+            const teacherDonor = document.getElementById('teacherDonor');
+            const doctorDonor = document.getElementById('doctorDonor');
 
-            const adminElement = document.querySelector("#donorCheck");
+            const subjectNumber = document.getElementById('numOfSubjects');
 
-            adminElement.textContent = `Welcome to your dashboard, ${donorName}`
+            const privateTutorSelect = document.getElementById('privateTutorSelect');
+            const studentNum = document.getElementById('numOfStudent');
+
+            const registerButton = document.getElementById('registerButton');
+
+            const organizationFields = document.getElementById('organizationFields');
+            const continueButton = document.getElementById('goToOrg');
+
+            userTypeSelect.addEventListener('change', function() {
+                const selectedUserType = userTypeSelect.value;
+
+                if (selectedUserType === 'donor') {
+                    donorFields.style.display = 'block';
+                    organizationRepFields.style.display = 'none';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                    registerButton.style.display = 'block';
+                } else if (selectedUserType === 'organization') {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'block';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                    registerButton.style.display = 'none';
+                    registerButton.style.display = 'block';
+
+                } else {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'none';
+                }
+            });
+
+
+
+            donorTypeSelect.addEventListener('change', function() {
+                const selectedDonorType = donorTypeSelect.value;
+
+                if (selectedDonorType === 'teacher') {
+                    teacherDonor.style.display = 'block';
+                    doctorDonor.style.display = 'none';
+                    donorFields.style.display = 'none';
+                } else if (selectedDonorType === 'doctor') {
+
+                    doctorDonor.style.display = 'block';
+                    teacherDonor.style.display = 'none'
+                    donorFields.style.display = 'none';
+                } else {
+
+                    doctorDonor.style.display = 'none';
+                    teacherDonor.style.display = 'none';
+                }
+
+            });
+
+            subjectNumber.addEventListener('change', function() {
+                let numOfSubjects = parseInt(subjectNumber.value);
+                const subjectFields = document.getElementById('subjectFields');
+
+                // Clear existing fields
+                subjectFields.innerHTML = '';
+
+                for (let i = 0; i < numOfSubjects; i++) {
+                    const newField = document.createElement('input');
+                    newField.type = 'text';
+                    newField.classList.add('form-control', 'form-control-lg');
+                    newField.style.marginBottom = '10px';
+                    newField.placeholder = 'Subject Name';
+                    subjectFields.appendChild(newField);
+                }
+            });
+
+            privateTutorSelect.addEventListener('change', function() {
+                const privateValue = privateTutorSelect.value;
+
+                if (privateValue === 'yesPrivate') {
+                    studentNum.style.display = 'block';
+                } else {
+                    studentNum.style.display = 'none';
+                }
+            });
+
+            continueButton.addEventListener('click', function() {
+                event.preventDefault();
+                organizationRepFields.style.display = 'none';
+                organizationFields.style.display = 'block';
+                registerButton.style.display = 'block';
+                registerButton.style.marginBottom = '10px';
+            });
+
+            registerButton.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Get all input and select fields
+                const inputFields = document.querySelectorAll('input');
+                const selectFields = document.querySelectorAll('select');
+
+                // Initialize a flag to track if all fields are filled
+                let allFieldsFilled = validateFill();
+
+                // Iterate over input fields
+                inputFields.forEach(field => {
+                    // Get the computed style of the field
+                    const computedStyle = window.getComputedStyle(field);
+                    // Check if the field is displayed as "block" and if it's empty or only contains whitespace
+                    if (computedStyle.display === 'block' && !field.value.trim()) {
+                        field.classList.add('error');
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
+
+                // Iterate over select fields
+                selectFields.forEach(select => {
+                    // Get the computed style of the select
+                    const computedStyle = window.getComputedStyle(select);
+                    if (computedStyle.display === 'block' && select.selectedIndex === 0) {
+                        select.classList.add('error');
+                    } else {
+                        select.classList.remove('error');
+                    }
+                });
+
+
+                if (allFieldsFilled) {
+                    window.location.href = 'RegistrationRequestPending.html';
+                }
+
+            });
+
+
+
+            function validateFill() {
+                let allFieldsFilled = true;
+
+                // Get all input and select fields within divs with display: block
+                const inputFields = document.querySelectorAll('div[style*="display: block"] input');
+                const selectFields = document.querySelectorAll('div[style*="display: block"] select');
+
+                // Iterate over input fields
+                inputFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        allFieldsFilled = false;
+                    }
+                });
+
+                // Iterate over select fields
+                selectFields.forEach(select => {
+                    if (select.selectedIndex === 0) {
+                        allFieldsFilled = false;
+                    }
+                });
+
+                return allFieldsFilled;
+            }
+
+
+
+            // Event listener for input fields
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+            // Event listener for select fields
+            document.querySelectorAll('select').forEach(select => {
+                select.addEventListener('change', function() {
+                    if (this.selectedIndex !== 0) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+
 
         });
     </script>
