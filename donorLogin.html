@@ -87,7 +87,7 @@
                     <form class="row" id="loginForm">
                         <div class="col-12 col-lg-10 col-xl-8">
                             <div class="mb-3">
-                                <label for="userType" id="Loginlabel" class="form-label">login as</label>
+                                <label for="userType" id="Loginlabel" class="form-label">Login as</label>
                                 <select class="form-select form-select-lg form-control-lg form-control-color" id="userType" aria-label="Default select example" style="display: block;">
                                     <option selected disabled>Choose...</option>
                                     <option value="donor">Donor</option>
@@ -96,8 +96,8 @@
                             </div>
 
                             <div id="donorFields" style="display:none;">
-                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="email" id="donorEmail" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="password" id="donorPassword" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
                             </div>
 
                             <div id="organizationRepFields" style="display:none;">
@@ -123,6 +123,25 @@
 
 
     <script>
+        const users = [{
+            'email': 'user1@gmail.com',
+            'password': '12345',
+            'category': 'Doctor'
+        }, {
+            'email': 'user2@gmail.com',
+            'password': '12345',
+            'category': 'Teacher'
+        }, {
+            'email': 'user3@gmail.com',
+            'password': '12345',
+            'category': 'Donor'
+        }, {
+            'email': 'user4@gmail.com',
+            'password': '12345',
+            'category': 'DonorOnly'
+        }];
+
+
         document.addEventListener('DOMContentLoaded', function() {
             const userTypeSelect = document.getElementById('userType');
             const donorFields = document.getElementById('donorFields');
@@ -152,17 +171,64 @@
                 }
             });
 
+            // Buttondoner.addEventListener('click', function(event) {
+            //     event.preventDefault();
+            //     // Redirect to the donor dashboard page
+            //     window.location.href = 'donorDashboard.html';
+            // });
+
+            // Buttonorganization.addEventListener('click', function(event) {
+            //     event.preventDefault();
+            //     // Redirect to the organization dashboard page
+            //     window.location.href = 'organizationDashboard.html';
+            // });
             Buttondoner.addEventListener('click', function(event) {
                 event.preventDefault();
-                // Redirect to the donor dashboard page
-                window.location.href = 'donorDashboard.html';
+                const email = document.getElementById('donorEmail').value;
+                const password = document.getElementById('donorPassword').value;
+                checkUser(email, password);
             });
 
             Buttonorganization.addEventListener('click', function(event) {
                 event.preventDefault();
-                // Redirect to the organization dashboard page
-                window.location.href = 'organizationDashboard.html';
+                const email = document.getElementById('organizationEmail').value;
+                const password = document.getElementById('organizationPassword').value;
+                checkUser(email, password);
             });
+
+            function checkUser(email, password) {
+                // Check if user exists in the users array
+                const user = users.find(user => user.email === email && user.password === password);
+
+                if (user) {
+                    // User exists, update href based on category
+                    switch (user.category) {
+                        case 'Doctor':
+                            console.log('Doctor');
+                            window.location.href = 'medicalDashboard.html';
+                            break;
+                        case 'Teacher':
+                            console.log('Teacher');
+                            window.location.href = 'teacherDashboard.html';
+                            break;
+                        case 'Donor':
+                            console.log('Donor');
+                            window.location.href = 'donorDashboard.html';
+                            break;
+
+                        case 'DonorOnly':
+                            window.location.href = 'donationsonlyDashboard.html';
+                            break;
+
+                        default:
+                            console.log('Invalid category');
+                    }
+                } else {
+                    console.log('User not found');
+                }
+            }
+
+
         });
     </script>
 

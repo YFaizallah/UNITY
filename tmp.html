@@ -99,6 +99,176 @@
         li {
             list-style: none;
         }
+        
+        .accordion-button {
+            font-size: 1rem;
+            /* Set font size to regular */
+            background-color: transparent;
+            /* Remove background color */
+            /* Remove border */
+            width: 80vw;
+            /* Set width */
+            text-align: left;
+            /* Align text to the left */
+        }
+        
+        .accordion-item {
+            border: black;
+        }
+        /* Add your provided styles here */
+        /* Add your provided styles here */
+        
+        #donationItemsAccordion {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #donationItemsAccordion li {
+            position: relative;
+            padding-bottom: 4px;
+            padding-top: 18px;
+            border-top: 1px solid #dce7eb;
+        }
+        
+        #donationItemsAccordion li input[type="checkbox"] {
+            position: absolute;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+        }
+        
+        #donationItemsAccordion li i {
+            position: absolute;
+            transform: translate(-6px, 0);
+            margin-top: 16px;
+            right: 0;
+        }
+        
+        #donationItemsAccordion li input[type=checkbox]:checked~p {
+            margin-top: 0;
+            max-height: 0;
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        
+        #donationItemsAccordion li input[type="checkbox"]:checked~i::before {
+            transform: translate(2px, 0) rotate(45deg);
+        }
+        
+        #donationItemsAccordion li input[type="checkbox"]:checked~i::after {
+            transform: translate(-2px, 0) rotate(-45deg);
+        }
+        
+        #donationItemsAccordion li i::before,
+        #donationItemsAccordion li i::after {
+            content: "";
+            position: absolute;
+            background: #333;
+            width: 3px;
+            height: 9px;
+        }
+        
+        #donationItemsAccordion li i::before {
+            transform: translate(-2px, 0) rotate(45deg);
+        }
+        
+        #donationItemsAccordion li i:after {
+            transform: translate(2px, 0) rotate(-45deg);
+        }
+        
+        #donationItemsAccordion p {
+            font-size: 16px;
+            color: rgba(48, 69, 92, 0.8);
+            line-height: 26px;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0 11px;
+            max-height: 800px;
+            margin-top: 14px;
+            opacity: 1;
+            transform: translate(0, 0);
+            overflow: hidden;
+        }
+        
+        #donationItemsAccordion .transition,
+        #donationItemsAccordion p,
+        #donationItemsAccordion li i:before,
+        #donationItemsAccordion li i:after {
+            transition: all 0.25s ease-in-out;
+        }
+        
+        #donationItemsAccordion .flipIn,
+        #donationItemsAccordion h1,
+        #donationItemsAccordion li {
+            animation: flipdown 0.5s ease both;
+        }
+        
+        #donationItemsAccordion li:nth-of-type(1) {
+            animation-delay: 0.5s;
+        }
+        
+        #donationItemsAccordion li:nth-of-type(2) {
+            animation-delay: 0.75s;
+        }
+        
+        #donationItemsAccordion li:nth-of-type(3) {
+            animation-delay: 1s;
+        }
+        
+        #donationItemsAccordion li:last-of-type {
+            padding-bottom: 0;
+        }
+        
+        @keyframes flipdown {
+            0% {
+                opacity: 0;
+                transform-origin: top center;
+                transform: rotateX(-90deg);
+            }
+            5% {
+                opacity: 1;
+            }
+            80% {
+                transform: rotateX(8deg);
+            }
+            83% {
+                transform: rotateX(6deg);
+            }
+            92% {
+                transform: rotateX(-3deg);
+            }
+            100% {
+                transform-origin: top center;
+                transform: rotateX(0deg);
+            }
+        }
+        
+        .accordion-content {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .map {
+            flex: 1;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .accordion-content {
+                flex-direction: column;
+            }
+            .content-left,
+            .content-right {
+                flex: auto;
+                margin-right: 0;
+            }
+        }
     </style>
 
 </head>
@@ -137,9 +307,8 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control form-control-lg" style="margin-right: 15px; width: 250px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="#">Search</a>
-
+                            <input class="form-control me-2 " type="search" placeholder="Search.." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
 
                     </div>
@@ -211,11 +380,11 @@
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
-            <option value="all">All</option>
-            <option value="Adult">Adult</option>
-            <option value="Child">Child</option>
-            <option value="Teen">Teen</option>
-        </select>
+                <option value="all">All</option>
+                <option value="Adult">Adult</option>
+                <option value="Child">Child</option>
+                <option value="Teen">Teen</option>
+            </select>
         </div>
         <div>
             <label for="clothesGender">Gender:</label>
@@ -223,11 +392,11 @@
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
-            <option value="all">All</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Unisex">Unisex</option>
-        </select>
+                <option value="all">All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Unisex">Unisex</option>
+            </select>
         </div>
         <div>
             <label for="clothesSeason">Season:</label>
@@ -235,12 +404,12 @@
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
-            <option value="all">All</option>
-            <option value="Summer">Summer</option>
-            <option value="Spring">Spring</option>
-            <option value="Fall">Fall</option>
-            <option value="Winter">Winter</option>
-        </select>
+                <option value="all">All</option>
+                <option value="Summer">Summer</option>
+                <option value="Spring">Spring</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+            </select>
         </div>
     </div>
 
@@ -337,10 +506,10 @@
             padding: .5rem 1rem;
             font-size: 12.5px;
             border-radius: .5rem;">
-                <option value="all">All</option>
-                <option value="Pain relief">Pain Relief</option>
-                <option value="Antibiotic">Antibiotic</option>
-            </select>
+                    <option value="all">All</option>
+                    <option value="Pain relief">Pain Relief</option>
+                    <option value="Antibiotic">Antibiotic</option>
+                </select>
             </div>
         </div>
     </div>
@@ -384,11 +553,10 @@
     </div>
 
     <main>
-        <div class="container" style="margin-top: 75px;">
-            <div class="row" id="cardContainer">
-            </div>
-        </div>
+        <ul id="donationItemsAccordion" style="margin-top: 60px; width: 80vw; margin-left: 150px;">
+        </ul>
     </main>
+
 
     <footer>
         <div class="container small border-top">
@@ -397,12 +565,12 @@
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
                     <img src="UnityAssets/png/logo-black.png" style="width:200px" alt="">
                     <address class="text-secondary mt-3">
-                <strong>Unity</strong><br>
-                Al Rehab City, New Cairo<br>
-                Cairo, EG 103021<br>
-                <abbr title="Phone">P:</abbr>
-                (+20) 1013455666
-              </address>
+                        <strong>Unity</strong><br>
+                        Al Rehab City, New Cairo<br>
+                        Cairo, EG 103021<br>
+                        <abbr title="Phone">P:</abbr>
+                        (+20) 1013455666
+                    </address>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
                     <h3 class="h6 mb-3">Company</h3>
@@ -421,7 +589,8 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <!-- <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a> -->
-                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register System Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register
+                                System Page</a>
                             <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
                         </li>
                     </ul>
@@ -471,7 +640,7 @@
             "Material": "Cotton",
             "Quantity": 100,
             "Season": "Summer",
-            "Category": "clothes"
+            "Category": "clothes" // Add Category property
         }, {
             "Type": "Dress",
             "Age": "Child",
@@ -479,7 +648,7 @@
             "Material": "Polyester",
             "Quantity": 50,
             "Season": "Spring",
-            "Category": "clothes"
+            "Category": "clothes" // Add Category property
         }, {
             "Type": "Jeans",
             "Age": "Teen",
@@ -487,7 +656,7 @@
             "Material": "Denim",
             "Quantity": 80,
             "Season": "Fall",
-            "Category": "clothes"
+            "Category": "clothes" // Add Category property
         }];
 
 
@@ -496,13 +665,13 @@
             "Type": "Stationary",
             "item": "Pens",
             "Quantity": 200,
-            "Category": "schoolSupplies"
+            "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 2,
             "Type": "Stationary",
             "item": "Notebooks",
             "Quantity": 150,
-            "Category": "schoolSupplies"
+            "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 3,
             "Type": "Books",
@@ -512,8 +681,7 @@
             "Edition": "1st Edition",
             "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
-            "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/Math.jpeg"
+            "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 4,
             "Type": "Books",
@@ -523,8 +691,7 @@
             "Edition": "2nd Edition",
             "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
-            "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/Science.jpeg"
+            "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 6,
             "Type": "Books",
@@ -534,14 +701,13 @@
             "Edition": "3rd Edition",
             "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
-            "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/History.jpeg"
+            "Category": "schoolSupplies" // Add Category property
         }, {
             "id": 5,
             "Type": "Stationary",
             "item": "Pencils",
             "Quantity": 250,
-            "Category": "schoolSupplies"
+            "Category": "schoolSupplies" // Add Category property
         }];
 
         let Books = [{
@@ -552,7 +718,7 @@
             "Edition": "1st Edition",
             "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
-            "photoUrl": "UnityAssets/books/Math.jpeg"
+            "Category": "Books"
         }, {
             "id": 4,
             "Name": "Science",
@@ -561,7 +727,7 @@
             "Edition": "2nd Edition",
             "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
-            "photoUrl": "UnityAssets/books/Science.jpeg"
+            "Category": "Books"
         }, {
             "id": 6,
             "Name": "History",
@@ -570,7 +736,7 @@
             "Edition": "3rd Edition",
             "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
-            "photoUrl": "UnityAssets/books/History.jpeg"
+            "Category": "Books"
         }];
 
         let stationeryItems = [{
@@ -592,29 +758,25 @@
             "Age": "5-7",
             "Gender": "Male",
             "Category": "toys",
-            "Quantity": 100,
-            "photoUrl": "UnityAssets/toys/actionFigure.jpeg"
+            "Quantity": 100
         }, {
             "Type": "Doll",
             "Age": "3-5",
             "Gender": "Female",
             "Category": "toys",
-            "Quantity": 150,
-            "photoUrl": "UnityAssets/toys/doll.jpeg"
+            "Quantity": 150
         }, {
             "Type": "Cars",
             "Age": "6-10",
             "Gender": "Unisex",
             "Category": "toys",
-            "Quantity": 200,
-            "photoUrl": "UnityAssets/toys/cars.jpeg"
+            "Quantity": 200
         }, {
             "Type": "Board Game",
             "Age": "8-12",
             "Gender": "Unisex",
             "Category": "toys",
-            "Quantity": 80,
-            "photoUrl": "UnityAssets/toys/download (4).jpeg"
+            "Quantity": 80
         }];
 
         let food = [{
@@ -651,7 +813,7 @@
             "Use": "heart rate monitor",
             "Quantity": 10,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/heart monitor.jpg"
+
         }, {
             id: 2,
             "Name": "Insulin pen",
@@ -659,7 +821,7 @@
             "Use": "Insulin pen",
             "Quantity": 50,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/InsulinPen.jpg"
+
         }, {
             id: 3,
             "Name": "Pandol",
@@ -667,7 +829,6 @@
             "Use": "Pain relief",
             "Quantity": 30,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/Amoxicillin.jpg"
         }, {
             id: 4,
             "Name": "Amoxicillin",
@@ -675,7 +836,6 @@
             "Use": "Antibiotic",
             "Quantity": 20,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/Amoxicillin.jpg"
         }];
 
         let bloodDonations = [{
@@ -716,354 +876,337 @@
             bloodDonations
         ];
 
-        function generateCards(array) {
-            let cardHtml = '';
-            const newArray = array.map(item => ({...item
-            }));
+        function createAccordion(array, accordionId) {
+            const accordion = document.getElementById(accordionId);
 
-            newArray.forEach(item => {
-                delete item.Category;
-            });
-
-
-            newArray.forEach(item => {
-                let photoHtml = '';
-                let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
-
-                if (item.photoUrl) {
-                    photoHtml = `<img src="${item.photoUrl}" width="300px" height="100%" class="float-end ms-3" alt="${item.type}">`;
-                }
-
-                if (item.photoUrl && item.type) {
-                    photoHtml = `<img src="${item.photoUrl}" width="50px" height="100%" class="float-end ms-3" alt="${item.type}">`;
-                }
-
-                const cardTextHtml = Object.entries(item)
-                    .filter(([key]) => key !== 'photoUrl')
-                    .map(([key, value]) => `<p class="card-text"><strong>${key}:</strong> ${value}</p>`)
-                    .join('');
-
-                cardHtml += `
-            <div class="col-12">
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-8">
-                            <div class="card-body card-container">
-                                ${cardTextHtml}
-                                <div class="input-group">
-                                    <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
-                                    <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="scheduleDonation.html">Donate</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="position: absolute; z-index: 1; margin-left: 730px;">
-                            ${photoHtml}
-                        </div>
-                    </div>
+            array.forEach((item, index) => {
+                        const accordionItem = document.createElement('li');
+                        accordionItem.innerHTML = `
+            <input type="checkbox" id="caseCollapse${accordionId}${index}" class=${item.Category}>
+            <i></i>
+            <h2 class="accordion-button" style='font-size: 18px; font-weight: 400;'>${item.Category}</h2>
+            <div class="accordion-content" style="display: none;">
+                <div class='content'>
+                    ${Object.entries(item).map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`).join('')}
                 </div>
             </div>
         `;
-            });
-            return cardHtml;
-        }
+                accordion.appendChild(accordionItem);
 
-
-        function filterCards(category) {
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = '';
-            arrays.forEach(array => {
-                if (array[0].Category === category) {
-                    cardContainer.innerHTML += generateCards(array);
-                }
-            });
-        }
-
-
-
-        // Container for cards
-        const cardContainer = document.getElementById('cardContainer');
-
-        // Generate cards for each array
-        arrays.forEach(array => {
-            cardContainer.innerHTML += generateCards(array);
-        });
-
-        // Radio button change event listener
-        const radioButtons = document.querySelectorAll('input[name="category"]');
-        radioButtons.forEach(button => {
-            button.addEventListener('change', (event) => {
-                const category = event.target.value;
-                if (category === 'all') {
-                    showAllCards();
-                } else {
-                    filterCards(category);
-                }
-            });
-        });
-
-        // Function to show all cards
-        function showAllCards() {
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = '';
-            arrays.forEach(array => {
-                cardContainer.innerHTML += generateCards(array);
+                // Add event listener to toggle accordion content visibility
+                const checkbox = accordionItem.querySelector(`#caseCollapse${accordionId}${index}`);
+                const accordionContent = accordionItem.querySelector('.accordion-content');
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        accordionContent.style.display = 'block';
+                    } else {
+                        accordionContent.style.display = 'none';
+                    }
+                });
             });
         }
-    </script>
-    <script>
-        const categoryRadios = document.querySelectorAll('input[name="category"]');
-        const clothesFilterContainer = document.getElementById('clothesFilterContainer');
-        const schoolSuppliesFilterContainer = document.getElementById('schoolSuppliesFilterContainer');
-        const toysFilterContainer = document.getElementById('toysFilterContainer');
-        const foodFilterContainer = document.getElementById('foodFilterContainer');
-        const medicalSuppliesFilterContainer = document.getElementById('medicalSuppliesFilterContainer');
-        const medicationFilterContainer = document.getElementById('medicationFilterContainer');
-        const bloodDonationFilterContainer = document.getElementById('bloodDonationFilterContainer');
 
-        categoryRadios.forEach(radio => {
-            radio.addEventListener('change', (event) => {
-                const selectedCategory = event.target.value;
-                clothesFilterContainer.style.display = 'none';
-                schoolSuppliesFilterContainer.style.display = 'none';
-                toysFilterContainer.style.display = 'none';
-                foodFilterContainer.style.display = 'none';
-                medicalSuppliesFilterContainer.style.display = 'none';
-                medicationFilterContainer.style.display = 'none';
-                bloodDonationFilterContainer.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function () {
+            createAccordion(clothes, 'donationItemsAccordion');
+            createAccordion(schoolSupplies, 'donationItemsAccordion');
+            createAccordion(Books, 'donationItemsAccordion');
+            createAccordion(stationeryItems, 'donationItemsAccordion');
+            createAccordion(toys, 'donationItemsAccordion');
+            createAccordion(food, 'donationItemsAccordion');
+            createAccordion(medicalSupplies, 'donationItemsAccordion');
+            createAccordion(bloodDonations, 'donationItemsAccordion');
 
-                if (selectedCategory === 'clothes') {
-                    clothesFilterContainer.style.display = 'block';
-                } else if (selectedCategory === 'schoolSupplies') {
-                    schoolSuppliesFilterContainer.style.display = 'block';
-                } else if (selectedCategory === 'toys') {
-                    toysFilterContainer.style.display = 'block';
-                } else if (selectedCategory === 'food') {
-                    foodFilterContainer.style.display = 'block';
-                } else if (selectedCategory === 'medicalSupplies') {
-                    medicalSuppliesFilterContainer.style.display = 'block';
-                    medicationFilterContainer.style.display = 'inline-block';
-                } else if (selectedCategory === 'bloodDonations') {
-                    bloodDonationFilterContainer.style.display = 'block';
+
+            categoryRadios.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    // Get the selected category from the radio button value
+                    const selectedCategory = event.target.value;
+
+                    // Clear existing items in the accordion
+                    const accordion = document.getElementById('donationItemsAccordion');
+                    accordion.innerHTML = '';
+
+                    // Create accordion with items for the selected category
+                    createAccordion(getItemsByCategory(selectedCategory), 'donationItemsAccordion');
+                });
+            });
+
+
+
+            function getItemsByCategory(category) {
+                // Define your items array here
+                let items = [];
+
+                // Depending on the category, populate the items array with corresponding items
+                switch (category) {
+                    case 'clothes':
+                        items = clothes; // Assuming clothes is an array containing clothes items
+                        break;
+                    case 'schoolSupplies':
+                        items = schoolSupplies; // Assuming schoolSupplies is an array containing school supplies items
+                        break;
+                    case 'toys':
+                        items = toys; // Assuming toys is an array containing toys items
+                        break;
+                    case 'food':
+                        items = food; // Assuming food is an array containing food items
+                        break;
+                    case 'medicalSupplies':
+                        items = medicalSupplies; // Assuming medicalSupplies is an array containing medical supplies items
+                        break;
+                    case 'bloodDonations':
+                        items = bloodDonations; // Assuming bloodDonations is an array containing blood donation items
+                        break;
+                    default:
+                        items = []; // Return an empty array if the category is not recognized
+                        break;
                 }
+
+                return items;
+            }
+
+            const categoryRadios = document.querySelectorAll('input[name="category"]');
+            const clothesFilterContainer = document.getElementById('clothesFilterContainer');
+            const schoolSuppliesFilterContainer = document.getElementById('schoolSuppliesFilterContainer');
+            const toysFilterContainer = document.getElementById('toysFilterContainer');
+            const foodFilterContainer = document.getElementById('foodFilterContainer');
+            const medicalSuppliesFilterContainer = document.getElementById('medicalSuppliesFilterContainer');
+            const medicationFilterContainer = document.getElementById('medicationFilterContainer');
+            const bloodDonationFilterContainer = document.getElementById('bloodDonationFilterContainer');
+
+
+            // function that shows the filtering options, depending on the category.
+            categoryRadios.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    const selectedCategory = event.target.value;
+                    clothesFilterContainer.style.display = 'none';
+                    schoolSuppliesFilterContainer.style.display = 'none';
+                    toysFilterContainer.style.display = 'none';
+                    foodFilterContainer.style.display = 'none';
+                    medicalSuppliesFilterContainer.style.display = 'none';
+                    medicationFilterContainer.style.display = 'none';
+                    bloodDonationFilterContainer.style.display = 'none';
+
+                    if (selectedCategory === 'clothes') {
+                        clothesFilterContainer.style.display = 'block';
+                    } else if (selectedCategory === 'schoolSupplies') {
+                        schoolSuppliesFilterContainer.style.display = 'block';
+                    } else if (selectedCategory === 'toys') {
+                        toysFilterContainer.style.display = 'block';
+                    } else if (selectedCategory === 'food') {
+                        foodFilterContainer.style.display = 'block';
+                    } else if (selectedCategory === 'medicalSupplies') {
+                        medicalSuppliesFilterContainer.style.display = 'block';
+                        medicationFilterContainer.style.display = 'inline-block';
+                    } else if (selectedCategory === 'bloodDonations') {
+                        bloodDonationFilterContainer.style.display = 'block';
+                    }
+
+                    const accordionItems = document.querySelectorAll('.accordion-item');
+                    accordionItems.forEach(item => {
+                        const checkbox = item.querySelector('input[type="checkbox"]');
+                        if (selectedCategory === 'all' || checkbox.classList.contains(selectedCategory)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
             });
         });
 
         // Function to filter food by types
-        function filterFoodByType(type) {
-            let filteredFood;
-            if (type === 'all') {
-                filteredFood = food;
-            } else {
-                filteredFood = food.filter(item => item.Type === type);
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredFood);
-        }
-
-        // Event listener for food type select element
-        const foodTypeSelect = document.getElementById('foodType');
-        foodTypeSelect.addEventListener('change', (event) => {
-            const selectedType = event.target.value;
-            filterFoodByType(selectedType);
-        });
-        // Function to filter school supplies by type
-        function filterSchoolSupplies(type) {
-            let filteredSupplies;
-            if (type === 'all') {
-                filteredSupplies = schoolSupplies; // Show all school supplies when 'All' is selected
-            } else {
-                filteredSupplies = schoolSupplies.filter(item => item.Type === type);
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredSupplies);
-        }
-
-        // Event listener for school supplies type select element
-        const schoolSuppliesTypeSelect = document.getElementById('schoolSuppliesType');
-        schoolSuppliesTypeSelect.addEventListener('change', (event) => {
-            const selectedType = event.target.value;
-            filterSchoolSupplies(selectedType);
-        });
-
-
-        // Function to filter clothes by age, gender, and season
-        function filterClothes(age, gender, season) {
-            let filteredClothes;
-            if (age === 'all' && gender === 'all' && season === 'all') {
-                filteredClothes = clothes; // Show all clothes when all options are selected
-            } else {
-                filteredClothes = clothes.filter(item => {
-                    return (age === 'all' || item.Age === age) &&
-                        (gender === 'all' || item.Gender === gender) &&
-                        (season === 'all' || item.Season === season);
-                });
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredClothes);
-        }
-
-        // Event listeners for select elements for age, gender, and season
-        const clothesAgeSelect = document.getElementById('clothesAge');
-        const clothesGenderSelect = document.getElementById('clothesGender');
-        const clothesSeasonSelect = document.getElementById('clothesSeason');
-
-        clothesAgeSelect.addEventListener('change', () => {
-            const selectedAge = clothesAgeSelect.value;
-            const selectedGender = clothesGenderSelect.value;
-            const selectedSeason = clothesSeasonSelect.value;
-            filterClothes(selectedAge, selectedGender, selectedSeason);
-        });
-
-        clothesGenderSelect.addEventListener('change', () => {
-            const selectedAge = clothesAgeSelect.value;
-            const selectedGender = clothesGenderSelect.value;
-            const selectedSeason = clothesSeasonSelect.value;
-            filterClothes(selectedAge, selectedGender, selectedSeason);
-        });
-
-        clothesSeasonSelect.addEventListener('change', () => {
-            const selectedAge = clothesAgeSelect.value;
-            const selectedGender = clothesGenderSelect.value;
-            const selectedSeason = clothesSeasonSelect.value;
-            filterClothes(selectedAge, selectedGender, selectedSeason);
-        });
-        // Function to filter toys by age, gender, and category
-        function filterToys(age, gender, category) {
-            let filteredToys;
-            if (age === 'all' && gender === 'all' && category === 'all') {
-                filteredToys = toys; // Show all toys when 'All' is selected for all filters
-            } else {
-                filteredToys = toys.filter(item => {
-                    return (age === 'all' || item.Age === age) &&
-                        (gender === 'all' || item.Gender === gender) &&
-                        (category === 'all' || item.Type === category);
-                });
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredToys);
-        }
-
-        // Event listeners for select elements for age, gender, and category
-        const toysAgeSelect = document.getElementById('toysAge');
-        const toysGenderSelect = document.getElementById('toysGender');
-        const toysCategorySelect = document.getElementById('toysCategory');
-
-        toysAgeSelect.addEventListener('change', () => {
-            const selectedAge = toysAgeSelect.value;
-            const selectedGender = toysGenderSelect.value;
-            const selectedCategory = toysCategorySelect.value;
-            filterToys(selectedAge, selectedGender, selectedCategory);
-        });
-
-        toysGenderSelect.addEventListener('change', () => {
-            const selectedAge = toysAgeSelect.value;
-            const selectedGender = toysGenderSelect.value;
-            const selectedCategory = toysCategorySelect.value;
-            filterToys(selectedAge, selectedGender, selectedCategory);
-        });
-
-        toysCategorySelect.addEventListener('change', () => {
-            const selectedAge = toysAgeSelect.value;
-            const selectedGender = toysGenderSelect.value;
-            const selectedCategory = toysCategorySelect.value;
-            filterToys(selectedAge, selectedGender, selectedCategory);
-        });
-
-        function filterBloodDonationsByFilters(hospital, government, area) {
-            let filteredBloodDonations;
-            if (hospital === 'all' && government === 'all' && area === 'all') {
-                filteredBloodDonations = bloodDonations; // Show all blood donations when 'All' is selected for all filters
-            } else {
-                filteredBloodDonations = bloodDonations.filter(item => {
-                    return (hospital === 'all' || item.Hospital === hospital) &&
-                        (government === 'all' || item.Governorate === government) &&
-                        (area === 'all' || item.Area === area);
-                });
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredBloodDonations);
-        }
-
-
-
-        // Event listener for blood donation filters
-        const hospitalSelect = document.getElementById('bloodDonationHospital');
-        const governmentSelect = document.getElementById('bloodDonationGovernorate');
-        const areaSelect = document.getElementById('bloodDonationArea');
-
-        hospitalSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
-
-        governmentSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
-
-        areaSelect.addEventListener('change', () => {
-            const selectedHospital = hospitalSelect.value;
-            const selectedGovernment = governmentSelect.value;
-            const selectedArea = areaSelect.value;
-            filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
-        });
-        // Function to filter medical supplies by type and use
-        function filterMedicalSupplies(type, use) {
-            let filteredMedicalSupplies;
-            if (type === 'all' && use === 'all') {
-                filteredMedicalSupplies = medicalSupplies; // Show all medical supplies when 'All' is selected for both filters
-            } else {
-                filteredMedicalSupplies = medicalSupplies.filter(item => {
-                    return (type === 'all' || item.Type === type) &&
-                        (use === 'all' || item.Use === use);
-                });
-            }
-            const cardContainer = document.getElementById('cardContainer');
-            cardContainer.innerHTML = generateCards(filteredMedicalSupplies);
-        }
-
-        // Event listeners for select elements for type and use
-        const medicalTypeSelect = document.getElementById('medicalSuppliesDeviceType');
-        const medicalUseSelect = document.getElementById('medicationUse');
-
-        medicalTypeSelect.addEventListener('change', () => {
-            const selectedType = medicalTypeSelect.value;
-            const selectedUse = medicalUseSelect.value;
-            filterMedicalSupplies(selectedType, selectedUse);
-        });
-
-        medicalUseSelect.addEventListener('change', () => {
-            const selectedType = medicalTypeSelect.value;
-            const selectedUse = medicalUseSelect.value;
-            filterMedicalSupplies(selectedType, selectedUse);
-        });
-
-        // Get the search button element
-        const searchButton = document.getElementById('searchButton');
-
-        // Add event listener to the search button
-        searchButton.addEventListener('click', () => {
-            // Get the input from the search bar
-            const searchTerm = document.getElementById('searchBar').value;
-
-
-            // Call the filterCards function with the search term
-            filterCards(searchTerm);
-        });
-
-        // document.addEventListener('keydown', (event) => {
-        //     // Check if the key pressed is the "Enter" key (key code 13)
-        //     if (event.keyCode === 13 && searchButton.value.trim() !== '') {
-        //         // Get the input from the search bar
-        //         const searchTerm = document.getElementById('searchBar').value;
-
-        //         // Call the filterCards function with the search term
-        //         filterCards(searchTerm);
+        // function filterFoodByType(type) {
+        //     let filteredFood;
+        //     if (type === 'all') {
+        //         filteredFood = food;
+        //     } else {
+        //         filteredFood = food.filter(item => item.Type === type);
         //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredFood);
+        // }
+
+        // // Event listener for food type select element
+        // const foodTypeSelect = document.getElementById('foodType');
+        // foodTypeSelect.addEventListener('change', (event) => {
+        //     const selectedType = event.target.value;
+        //     filterFoodByType(selectedType);
+        // });
+        // // Function to filter school supplies by type
+        // function filterSchoolSupplies(type) {
+        //     let filteredSupplies;
+        //     if (type === 'all') {
+        //         filteredSupplies = schoolSupplies; // Show all school supplies when 'All' is selected
+        //     } else {
+        //         filteredSupplies = schoolSupplies.filter(item => item.Type === type);
+        //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredSupplies);
+        // }
+
+        // // Event listener for school supplies type select element
+        // const schoolSuppliesTypeSelect = document.getElementById('schoolSuppliesType');
+        // schoolSuppliesTypeSelect.addEventListener('change', (event) => {
+        //     const selectedType = event.target.value;
+        //     filterSchoolSupplies(selectedType);
+        // });
+
+
+        // // Function to filter clothes by age, gender, and season
+        // function filterClothes(age, gender, season) {
+        //     let filteredClothes;
+        //     if (age === 'all' && gender === 'all' && season === 'all') {
+        //         filteredClothes = clothes; // Show all clothes when all options are selected
+        //     } else {
+        //         filteredClothes = clothes.filter(item => {
+        //             return (age === 'all' || item.Age === age) &&
+        //                 (gender === 'all' || item.Gender === gender) &&
+        //                 (season === 'all' || item.Season === season);
+        //         });
+        //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredClothes);
+        // }
+
+        // // Event listeners for select elements for age, gender, and season
+        // const clothesAgeSelect = document.getElementById('clothesAge');
+        // const clothesGenderSelect = document.getElementById('clothesGender');
+        // const clothesSeasonSelect = document.getElementById('clothesSeason');
+
+        // clothesAgeSelect.addEventListener('change', () => {
+        //     const selectedAge = clothesAgeSelect.value;
+        //     const selectedGender = clothesGenderSelect.value;
+        //     const selectedSeason = clothesSeasonSelect.value;
+        //     filterClothes(selectedAge, selectedGender, selectedSeason);
+        // });
+
+        // clothesGenderSelect.addEventListener('change', () => {
+        //     const selectedAge = clothesAgeSelect.value;
+        //     const selectedGender = clothesGenderSelect.value;
+        //     const selectedSeason = clothesSeasonSelect.value;
+        //     filterClothes(selectedAge, selectedGender, selectedSeason);
+        // });
+
+        // clothesSeasonSelect.addEventListener('change', () => {
+        //     const selectedAge = clothesAgeSelect.value;
+        //     const selectedGender = clothesGenderSelect.value;
+        //     const selectedSeason = clothesSeasonSelect.value;
+        //     filterClothes(selectedAge, selectedGender, selectedSeason);
+        // });
+        // // Function to filter toys by age, gender, and category
+        // function filterToys(age, gender, category) {
+        //     let filteredToys;
+        //     if (age === 'all' && gender === 'all' && category === 'all') {
+        //         filteredToys = toys; // Show all toys when 'All' is selected for all filters
+        //     } else {
+        //         filteredToys = toys.filter(item => {
+        //             return (age === 'all' || item.Age === age) &&
+        //                 (gender === 'all' || item.Gender === gender) &&
+        //                 (category === 'all' || item.Type === category);
+        //         });
+        //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredToys);
+        // }
+
+        // // Event listeners for select elements for age, gender, and category
+        // const toysAgeSelect = document.getElementById('toysAge');
+        // const toysGenderSelect = document.getElementById('toysGender');
+        // const toysCategorySelect = document.getElementById('toysCategory');
+
+        // toysAgeSelect.addEventListener('change', () => {
+        //     const selectedAge = toysAgeSelect.value;
+        //     const selectedGender = toysGenderSelect.value;
+        //     const selectedCategory = toysCategorySelect.value;
+        //     filterToys(selectedAge, selectedGender, selectedCategory);
+        // });
+
+        // toysGenderSelect.addEventListener('change', () => {
+        //     const selectedAge = toysAgeSelect.value;
+        //     const selectedGender = toysGenderSelect.value;
+        //     const selectedCategory = toysCategorySelect.value;
+        //     filterToys(selectedAge, selectedGender, selectedCategory);
+        // });
+
+        // toysCategorySelect.addEventListener('change', () => {
+        //     const selectedAge = toysAgeSelect.value;
+        //     const selectedGender = toysGenderSelect.value;
+        //     const selectedCategory = toysCategorySelect.value;
+        //     filterToys(selectedAge, selectedGender, selectedCategory);
+        // });
+
+        // function filterBloodDonationsByFilters(hospital, government, area) {
+        //     let filteredBloodDonations;
+        //     if (hospital === 'all' && government === 'all' && area === 'all') {
+        //         filteredBloodDonations = bloodDonations; // Show all blood donations when 'All' is selected for all filters
+        //     } else {
+        //         filteredBloodDonations = bloodDonations.filter(item => {
+        //             return (hospital === 'all' || item.Hospital === hospital) &&
+        //                 (government === 'all' || item.Governorate === government) &&
+        //                 (area === 'all' || item.Area === area);
+        //         });
+        //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredBloodDonations);
+        // }
+
+
+
+        // // Event listener for blood donation filters
+        // const hospitalSelect = document.getElementById('bloodDonationHospital');
+        // const governmentSelect = document.getElementById('bloodDonationGovernorate');
+        // const areaSelect = document.getElementById('bloodDonationArea');
+
+        // hospitalSelect.addEventListener('change', () => {
+        //     const selectedHospital = hospitalSelect.value;
+        //     const selectedGovernment = governmentSelect.value;
+        //     const selectedArea = areaSelect.value;
+        //     filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        // });
+
+        // governmentSelect.addEventListener('change', () => {
+        //     const selectedHospital = hospitalSelect.value;
+        //     const selectedGovernment = governmentSelect.value;
+        //     const selectedArea = areaSelect.value;
+        //     filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        // });
+
+        // areaSelect.addEventListener('change', () => {
+        //     const selectedHospital = hospitalSelect.value;
+        //     const selectedGovernment = governmentSelect.value;
+        //     const selectedArea = areaSelect.value;
+        //     filterBloodDonationsByFilters(selectedHospital, selectedGovernment, selectedArea);
+        // });
+        // // Function to filter medical supplies by type and use
+        // function filterMedicalSupplies(type, use) {
+        //     let filteredMedicalSupplies;
+        //     if (type === 'all' && use === 'all') {
+        //         filteredMedicalSupplies = medicalSupplies; // Show all medical supplies when 'All' is selected for both filters
+        //     } else {
+        //         filteredMedicalSupplies = medicalSupplies.filter(item => {
+        //             return (type === 'all' || item.Type === type) &&
+        //                 (use === 'all' || item.Use === use);
+        //         });
+        //     }
+        //     const cardContainer = document.getElementById('cardContainer');
+        //     cardContainer.innerHTML = generateCards(filteredMedicalSupplies);
+        // }
+
+        // // Event listeners for select elements for type and use
+        // const medicalTypeSelect = document.getElementById('medicalSuppliesDeviceType');
+        // const medicalUseSelect = document.getElementById('medicationUse');
+
+        // medicalTypeSelect.addEventListener('change', () => {
+        //     const selectedType = medicalTypeSelect.value;
+        //     const selectedUse = medicalUseSelect.value;
+        //     filterMedicalSupplies(selectedType, selectedUse);
+        // });
+
+        // medicalUseSelect.addEventListener('change', () => {
+        //     const selectedType = medicalTypeSelect.value;
+        //     const selectedUse = medicalUseSelect.value;
+        //     filterMedicalSupplies(selectedType, selectedUse);
         // });
     </script>
 </body>
