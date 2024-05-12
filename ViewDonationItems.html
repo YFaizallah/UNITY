@@ -759,7 +759,7 @@
                             <div class="card-body card-container">
                                 ${cardTextHtml}
                                 <div class="input-group">
-                                    <input id="quantity-input-${item.id}" type="number" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
+                                    <input id="quantity-input-${item.id}" type="number" max="${item.Quantity}" class="form-control quantity-input"  min="1" max="${maxQuantity}" placeholder="How many items would you like to donate?" style="width: 25em;" value="1">
                                     <a class="btn btn-primary donate-btn" style="border-radius: 10px; margin-top: 8px; color: rgb(213, 161, 135);" href="scheduleDonation.html">Donate</a>
                                 </div>
                             </div>
