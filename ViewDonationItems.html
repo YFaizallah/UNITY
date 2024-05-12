@@ -524,7 +524,7 @@
             "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
             "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/Math.jpeg"
+            "photoUrl": "UnityAssets/books/Math.webp"
         }, {
             "id": 4,
             "Type": "Books",
@@ -535,7 +535,7 @@
             "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
             "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/Science.jpeg"
+            "photoUrl": "UnityAssets/books/Science.jpg"
         }, {
             "id": 6,
             "Type": "Books",
@@ -546,7 +546,7 @@
             "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
             "Category": "schoolSupplies",
-            "photoUrl": "UnityAssets/books/History.jpeg"
+            "photoUrl": "UnityAssets/books/History.jpg"
         }, {
             "id": 5,
             "Type": "Stationary",
@@ -563,7 +563,8 @@
             "Edition": "1st Edition",
             "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
-            "photoUrl": "UnityAssets/books/Math.jpeg"
+            "photoUrl": "UnityAssets/books/Math.webp",
+            "Category": "Books"
         }, {
             "id": 4,
             "Name": "Science",
@@ -572,7 +573,8 @@
             "Edition": "2nd Edition",
             "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
-            "photoUrl": "UnityAssets/books/Science.jpeg"
+            "photoUrl": "UnityAssets/books/Science.jpg",
+            "Category": "Books"
         }, {
             "id": 6,
             "Name": "History",
@@ -581,7 +583,8 @@
             "Edition": "3rd Edition",
             "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
-            "photoUrl": "UnityAssets/books/History.jpeg"
+            "photoUrl": "UnityAssets/books/History.jpg",
+            "Category": "Books"
         }];
 
         let stationeryItems = [{
@@ -604,28 +607,28 @@
             "Gender": "Male",
             "Category": "toys",
             "Quantity": 100,
-            "photoUrl": "UnityAssets/toys/actionFigure.jpeg"
+            "photoUrl": "UnityAssets/toys/Action figure.jpg"
         }, {
             "Type": "Doll",
             "Age": "3-5",
             "Gender": "Female",
             "Category": "toys",
             "Quantity": 150,
-            "photoUrl": "UnityAssets/toys/doll.jpeg"
+            "photoUrl": "UnityAssets/toys/doll.jpg"
         }, {
             "Type": "Cars",
             "Age": "6-10",
             "Gender": "Unisex",
             "Category": "toys",
             "Quantity": 200,
-            "photoUrl": "UnityAssets/toys/cars.jpeg"
+            "photoUrl": "UnityAssets/toys/car.jpg"
         }, {
             "Type": "Board Game",
             "Age": "8-12",
             "Gender": "Unisex",
             "Category": "toys",
             "Quantity": 80,
-            "photoUrl": "UnityAssets/toys/download (4).jpeg"
+            "photoUrl": "UnityAssets/toys/Chess.jpg"
         }];
 
         let food = [{
@@ -670,7 +673,7 @@
             "Use": "Insulin pen",
             "Quantity": 50,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/InsulinPen.jpg"
+            "photoUrl": "UnityAssets/medic/insulin-pen.jpeg"
         }, {
             id: 3,
             "Name": "Pandol",
@@ -678,7 +681,7 @@
             "Use": "Pain relief",
             "Quantity": 30,
             "Category": "medicalSupplies",
-            "photoUrl": "UnityAssets/medic/Amoxicillin.jpg"
+            "photoUrl": "UnityAssets/medic/pandol.jpg"
         }, {
             id: 4,
             "Name": "Amoxicillin",
@@ -742,12 +745,10 @@
                 let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
 
                 if (item.photoUrl) {
-                    photoHtml = `<img src="${item.photoUrl}" width="300px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                    photoHtml = `<img src="${item.photoUrl}" style="margin-left: -50px;" width="250px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                 }
 
-                if (item.photoUrl && item.type) {
-                    photoHtml = `<img src="${item.photoUrl}" width="50px" height="100%" class="float-end ms-3" alt="${item.type}">`;
-                }
+
 
                 const cardTextHtml = Object.entries(item)
                     .filter(([key]) => key !== 'photoUrl')
