@@ -97,57 +97,58 @@
 
                             <div id="donorFields" style="display: none;">
 
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="First Name">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Last Name">
-                                <select class="form-control-lg" id="genderDonor" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                <input type="text" class="form-control form-control-lg" id="donorFirstName" style="margin-bottom: 10px;" placeholder="First Name">
+                                <input type="text" class="form-control form-control-lg" id="donorLastName" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <select class="form-control-lg" id="donorGender" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
                                     <option selected disabled style="opacity: 0.5;">Gender</option>
-                                    <option value="donor">Male</option>
-                                    <option value="organization">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                 </select>
-                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
-                                <input type="tel" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Contact Number">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Confirm Password">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Address">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Area">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+                                <input type="email" class="form-control form-control-lg" id="donorEmail" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="tel" class="form-control form-control-lg" id="donorContactNumber" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <input type="password" class="form-control form-control-lg" id="donorPassword" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" id="donorConfirmPassword" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <input type="text" class="form-control form-control-lg" id="donorAddress" style="margin-bottom: 10px;" placeholder="Address">
+                                <input type="text" class="form-control form-control-lg" id="donorArea" style="margin-bottom: 10px;" placeholder="Area">
+                                <input type="text" class="form-control form-control-lg" id="donorGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
 
                                 <label style="font-size: 20px;">How are you interested in helping?</label>
-                                <select class="form-control-lg" id="donorTypeSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
-                                    <option selected disabled style="opacity: 0.5;">Choose..</option>
-                                    <option value="regularDonor">Materialistic Donations Only</option>
-                                    <option value="teacher">Pro-Bono Teacher</option>
-                                    <option value="doctor">Pro-Bono Doctor</option>
-                                </select>
-
+                                <form>
+                                    <select class="form-control-lg" id="donorTypeSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                        <option selected disabled style="opacity: 0.5;">Choose..</option>
+                                        <option value="regularDonor">Materialistic Donations Only</option>
+                                        <option value="teacher">Pro-Bono Teacher</option>
+                                        <option value="doctor">Pro-Bono Doctor</option>
+                                    </select>
+                                </form>
 
                             </div>
 
                             <div id="organizationRepFields" style="display: none;">
                                 <label style="font-size: 20px;">Representative Details</label>
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="First Name">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <input type="text" class="form-control form-control-lg" id="orgRepFirstName" style="margin-bottom: 10px;" placeholder="First Name">
+                                <input type="text" class="form-control form-control-lg" id="orgRepLastName" style="margin-bottom: 10px;" placeholder="Last Name">
 
-                                <select class="form-control-lg" id="genderRep" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                <select class="form-control-lg" id="orgRepGender" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
                                     <option selected disabled style="opacity: 0.5;">Gender</option>
-                                    <option value="donor">Male</option>
-                                    <option value="organization">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                 </select>
-                                <input type="email" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
-                                <input type="tel" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Contact Number">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Confirm Password">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" id="goToOrg" style="background-color: #162836; color: #D5A187;">Continue</button>
+                                <input type="email" class="form-control form-control-lg" id="orgRepEmail" style="margin-bottom: 10px;" placeholder="Email">
+                                <input type="tel" class="form-control form-control-lg" id="orgRepContactNumber" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <input type="password" class="form-control form-control-lg" id="orgRepPassword" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" id="orgRepConfirmPassword" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="goToOrg" style="background-color: #162836; color: #D5A187;">Continue</button>
                             </div>
 
                             <div id="organizationFields" style="display: none;">
                                 <label style="font-size: 20px;">Organization Details</label>
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Type">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Address">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Area">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Postal Code">
+                                <input type="text" class="form-control form-control-lg" id="orgName" style="margin-bottom: 10px;" placeholder="Organization Name">
+                                <input type="text" class="form-control form-control-lg" id="orgType" style="margin-bottom: 10px;" placeholder="Organization Type">
+                                <input type="text" class="form-control form-control-lg" id="orgAddress" style="margin-bottom: 10px;" placeholder="Address">
+                                <input type="text" class="form-control form-control-lg" id="orgArea" style="margin-bottom: 10px;" placeholder="Area">
+                                <input type="text" class="form-control form-control-lg" id="orgGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+                                <input type="text" class="form-control form-control-lg" id="orgPostalCode" style="margin-bottom: 10px;" placeholder="Postal Code">
 
                                 <label style="font-size: 20px;">Please specify the location</label>
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
@@ -155,7 +156,7 @@
 
 
                                 <label style="font-size: 20px;">Please upload documents verifying your organization's status</label>
-                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+                                <input type="file" class="form-control form-control-lg" id="orgQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
 
 
                             </div>
@@ -163,11 +164,11 @@
 
 
                             <div id="doctorDonor" style="display: none;">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Address">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Clinic Area">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Governerate">
+                                <input type="text" class="form-control form-control-lg" id="clinicAddress" style="margin-bottom: 10px;" placeholder="Clinic Address">
+                                <input type="text" class="form-control form-control-lg" id="clinicArea" style="margin-bottom: 10px;" placeholder="Clinic Area">
+                                <input type="text" class="form-control form-control-lg" id="clinicGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
 
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Medical Specialty">
+                                <input type="text" class="form-control form-control-lg" id="medicalSpecialty" style="margin-bottom: 10px;" placeholder="Medical Specialty">
 
                                 <label style="font-size: 20px;">Specify the clinic's location</label>
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
@@ -175,11 +176,11 @@
 
 
                                 <label style="font-size: 20px;">How many patients would you be able to help?</label>
-                                <input type="number" class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="# Pro-Bono Patients">
+                                <input type="number" class="form-control form-control-lg" id="proBonoPatients" style="margin-bottom: 10px;" min="1" placeholder="# Pro-Bono Patients">
 
                                 <label style="font-size: 20px;">We need to verify your qualifications.</label>
                                 <label style="font-size: 20px;">Please upload your medical license.</label>
-                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+                                <input type="file" class="form-control form-control-lg" id="medicalLicense" style="margin-bottom: 10px;" placeholder="Qualifications">
 
                             </div>
 
@@ -207,13 +208,12 @@
 
                                 <label style="font-size: 20px;">We need to verify your qualifications.</label>
                                 <label style="font-size: 20px;">Please upload a letter from a school's HR.</label>
-                                <input type="file" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Qualifications">
+                                <input type="file" class="form-control form-control-lg" id="teacherQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
                             </div>
 
                             <div class="mb-3 form-check py-3">
 
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" href="donorDashboard.html" id="registerButton" style=" display: none; background-color: #162836; color: #D5A187;">Register</button>
                             <div>
                                 <a class="nav-link link-fancy ps-0" aria-current="page" href="donorLogin.html" style="margin-bottom: 30px; margin-top: 20px;">Already have an account</a>
                             </div>
@@ -233,6 +233,42 @@
 
 
     <script>
+        const donorTypeSelect = document.getElementById('donorTypeSelect');
+
+        donorTypeSelect.addEventListener('change', function() {
+            const selectedOption = this.value;
+
+            // Check if all donor fields are filled
+            const donorFirstName = document.getElementById('donorFirstName').value.trim();
+            const donorLastName = document.getElementById('donorLastName').value.trim();
+            const donorGender = document.getElementById('donorGender').value.trim();
+            const donorEmail = document.getElementById('donorEmail').value.trim();
+            const donorContactNumber = document.getElementById('donorContactNumber').value.trim();
+            const donorPassword = document.getElementById('donorPassword').value.trim();
+            const donorConfirmPassword = document.getElementById('donorConfirmPassword').value.trim();
+            const donorAddress = document.getElementById('donorAddress').value.trim();
+            const donorArea = document.getElementById('donorArea').value.trim();
+            const donorGovernorate = document.getElementById('donorGovernorate').value.trim();
+
+            if (!donorFirstName || !donorLastName || !donorGender || !donorEmail || !donorContactNumber || !donorPassword || !donorConfirmPassword || !donorAddress || !donorArea || !donorGovernorate) {
+                alert('Please fill all donor fields');
+
+            }
+            // Check if passwords match
+            if (donorPassword !== donorConfirmPassword) {
+                alert('Passwords do not match');
+
+            } else {
+                if (selectedOption === "teacher") {
+                    window.location.href = "ProbonoTeacherReg.html";
+                } else if (selectedOption === "doctor") {
+                    window.location.href = "ProbonoDoctorReg.html";
+                }
+            }
+            // Redirect based on selected donor type
+
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             const userTypeSelect = document.getElementById('userType');
             const donorFields = document.getElementById('donorFields');
@@ -326,12 +362,24 @@
             });
 
             continueButton.addEventListener('click', function() {
-                event.preventDefault();
-                organizationRepFields.style.display = 'none';
-                organizationFields.style.display = 'block';
-                registerButton.style.display = 'block';
-                registerButton.style.marginBottom = '10px';
+                // Get all input fields in organization representative section
+                const orgRepFirstName = document.getElementById('orgRepFirstName').value.trim();
+                const orgRepLastName = document.getElementById('orgRepLastName').value.trim();
+                const orgRepGender = document.getElementById('orgRepGender').value.trim();
+                const orgRepEmail = document.getElementById('orgRepEmail').value.trim();
+                const orgRepContactNumber = document.getElementById('orgRepContactNumber').value.trim();
+                const orgRepPassword = document.getElementById('orgRepPassword').value.trim();
+                const orgRepConfirmPassword = document.getElementById('orgRepConfirmPassword').value.trim();
+
+                // Check if all fields are filled and passwords match
+                if (orgRepFirstName && orgRepLastName && orgRepGender && orgRepEmail && orgRepContactNumber && orgRepPassword && orgRepConfirmPassword && orgRepPassword === orgRepConfirmPassword) {
+                    window.location.href = "OrgReg.html";
+                } else {
+                    // Show error message or handle accordingly
+                    alert('Please fill all fields and ensure passwords match');
+                }
             });
+
 
             registerButton.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -356,74 +404,46 @@
                 });
 
                 // Iterate over select fields
-                selectFields.forEach(select => {
-                    // Get the computed style of the select
-                    const computedStyle = window.getComputedStyle(select);
-                    if (computedStyle.display === 'block' && select.selectedIndex === 0) {
-                        select.classList.add('error');
+                selectFields.forEach(field => {
+                    if (field.value === null) {
+                        field.classList.add('error');
+                        allFieldsFilled = false;
                     } else {
-                        select.classList.remove('error');
+                        field.classList.remove('error');
                     }
                 });
 
-
+                // If all fields are filled, simulate form submission
                 if (allFieldsFilled) {
-                    window.location.href = 'RegistrationRequestPending.html';
+                    document.getElementById('pending').style.display = 'block';
+                    setTimeout(function() {
+                        window.location.href = "donorDashboard.html";
+                    }, 2000);
                 }
-
             });
-
-
 
             function validateFill() {
-                let allFieldsFilled = true;
+                let allFilled = true;
 
-                // Get all input and select fields within divs with display: block
-                const inputFields = document.querySelectorAll('div[style*="display: block"] input');
-                const selectFields = document.querySelectorAll('div[style*="display: block"] select');
+                const inputs = document.querySelectorAll('input');
+                const selects = document.querySelectorAll('select');
 
-                // Iterate over input fields
-                inputFields.forEach(field => {
-                    if (!field.value.trim()) {
-                        allFieldsFilled = false;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        allFilled = false;
                     }
                 });
 
-                // Iterate over select fields
-                selectFields.forEach(select => {
-                    if (select.selectedIndex === 0) {
-                        allFieldsFilled = false;
+                selects.forEach(select => {
+                    if (!select.value.trim()) {
+                        allFilled = false;
                     }
                 });
 
-                return allFieldsFilled;
+                return allFilled;
             }
-
-
-
-            // Event listener for input fields
-            document.querySelectorAll('input').forEach(input => {
-                input.addEventListener('input', function() {
-                    if (this.value) {
-                        this.classList.remove('error');
-                    }
-                });
-            });
-
-            // Event listener for select fields
-            document.querySelectorAll('select').forEach(select => {
-                select.addEventListener('change', function() {
-                    if (this.selectedIndex !== 0) {
-                        this.classList.remove('error');
-                    }
-                });
-            });
-
-
-
         });
     </script>
-
 
 </body>
 
