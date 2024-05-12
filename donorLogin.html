@@ -97,23 +97,29 @@
 
                             <div id="donorFields" style="display:none;">
                                 <input type="email" id="donorEmail" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
-                                <div class="error-message" style="display: none;">Please enter a valid email address.</div>
+                                <div class="error-message" id="donorEmailError" style="display: none;">Please enter a valid email address.</div>
                                 <input type="password" id="donorPassword" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
-                                <div class="error-message" style="display: none;">Please enter a password.</div>
+                                <div class="error-message" id="donorPasswordError" style="display: none;">Please enter a password.</div>
                             </div>
 
                             <div id="organizationRepFields" style="display:none;">
                                 <input type="text" id="organizationEmail" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
-                                <div class="error-message" style="display: none;">Please enter a valid name.</div>
+                                <div class="error-message" id="organizationEmailError" style="display: none;">Please enter a valid organization name.</div>
                                 <input type="password" id="organizationPassword" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
-                                <div class="error-message" style="display: none;">Please enter a password.</div>
+                                <div class="error-message" id="organizationPasswordError" style="display: none;">Please enter a password.</div>
                             </div>
                         </div>
 
                         <button type="button" class="btn btn-primary btn-lg btn-block" id="buttondoner" style="display:none; background-color: #162836; color: #D5A187; width: 130px; margin-left: 20%;margin-top: 10px;">Login </button>
+
                         <button type="button" class="btn btn-primary btn-lg btn-block" id="buttonorganization" style="display:none; background-color: #162836; color: #D5A187; width: 130px; margin-left: 20%;margin-top: 10px;">Login </button>
                     </form>
                     <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
+                    <a href="index.html" class="link-fancy" style="margin-top: 20px; ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                            </svg> Go Back To Frontpage</a>
                 </main>
             </div>
 
@@ -190,39 +196,96 @@
                 event.preventDefault();
                 const email = document.getElementById('donorEmail').value;
                 const password = document.getElementById('donorPassword').value;
-                checkUser(email, password);
+                checkUserDonor(email, password);
             });
 
             Buttonorganization.addEventListener('click', function(event) {
                 event.preventDefault();
                 const email = document.getElementById('organizationEmail').value;
                 const password = document.getElementById('organizationPassword').value;
-                checkUser(email, password);
+                checkUserOrganization(email, password);
             });
 
-            function checkUser(email, password) {
+            function checkUserDonor(email, password) {
+                // Reset error messages
+                document.getElementById('donorEmailError').style.display = 'none';
+                document.getElementById('donorPasswordError').style.display = 'none';
+
+                // Reset red borders
+                document.getElementById('donorEmail').classList.remove('error');
+                document.getElementById('donorPassword').classList.remove('error');
+
+                if (!email) {
+                    document.getElementById('donorEmailError').style.display = 'block';
+                    document.getElementById('donorEmail').classList.add('error');
+                    return;
+                }
+
+                if (!password) {
+                    document.getElementById('donorPasswordError').style.display = 'block';
+                    document.getElementById('donorPassword').classList.add('error');
+                    return;
+                }
+
                 // Check if user exists in the users array
-                const user = usersArray.find(user => user.email === email && user.password === password);
+                const user = users.find(user => user.email === email && user.password === password);
 
                 if (user) {
                     // User exists, update href based on category
-                    window.location.href = 'donorDashboard.html';
+                    switch (user.category) {
+                        case 'Doctor':
+                            console.log('Doctor');
+                            window.location.href = 'medicalDashboard.html';
+                            break;
+                        case 'Teacher':
+                            console.log('Teacher');
+                            window.location.href = 'teacherDashboard.html';
+                            break;
+                        case 'Donor':
+                            console.log('Donor');
+                            window.location.href = 'donorDashboard.html';
+                            break;
+                        case 'DonorOnly':
+                            window.location.href = 'donorDashboard.html';
+                            break;
+                        default:
+                            console.log('Invalid category');
+                    }
                 } else {
                     console.log('User not found');
                 }
             }
 
-            function checkUser2(email, password) {
-                // Check if user exists in the users array
-                const organization = organizationsArray
+            function checkUserOrganization(email, password) {
+                // Reset error messages
+                document.getElementById('organizationEmailError').style.display = 'none';
+                document.getElementById('organizationPasswordError').style.display = 'none';
 
-                if (user) {
-                    // User exists, update href based on category
-                    window.location.href = 'organizationDashboard.html';
-                } else {
-                    console.log('User not found');
+                // Reset red borders
+                document.getElementById('organizationEmail').classList.remove('error');
+                document.getElementById('organizationPassword').classList.remove('error');
+
+                if (!email) {
+                    document.getElementById('organizationEmailError').style.display = 'block';
+                    document.getElementById('organizationEmail').classList.add('error');
+                    return;
                 }
 
+                if (!password) {
+                    document.getElementById('organizationPasswordError').style.display = 'block';
+                    document.getElementById('organizationPassword').classList.add('error');
+                    return;
+                }
+
+                // Check if organization exists in the organizations array
+                const organization = organizations.find(org => org.email === email && org.password === password);
+
+                if (organization) {
+                    // Organization exists, update href based on category
+                    window.location.href = "organizationDashboard.html";
+                } else {
+                    console.log('Organization not found');
+                }
             }
         });
     </script>
