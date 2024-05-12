@@ -320,37 +320,22 @@ Account Settings
 
     </main>
 
-    <div class="d-flex ms-auto">
 
-        <form class="d-flex">
-            <input class="form-control form-control-lg" style=" height: 13px; width: 200px; margin-right: 20px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px;margin-top: 5px; margin-bottom: 3px;  color: rgb(213, 161, 135); height: 45x;  " href="#">Search</a>
-        </form>
+    <div id="medicalFilterContainer" class="filter-container" style="display: flex; margin-left: 212px; margin-top: 150px;">
 
-    </div>
-
-
-    <div id="medicalFilterContainer" class="filter-container" style="margin-left: 212px; margin-top: 150px;">
-        <div>
-            <label for="specialty">organization Type:</label>
-            <select id="medSpecialty" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
-                padding: .5rem 1rem;
-                font-size: 12.5px;
-                border-radius: .5rem;">
+        <div style="margin-right: 20px;">
+            <label for="specialty" style="margin-right: 5px;">Organization Type:</label>
+            <select id="medSpecialty" class="form-select form-select-lg" style="min-height: 35px; font-size: 12.5px; border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Clothes">Clothes</option>
                 <option value="Orphanage">Orphanage</option>
                 <option value="Hospital">Hospital</option>
                 <option value="Food">Food</option>
-                
             </select>
         </div>
-        <div>
-            <label for="organization">Governerates:</label>
-            <select id="orgName" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
-                padding: .5rem 1rem;
-                font-size: 12.5px;
-                border-radius: .5rem;">
+        <div style="margin-right: 20px;">
+            <label for="organization" style="margin-right: 5px;">Governorates:</label>
+            <select id="orgName" class="form-select form-select-lg" style="min-height: 35px; font-size: 12.5px; border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="Cairo">Cairo</option>
                 <option value="Giza">Giza</option>
@@ -359,11 +344,8 @@ Account Settings
             </select>
         </div>
         <div>
-            <label for="area">Area:</label>
-            <select id="Area" class="form-select form-select-lg" style="min-height: 10px; height: 35px;
-                padding: .5rem 1rem;
-                font-size: 12.5px;
-                border-radius: .5rem;">
+            <label for="area" style="margin-right: 5px;">Area:</label>
+            <select id="Area" class="form-select form-select-lg" style="min-height: 35px; font-size: 12.5px; border-radius: .5rem;">
                 <option value="all">All</option>
                 <option value="El Haram">El Haram</option>
                 <option value="Fifth settlement">Fifth settlement</option>
@@ -372,7 +354,14 @@ Account Settings
                 <option value="Samalout">Samalout</option>
             </select>
         </div>
+        <div style="margin-right: 20px;">
+            <form class="d-flex">
+                <input class="form-control form-control-lg" style="height: 35px; width: 200px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-left: 10px; height: 35px; color: rgb(213, 161, 135);" href="#">Search</a>
+            </form>
+        </div>
     </div>
+
     <main>
         <ul id="organizationAccordion" style="margin-top: 60px; width: 80vw; margin-left: 150px;">
         </ul>
