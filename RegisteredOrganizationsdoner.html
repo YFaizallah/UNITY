@@ -11,255 +11,249 @@
     <meta name="Author" content="Holger Koenemann">
     <meta name="generator" content="Eleventy v2.0.0">
     <meta name="HandheldFriendly" content="true">
-    <title>Registered Organizations/title>
-        <link rel="stylesheet" href="css/theme.min.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/theme.min.css">
 
-        <style>
-            /* inter-300 - latin */
-            
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 300;
-                font-display: swap;
-                src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                url('./fonts/inter-v12-latin-300.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-            
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 500;
-                font-display: swap;
-                src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                url('./fonts/inter-v12-latin-500.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-            
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 700;
-                font-display: swap;
-                src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                url('./fonts/inter-v12-latin-700.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-            
-            .xxx:hover {
-                border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
-                box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
-                /* Changing shadow on hover */
-            }
-            
-            .filter-container {
-                display: flex;
-                flex-wrap: wrap;
-            }
-            
-            .filter-container>div {
-                display: inline-block;
-                margin-right: 20px;
-            }
-            
-            .options-container {
-                float: right;
-            }
-        </style>
+    <style>
+        /* inter-300 - latin */
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .filter-container>div {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        
+        .options-container {
+            float: right;
+        }
+    </style>
 
-        <style>
-            /* Add custom CSS to hide dropdown by default */
-            
-            .dropdown-item {
-                margin: 3px 0 5px -25px;
-            }
-            
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                /* Adjust as needed */
-            }
-            /* Show dropdown when hovering over the dropdown item */
-            
-            .nav-item.dropdown:hover .dropdown-menu {
-                display: block;
-            }
-            
-            li {
-                list-style: none;
-            }
-            
-            .accordion-button {
-                font-size: 1rem;
-                /* Set font size to regular */
-                background-color: transparent;
-                /* Remove background color */
-                /* Remove border */
-                width: 80vw;
-                /* Set width */
-                text-align: left;
-                /* Align text to the left */
-            }
-            
-            .accordion-item {
-                border: black;
-            }
-            /* Add your provided styles here */
-            /* Add your provided styles here */
-            
-            #organizationAccordion {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-            
-            #organizationAccordion li {
-                position: relative;
-                padding-bottom: 4px;
-                padding-top: 18px;
-                border-top: 1px solid #dce7eb;
-            }
-            
-            #organizationAccordion li input[type="checkbox"] {
-                position: absolute;
-                cursor: pointer;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .accordion-button {
+            font-size: 1rem;
+            /* Set font size to regular */
+            background-color: transparent;
+            /* Remove background color */
+            /* Remove border */
+            width: 80vw;
+            /* Set width */
+            text-align: left;
+            /* Align text to the left */
+        }
+        
+        .accordion-item {
+            border: black;
+        }
+        /* Add your provided styles here */
+        /* Add your provided styles here */
+        
+        #organizationAccordion {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #organizationAccordion li {
+            position: relative;
+            padding-bottom: 4px;
+            padding-top: 18px;
+            border-top: 1px solid #dce7eb;
+        }
+        
+        #organizationAccordion li input[type="checkbox"] {
+            position: absolute;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+        }
+        
+        #organizationAccordion li i {
+            position: absolute;
+            transform: translate(-6px, 0);
+            margin-top: 16px;
+            right: 0;
+        }
+        
+        #organizationAccordion li input[type=checkbox]:checked~p {
+            margin-top: 0;
+            max-height: 0;
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        
+        #organizationAccordion li input[type="checkbox"]:checked~i::before {
+            transform: translate(2px, 0) rotate(45deg);
+        }
+        
+        #organizationAccordion li input[type="checkbox"]:checked~i::after {
+            transform: translate(-2px, 0) rotate(-45deg);
+        }
+        
+        #organizationAccordion li i::before,
+        #organizationAccordion li i::after {
+            content: "";
+            position: absolute;
+            background: #333;
+            width: 3px;
+            height: 9px;
+        }
+        
+        #organizationAccordion li i::before {
+            transform: translate(-2px, 0) rotate(45deg);
+        }
+        
+        #organizationAccordion li i:after {
+            transform: translate(2px, 0) rotate(-45deg);
+        }
+        
+        #organizationAccordion p {
+            font-size: 16px;
+            color: rgba(48, 69, 92, 0.8);
+            line-height: 26px;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0 11px;
+            max-height: 800px;
+            margin-top: 14px;
+            opacity: 1;
+            transform: translate(0, 0);
+            overflow: hidden;
+        }
+        
+        #organizationAccordion .transition,
+        #organizationAccordion p,
+        #organizationAccordion li i:before,
+        #organizationAccordion li i:after {
+            transition: all 0.25s ease-in-out;
+        }
+        
+        #organizationAccordion .flipIn,
+        #organizationAccordion h1,
+        #organizationAccordion li {
+            animation: flipdown 0.5s ease both;
+        }
+        
+        #organizationAccordion li:nth-of-type(1) {
+            animation-delay: 0.5s;
+        }
+        
+        #organizationAccordion li:nth-of-type(2) {
+            animation-delay: 0.75s;
+        }
+        
+        #organizationAccordion li:nth-of-type(3) {
+            animation-delay: 1s;
+        }
+        
+        #organizationAccordion li:last-of-type {
+            padding-bottom: 0;
+        }
+        
+        @keyframes flipdown {
+            0% {
                 opacity: 0;
+                transform-origin: top center;
+                transform: rotateX(-90deg);
             }
-            
-            #organizationAccordion li i {
-                position: absolute;
-                transform: translate(-6px, 0);
-                margin-top: 16px;
-                right: 0;
-            }
-            
-            #organizationAccordion li input[type=checkbox]:checked~p {
-                margin-top: 0;
-                max-height: 0;
-                opacity: 0;
-                transform: translateX(-50%);
-            }
-            
-            #organizationAccordion li input[type="checkbox"]:checked~i::before {
-                transform: translate(2px, 0) rotate(45deg);
-            }
-            
-            #organizationAccordion li input[type="checkbox"]:checked~i::after {
-                transform: translate(-2px, 0) rotate(-45deg);
-            }
-            
-            #organizationAccordion li i::before,
-            #organizationAccordion li i::after {
-                content: "";
-                position: absolute;
-                background: #333;
-                width: 3px;
-                height: 9px;
-            }
-            
-            #organizationAccordion li i::before {
-                transform: translate(-2px, 0) rotate(45deg);
-            }
-            
-            #organizationAccordion li i:after {
-                transform: translate(2px, 0) rotate(-45deg);
-            }
-            
-            #organizationAccordion p {
-                font-size: 16px;
-                color: rgba(48, 69, 92, 0.8);
-                line-height: 26px;
-                letter-spacing: 1px;
-                position: relative;
-                padding: 0 11px;
-                max-height: 800px;
-                margin-top: 14px;
+            5% {
                 opacity: 1;
-                transform: translate(0, 0);
-                overflow: hidden;
             }
-            
-            #organizationAccordion .transition,
-            #organizationAccordion p,
-            #organizationAccordion li i:before,
-            #organizationAccordion li i:after {
-                transition: all 0.25s ease-in-out;
+            80% {
+                transform: rotateX(8deg);
             }
-            
-            #organizationAccordion .flipIn,
-            #organizationAccordion h1,
-            #organizationAccordion li {
-                animation: flipdown 0.5s ease both;
+            83% {
+                transform: rotateX(6deg);
             }
-            
-            #organizationAccordion li:nth-of-type(1) {
-                animation-delay: 0.5s;
+            92% {
+                transform: rotateX(-3deg);
             }
-            
-            #organizationAccordion li:nth-of-type(2) {
-                animation-delay: 0.75s;
+            100% {
+                transform-origin: top center;
+                transform: rotateX(0deg);
             }
-            
-            #organizationAccordion li:nth-of-type(3) {
-                animation-delay: 1s;
-            }
-            
-            #organizationAccordion li:last-of-type {
-                padding-bottom: 0;
-            }
-            
-            @keyframes flipdown {
-                0% {
-                    opacity: 0;
-                    transform-origin: top center;
-                    transform: rotateX(-90deg);
-                }
-                5% {
-                    opacity: 1;
-                }
-                80% {
-                    transform: rotateX(8deg);
-                }
-                83% {
-                    transform: rotateX(6deg);
-                }
-                92% {
-                    transform: rotateX(-3deg);
-                }
-                100% {
-                    transform-origin: top center;
-                    transform: rotateX(0deg);
-                }
-            }
-            
+        }
+        
+        .accordion-content {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .map {
+            flex: 1;
+        }
+        
+        @media screen and (max-width: 600px) {
             .accordion-content {
-                display: flex;
-                align-items: flex-start;
+                flex-direction: column;
             }
-            
-            .content {
-                flex: 1;
+            .content-left,
+            .content-right {
+                flex: auto;
+                margin-right: 0;
             }
-            
-            .map {
-                flex: 1;
-            }
-            
-            @media screen and (max-width: 600px) {
-                .accordion-content {
-                    flex-direction: column;
-                }
-                .content-left,
-                .content-right {
-                    flex: auto;
-                    margin-right: 0;
-                }
-            }
-        </style>
+        }
+    </style>
 
 </head>
 
@@ -289,11 +283,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link link-fancy" style="margin-right: 10px; margin-bottom: 15px;" role="button" href="teacherRegisteredOrganizations.html">
-                            Organizations
-                        </a>
-                    </li>
+                    <a class="nav-link link-fancy" style="margin-right: 10px; margin-bottom: 15px;" role="button" href="RegisteredOrganizationsdoner.html">
+                        Organizations
+                      </a>
                     <li class="nav-item">
                         <a class="nav-link link-fancy" style="margin-right:10px;" href="donorAccountSettings.html">
                             Account Settings
@@ -303,8 +295,8 @@
                     <div class="d-flex ms-auto">
 
                         <form class="d-flex">
-                            <input class="form-control form-control-sm xxx" style="margin-right: 15px; width: 200px;height:40px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-                            <a id="searchButton" class="btn xxx " style="margin:0px 15px 0px 0px; width:80px;height: 38px;" href="#">Search</a>
+                            <input class="form-control form-control-lg" style=" height: 13px; width: 200px; margin-right: 20px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                            <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px;margin-top: 5px; margin-bottom: 3px;  color: rgb(213, 161, 135); height: 45x;  " href="#">Search</a>
                         </form>
 
                     </div>
@@ -451,7 +443,7 @@
             "organization type": "Hospital",
             "area": "El Haram",
             "governorate": "Giza",
-            "address": "400 Elsadat St"
+            "address": "456 Elm St"
         }, {
             "name": "Masr elkheer",
             "contact number": "01234567891",
