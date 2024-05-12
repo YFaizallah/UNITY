@@ -157,11 +157,14 @@
         }
         
         .submit-btn {
-            display: inline-block; /* This makes the button only as wide as its content */
-            width: 100px; /* This can be a specific value like '100px' if you want */
+            display: inline-block;
+            /* This makes the button only as wide as its content */
+            width: 110px;
+            height: 40px;
+            /* This can be a specific value like '100px' if you want */
             margin-top: 10px;
             padding: 5px 10px;
-            font-size: 12px;
+            font-size: 18px;
         }
     </style>
 
@@ -326,7 +329,7 @@ Fullfilled Donations
             </div>
         </div>
 
-        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
+        <div class="container text-center py-3 small">Made by <a href="index.html" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
 
@@ -610,7 +613,7 @@ Fullfilled Donations
                         const select = document.createElement('select');
                         select.setAttribute('name', key);
                         // Add options to the select element
-                        const options = ['All', 'El Haram', 'El Marg','Isis Temple']; // Example options
+                        const options = ['All', 'El Haram', 'El Marg', 'Isis Temple']; // Example options
                         options.forEach(option => {
                             const optionElement = document.createElement('option');
                             optionElement.value = option;
@@ -628,7 +631,7 @@ Fullfilled Donations
                         const select = document.createElement('select');
                         select.setAttribute('name', key);
                         // Add options to the select element
-                        const options = ['All','Cairo', 'Giza', 'Aswan']; // Example options
+                        const options = ['All', 'Cairo', 'Giza', 'Aswan']; // Example options
                         options.forEach(option => {
                             const optionElement = document.createElement('option');
                             optionElement.value = option;
