@@ -440,7 +440,7 @@
             </div>
         </div>
 
-        <div class="container text-center py-3 small">Made by <a href="index.html" class="link-fancy" target="_blank">Unity</a>
+        <div class="container text-center py-3 small">Made by <a href="" class="link-fancy" target="_blank">Unity</a>
         </div>
     </footer>
 
@@ -563,7 +563,8 @@
             "Edition": "1st Edition",
             "Summary": "A comprehensive guide to math covering alot of topics.",
             "Quantity": 100,
-            "photoUrl": "UnityAssets/books/Math.jpeg"
+            "photoUrl": "UnityAssets/books/Math.jpeg",
+            "Category": "Books"
         }, {
             "id": 4,
             "Name": "Science",
@@ -572,7 +573,8 @@
             "Edition": "2nd Edition",
             "Summary": "An exploration of scientific principles and phenomena.",
             "Quantity": 120,
-            "photoUrl": "UnityAssets/books/Science.jpeg"
+            "photoUrl": "UnityAssets/books/Science.jpeg",
+            "Category": "Books"
         }, {
             "id": 6,
             "Name": "History",
@@ -581,7 +583,8 @@
             "Edition": "3rd Edition",
             "Summary": "A detailed account of historical events and civilizations.",
             "Quantity": 80,
-            "photoUrl": "UnityAssets/books/History.jpeg"
+            "photoUrl": "UnityAssets/books/History.jpeg",
+            "Category": "Books"
         }];
 
         let stationeryItems = [{
@@ -733,24 +736,26 @@
             }));
 
             newArray.forEach(item => {
-                delete item.Category;
-            });
-
-
-            newArray.forEach(item => {
                 let photoHtml = '';
                 let maxQuantity = item.quantity; // Set the maximum quantity to the quantity of the item
 
-                if (item.photoUrl) {
-                    photoHtml = `<img src="${item.photoUrl}" width="300px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                if (item.photoUrl && item.Category === 'toys') {
+                    photoHtml = `<img src="${item.photoUrl}" width="272px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                }
+                if (item.photoUrl && (item.Category === 'Books' || item.Type === 'Books ')) {
+                    photoHtml = `<img src="${item.photoUrl}" width="320px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                 }
 
-                if (item.photoUrl && item.type) {
-                    photoHtml = `<img src="${item.photoUrl}" width="50px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                if (item.photoUrl && item.Category === 'medicalSupplies') {
+                    photoHtml = `<img src="${item.photoUrl}" width="320px" height="100%" class="float-end ms-3" alt="${item.type}">`;
                 }
+
+                // if (item.photoUrl && item.Type ) {
+                //     photoHtml = `<img src="${item.photoUrl}" width="50px" height="100%" class="float-end ms-3" alt="${item.type}">`;
+                // }
 
                 const cardTextHtml = Object.entries(item)
-                    .filter(([key]) => key !== 'photoUrl')
+                    .filter(([key]) => key !== 'photoUrl' && key !== 'Category')
                     .map(([key, value]) => `<p class="card-text"><strong>${key}:</strong> ${value}</p>`)
                     .join('');
 
