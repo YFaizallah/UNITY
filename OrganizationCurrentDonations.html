@@ -132,6 +132,29 @@
         background-color: rgb(38, 255, 0);
         color: white;
     }
+
+    .modify-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modify-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modify-form input,
+.modify-form select {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    margin-top: 10px;
+}
         
     </style>
 
@@ -356,22 +379,22 @@ Fullfilled Donations
                 
             },{
                 "Category": "schoolSupplies",
-                "Type": "Stationary",
+                "School Supplies Type": "Stationary",
                 "item": "Pens",
                 "Quantity": 200,
                  
             },{
                 "Category": "medicalSupplies",
-                "Type": "Devices",
+                "Medical Supplies Type": "Devices",
                 "Name": "heart rate monitor",
                 "Use": "heart rate monitor",
                 "Quantity": 10,
             },{
                 "Category": "bloodDonations",
-                "Blood-Type": "O+",
+                "Blood Type": "O+",
                 "Hospital": "City Hospital",
                 "Area": "Downtown",
-                "Governorate": "New York",
+                "Governorate": "Cairo",
                 "Address": "123 Main Street",
             }
         ];
@@ -380,13 +403,13 @@ Fullfilled Donations
 
         donations.forEach((donation, index) => {
             const card = document.createElement('div');
-            card.classList.add('col-md-9'); // Full width column
+            card.classList.add('col-md-7'); // Full width column
             //card.classList.add('donation-card');
             const cardBody = document.createElement('div');
             cardBody.classList.add('card', 'card-container');
-
+            cardBody.setAttribute('data-index', index);
             // Creating HTML structure for each donation item
-            let htmlContent = '<div class="card-body">';
+            let htmlContent = `<div class="card-body" data-index="${index}">`;
             Object.entries(donation).forEach(([key, value]) => {
                 htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
             });
@@ -459,10 +482,232 @@ cardContainer.addEventListener('click', function(event) {
 
 
         function openModifyForm(donation, index) {
-        // Code to create and display a form with pre-filled values for modification
-        // You can use JavaScript to create HTML elements for the form and populate them with the data from the 'donation' object
-        // After the user modifies the values and submits the form, update the 'donations' array with the new values
-    }
+            const cardBody = document.querySelector(`[data-index="${index}"] .card-body`);
+
+        
+
+
+            // Clear the existing content of the card body
+            cardBody.innerHTML = '';
+
+            // Create a form element
+            const form = document.createElement('form');
+            form.classList.add('modify-form');
+
+            // Loop through each key-value pair in the donation object
+            Object.entries(donation).forEach(([key, value]) => {
+                // Create a label element
+                const label = document.createElement('label');
+                label.textContent = `${key}:`;
+
+                if (key === 'Age') { // For example, change 'Category' to the appropriate field name
+                // Create a select element
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['Adult', 'Child', 'Teen']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            } else  if (key === 'Gender') { // For example, change 'Category' to the appropriate field name
+                // Create a select element
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['Male', 'Female', 'Unisex']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            }  else if (key === 'Season') { // For example, change 'Category' to the appropriate field name
+                // Create a select element
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['Summer', 'Fall', 'Winter','Spring']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            } else if(key === 'Quantity'){
+                const input = document.createElement('input');
+                input.setAttribute('type', 'number');
+                input.setAttribute('name', key);
+                input.setAttribute('value', value);
+
+                // Append label and input to the form
+                form.appendChild(label);
+                form.appendChild(input);
+            } else if(key ==='Blood Type'){
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['All', 'A+', 'A-','B+','B-','O+','O-','AB+','AB-']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+
+            }else if(key === 'Hospital'){
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['City Hospital', 'Country Hospital', 'Community Hospital']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            }else if(key === 'Area'){
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['Downtown', 'Westside', 'North Side']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            }else if(key === 'Governorate'){
+                const select = document.createElement('select');
+                select.setAttribute('name', key);
+                // Add options to the select element
+                const options = ['Cairo', 'Alexandria', 'Mansoura']; // Example options
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    select.appendChild(optionElement);
+                });
+
+                // Set the value of the select element to the current value of the field
+                select.value = value;
+
+                // Append label and select to the form
+                form.appendChild(label);
+                form.appendChild(select);
+            }
+            
+            
+            
+            else {
+                // Create an input element
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('name', key);
+                input.setAttribute('value', value);
+
+                if(key === 'School Supplies Type' || key === 'Medical Supplies Type' || key === 'Category'){
+                            input.disabled = true;
+                }
+
+                // Append label and input to the form
+                form.appendChild(label);
+                form.appendChild(input);
+            }
+            });
+
+            // Create a submit button
+            const submitBtn = document.createElement('button');
+            submitBtn.textContent = 'Submit';
+            submitBtn.classList.add('submit-btn', 'btn', 'btn-primary', 'btn-sm', 'custom-btn');
+            form.appendChild(submitBtn);
+
+            // Append the form to the card body
+            cardBody.appendChild(form);
+
+            // Add event listener to the form submit button
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                form.querySelectorAll('input[disabled]').forEach(input => {
+                    input.removeAttribute('disabled');
+                 });
+                // Extract the form data
+                const formData = new FormData(form);
+
+                // Create an object to hold the modified donation data
+                const modifiedDonation = {};
+                formData.forEach((value, key) => {
+                    modifiedDonation[key] = value;
+                });
+
+                // Update the donations array with the modified donation
+                donations[index] = modifiedDonation;
+
+                // Re-render the card with the updated donation data
+                renderDonationCard(index);
+
+                // Optionally, you can close the form or perform any other action here
+            });
+        }
+    
+
+        function renderDonationCard(index) {
+            const cardBody = document.querySelector(`[data-index="${index}"] .card-body`);
+            const donation = donations[index];
+            let htmlContent = `<div class="card-body"  data-index="${index}" >`;
+            Object.entries(donation).forEach(([key, value]) => {
+                htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
+            });
+            htmlContent += `<button class="modify-btn custom-btn" data-index="${index}">Modify</button>`;
+            htmlContent += `<button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>`;
+            htmlContent += '</div>';
+            cardBody.innerHTML = htmlContent;
+        }
 
         function deleteDonation(cardElement,index) {
             if (cardElement) {
@@ -471,10 +716,17 @@ cardContainer.addEventListener('click', function(event) {
                 donations.splice(index, 1);
                 // Update the data-index attributes of all remaining cards
                 console.log("Updated donations array:", donations);
-                const cards = document.querySelectorAll('.card');
+                const cards = document.querySelectorAll('.card-container');
                 cards.forEach((card, newIndex) => {
+                    if (card) card.setAttribute('data-index', newIndex);
                     const modifyBtn = card.querySelector('.modify-btn');
                     const deleteBtn = card.querySelector('.delete-btn');
+                    const cardBody = card.querySelector('.card-body');
+                    //const c=card.querySelector('.card-container');
+                    //const x=card.querySelector('.card');
+                    //if(x) x.setAttribute('data-index', newIndex);
+                    //if(c) c.setAttribute('data-index', newIndex);
+                    if(cardBody) cardBody.setAttribute('data-index', newIndex);
                     if (modifyBtn) modifyBtn.setAttribute('data-index', newIndex);
                     if (deleteBtn) deleteBtn.setAttribute('data-index', newIndex);
                 });
@@ -483,6 +735,7 @@ cardContainer.addEventListener('click', function(event) {
                 
             }
 
+           
 
      });
     </script>
