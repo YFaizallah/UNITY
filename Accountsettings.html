@@ -80,6 +80,25 @@
             margin-top: 5px;
         }
         
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+        
         li {
             list-style: none;
         }
@@ -169,7 +188,7 @@ Account Settings
                                     <input type="password" class="form-control form-control-lg" id="confirmPassword" name="confirmPassword">
                                     <div id="confirmPasswordError" class="error-message"></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color: #162836; color: #D5A187;">Submit</button>
+                                <button type="submit" class="btn custom-btn" style="background-color: #162836; color: #D5A187;">Submit</button>
                             </form>
                         </div>
                     </div>

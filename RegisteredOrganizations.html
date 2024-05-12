@@ -63,6 +63,25 @@
             position: absolute;
             /* Adjust as needed */
         }
+        
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
         /* Show dropdown when hovering over the dropdown item */
         
         .nav-item.dropdown:hover .dropdown-menu {
@@ -87,6 +106,12 @@
         
         .accordion-item {
             border: black;
+        }
+        
+        .xxx:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
         }
         /* Add your provided styles here */
         /* Add your provided styles here */
@@ -356,8 +381,8 @@ Account Settings
         </div>
         <div style="margin-right: 20px;">
             <form class="d-flex">
-                <input class="form-control form-control-lg" style="height: 35px; width: 200px; margin-left:170px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
-                <a id="searchButton" class="btn btn-primary donate-btn" style="border-radius: 10px; margin-left: 10px; height: 35px; color: rgb(213, 161, 135);" href="#">Search</a>
+                <input class="form-control  xxx" style="height: 35px; width: 200px; margin-left:170px;" id="searchBar" type="search" placeholder="Search.." aria-label="Search">
+                <a id="searchButton" class="btn  xxx " style=" margin-left: 10px; height: 35px; border-color: black; color: rgb(0, 0, 0);" href="#">Search</a>
             </form>
         </div>
     </div>

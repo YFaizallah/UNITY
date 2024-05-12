@@ -85,6 +85,31 @@
             font-weight: bold;
         }
         
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+        
+        .xxx:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
         .table-container {
             margin-top: 100px;
             max-width: 1000px;
@@ -357,7 +382,9 @@ Account Settings
               <div class="col col-2" data-label="Donor Name">${donor.name}</div>
               <div class="col col-3" data-label="Activity Status">${donor.activity}</div>
               <div class="col col-4" data-label="Request">
-            <button onclick="removeDonor(${donor.id})" class="btn btn-success" style="color: black;">Delete</button>
+                <div class="col col-4" data-label="Request">
+    <button onclick="removeDonor(${donor.id})" class="btn btn-success" style="color: black;">Delete</button>
+</div>
 
       </div>
             `;
