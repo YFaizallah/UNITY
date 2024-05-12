@@ -97,12 +97,16 @@
 
                             <div id="donorFields" style="display:none;">
                                 <input type="email" id="donorEmail" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Email">
+                                <div class="error-message" style="display: none;">Please enter a valid email address.</div>
                                 <input type="password" id="donorPassword" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <div class="error-message" style="display: none;">Please enter a password.</div>
                             </div>
 
                             <div id="organizationRepFields" style="display:none;">
-                                <input type="text" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
-                                <input type="password" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <input type="text" id="organizationEmail" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Organization Name">
+                                <div class="error-message" style="display: none;">Please enter a valid name.</div>
+                                <input type="password" id="organizationPassword" class="form-control form-control-lg" style="margin-bottom: 10px;" placeholder="Password">
+                                <div class="error-message" style="display: none;">Please enter a password.</div>
                             </div>
                         </div>
 
@@ -141,6 +145,15 @@
             'category': 'DonorOnly'
         }];
 
+        const organizations = [{
+            'email': 'Resala',
+            'password': '12345',
+            'category': 'Resala'
+        }, {
+            'email': 'Baheya',
+            'password': '12345',
+            'category': 'Baheya'
+        }];
 
         document.addEventListener('DOMContentLoaded', function() {
             const userTypeSelect = document.getElementById('userType');
@@ -159,11 +172,13 @@
                     userTypeSelect.style.display = 'none';
                     loginLabel.style.display = 'none';
                     Buttondoner.style.display = 'block';
+                    Buttonorganization.style.display = 'none';
                 } else if (selectedUserType === 'organization') {
                     donorFields.style.display = 'none';
                     organizationRepFields.style.display = 'block';
                     userTypeSelect.style.display = 'none';
                     loginLabel.style.display = 'none';
+                    Buttondoner.style.display = 'none';
                     Buttonorganization.style.display = 'block';
                 } else {
                     donorFields.style.display = 'none';
@@ -171,17 +186,6 @@
                 }
             });
 
-            // Buttondoner.addEventListener('click', function(event) {
-            //     event.preventDefault();
-            //     // Redirect to the donor dashboard page
-            //     window.location.href = 'donorDashboard.html';
-            // });
-
-            // Buttonorganization.addEventListener('click', function(event) {
-            //     event.preventDefault();
-            //     // Redirect to the organization dashboard page
-            //     window.location.href = 'organizationDashboard.html';
-            // });
             Buttondoner.addEventListener('click', function(event) {
                 event.preventDefault();
                 const email = document.getElementById('donorEmail').value;
@@ -191,47 +195,38 @@
 
             Buttonorganization.addEventListener('click', function(event) {
                 event.preventDefault();
-                // const email = document.getElementById('organizationEmail').value;
-                // const password = document.getElementById('organizationPassword').value;
-                //  checkUser(email, password);
-                window.location.href = 'organizationDashboard.html';
+                const email = document.getElementById('organizationEmail').value;
+                const password = document.getElementById('organizationPassword').value;
+                checkUser(email, password);
             });
 
             function checkUser(email, password) {
                 // Check if user exists in the users array
-                const user = users.find(user => user.email === email && user.password === password);
+                const user = usersArray.find(user => user.email === email && user.password === password);
 
                 if (user) {
                     // User exists, update href based on category
-                    switch (user.category) {
-                        case 'Doctor':
-                            console.log('Doctor');
-                            window.location.href = 'medicalDashboard.html';
-                            break;
-                        case 'Teacher':
-                            console.log('Teacher');
-                            window.location.href = 'teacherDashboard.html';
-                            break;
-                        case 'Donor':
-                            console.log('Donor');
-                            window.location.href = 'donorDashboard.html';
-                            break;
-
-                        case 'DonorOnly':
-                            window.location.href = 'donorDashboard.html';
-                            break;
-
-                        default:
-                            console.log('Invalid category');
-                    }
+                    window.location.href = 'donorDashboard.html';
                 } else {
                     console.log('User not found');
                 }
             }
 
+            function checkUser2(email, password) {
+                // Check if user exists in the users array
+                const organization = organizationsArray
 
+                if (user) {
+                    // User exists, update href based on category
+                    window.location.href = 'organizationDashboard.html';
+                } else {
+                    console.log('User not found');
+                }
+
+            }
         });
     </script>
+
 
 
 </body>
