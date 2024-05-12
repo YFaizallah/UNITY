@@ -171,7 +171,7 @@
                 .table-header {
                     display: none;
                 }
-                .table-row {}
+                /* .table-row {} */
                 li {
                     display: block;
                 }
@@ -377,14 +377,19 @@ Account Settings
                 const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
                 const newRow = document.createElement('li');
                 newRow.classList.add(rowClass);
+                newRow.setAttribute('data-id', index+1);
                 newRow.innerHTML = `
-              <div class="col col-1" data-label="Donor ID">${donor.id}</div>
+              <div class="col col-1" data-label="id">${donor.id}</div>
               <div class="col col-2" data-label="Donor Name">${donor.name}</div>
               <div class="col col-3" data-label="Activity Status">${donor.activity}</div>
               <div class="col col-4" data-label="Request">
+<<<<<<< HEAD
                 <div class="col col-4" data-label="Request">
     <button onclick="removeDonor(${donor.id})" class="btn btn-success" style="color: black;">Delete</button>
 </div>
+=======
+            <button onclick="removeDonor(${index+1})" class="btn btn-success" style="color: black;">Delete</button>
+>>>>>>> fbdfb80e1328581e19ee7dba610133ed8e54f10c
 
       </div>
             `;
@@ -398,12 +403,13 @@ Account Settings
                 const rowClass = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
                 const newRow = document.createElement('li');
                 newRow.classList.add(rowClass);
+                newRow.setAttribute('data-id', index+1);
                 newRow.innerHTML = `
-              <div class="col col-1" data-label="organization ID">${organization.id}</div>
+              <div class="col col-1" data-label="${organization.id}">${organization.id}</div>
               <div class="col col-2" data-label="organization Name">${organization.name}</div>
               <div class="col col-3" data-label="Activity Status">${organization.status}</div>
               <div class="col col-4" data-label="Request">
-            <button onclick="removeOrganization(${organization.id})" class="btn btn-success" style="color: black;">Delete</button>
+            <button onclick="console.log('Button clicked'); removeOrganization(${index+1})" class="btn btn-success" style="color: black;">Delete</button>
 
       </div>
             `;
@@ -411,44 +417,77 @@ Account Settings
             });
         }
 
-        function removeOrganization(id) {
-            const index = organizationRequest.findIndex(organization => organization.id === id);
+        // function removeOrganization(id) {
+        //     const index = organizationRequest.findIndex(organization => organization.id === id);
 
-            // If the request is found
-            if (index !== -1) {
-                // Remove the request from the array
-                organizationRequest.splice(index, 1);
+        //     // If the request is found
+        //     if (index !== -1) {
+        //         // Remove the request from the array
+        //         organizationRequest.splice(index, 1);
 
-                // Remove the corresponding row from the table
-                const table = document.getElementById('organizationTable');
-                const rowToRemove = table.querySelector(`[data-label="${id}"]`);
-                if (rowToRemove) {
-                    rowToRemove.remove();
-                }
-                localStorage.setItem('requests', JSON.stringify(organizationRequest));
+        //         // Remove the corresponding row from the table
+        //         const table = document.getElementById('organizationTable');
+        //         const rowToRemove = table.querySelector(`[data-index="${id}"]`);
+        //         if (rowToRemove) {
+        //             rowToRemove.remove();
+        //         }
+        //         localStorage.setItem('requests', JSON.stringify(organizationRequest));
 
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
+        //     } else {
+        //         console.log(`Request with ID ${id} not found.`);
+        //     }
+        // }
+
+        function removeOrganization(index) {
+    // Remove the request from the array
+    if (index >= 0 && index < organizationRequest.length) {
+        organizationRequest.splice(index, 1);
+
+        // Remove the corresponding row from the table
+        const table = document.getElementById('organizationTable');
+        if (index < table.children.length) {
+            table.children[index].remove();
         }
+        localStorage.setItem('requests', JSON.stringify(organizationRequest));
+    } else {
+        console.log(`No request at index ${index}.`);
+    }
+}
 
-        function removeDonor(id) {
-            const index = DonorRequest.findIndex(request => request.id === id);
 
-            // If the request is found
-            if (index !== -1) {
-                // Remove the request from the array
-                DonorRequest.splice(index, 1);
 
-                // Remove the corresponding row from the table
-                const table = document.getElementById('donorTable');
-                const rowToRemove = table.querySelector(`[data-id="${id}"]`);
-                if (rowToRemove) rowToRemove.remove();
-                localStorage.setItem('requests', JSON.stringify(DonorRequest));
-            } else {
-                console.log(`Request with ID ${id} not found.`);
-            }
+function removeDonor(index) {
+    // Remove the donor from the array
+    if (index >= 0 && index < DonorRequest.length) {
+        DonorRequest.splice(index, 1);
+
+        // Remove the corresponding row from the table
+        const table = document.getElementById('donorTable'); // Make sure to use the correct ID for your donor table
+        if (index < table.children.length) {
+            table.children[index].remove();
         }
+        localStorage.setItem('donors', JSON.stringify(DonorRequest)); // Make sure to use the correct key for your donors in localStorage
+    } else {
+        console.log(`No donor at index ${index}.`);
+    }
+}
+        // function removeDonor(id) {
+        //     const index = DonorRequest.findIndex(request => request.id === id);
+
+        //     // If the request is found
+        //     if (index !== -1) {
+        //         // Remove the request from the array
+        //         DonorRequest.splice(index, 1);
+
+        //         // Remove the corresponding row from the table
+        //         const table = document.getElementById('donorTable');
+        //         const rowToRemove = table.querySelector(`[data-id="${id}"]`);
+        //         if (rowToRemove) rowToRemove.remove();
+        //         localStorage.setItem('requests', JSON.stringify(DonorRequest));
+        //     } else {
+        //         console.log(`Request with ID ${id} not found.`);
+        //     }
+        // }
 
         document.addEventListener("DOMContentLoaded", function() {
             createDonorTable(DonorRequest);
