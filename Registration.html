@@ -106,8 +106,10 @@
                             <div id="donorFields" style="display: none;">
 
                                 <input type="text" class="form-control form-control-lg" id="donorFirstName" style="margin-bottom: 10px;" placeholder="First Name">
-                                <input type="text" class="form-control form-control-lg" id="donorLastName" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <div class="error-message" style="display: none;">Please enter a valid first name.</div>
 
+                                <input type="text" class="form-control form-control-lg" id="donorLastName" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <div class="error-message" style="display: none;">Please enter a valid last name.</div>
                                 <input type="email" class="form-control form-control-lg" id="donorEmail" style="margin-bottom: 10px;" placeholder="Email">
                                 <div class="error-message" style="display: none;">Please enter a valid email address.</div>
 
@@ -418,14 +420,14 @@
                     !donorAddress ||
                     !donorArea ||
                     !donorGovernorate) {
-                    alert('Please fill all donor fields');
+
                     highlightEmptyFields();
                     return; // Exit the function if any field is empty
                 }
 
                 // Check if passwords match
                 if (donorPassword !== donorConfirmPassword) {
-                    alert('Passwords do not match');
+
                     highlightPasswords();
                     return; // Exit the function if passwords do not match
                 }
