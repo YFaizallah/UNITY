@@ -63,6 +63,7 @@
             color: red;
             font-size: 14px;
             margin-top: 5px;
+            margin-bottom: 10px;
         }
     </style>
 
@@ -90,11 +91,22 @@
 
                             <label style="font-size: 20px;">Organization Details</label>
                             <input type="text" class="form-control form-control-lg" id="orgName" style="margin-bottom: 10px;" placeholder="Organization Name">
+                            <div class="error-message" id="orgNameError" style="display: none;">Please enter Organization Name</div>
+
                             <input type="text" class="form-control form-control-lg" id="orgType" style="margin-bottom: 10px;" placeholder="Organization Type">
+                            <div class="error-message" id="orgTypeError" style="display: none;">Please enter Organization Type</div>
+
                             <input type="text" class="form-control form-control-lg" id="orgAddress" style="margin-bottom: 10px;" placeholder="Address">
+                            <div class="error-message" id="orgAddressError" style="display: none;">Please enter Address</div>
+
                             <input type="text" class="form-control form-control-lg" id="orgArea" style="margin-bottom: 10px;" placeholder="Area">
+                            <div class="error-message" id="orgAreaError" style="display: none;">Please enter Area</div>
+
                             <input type="text" class="form-control form-control-lg" id="orgGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+                            <div class="error-message" id="orgGovernorateError" style="display: none;">Please enter Governorate</div>
+
                             <input type="text" class="form-control form-control-lg" id="orgPostalCode" style="margin-bottom: 10px;" placeholder="Postal Code">
+                            <div class="error-message" id="orgPostalCodeError" style="display: none;">Please enter Postal Code</div>
 
                             <label style="font-size: 20px;">Please specify the location</label>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
@@ -103,6 +115,7 @@
 
                             <label style="font-size: 20px;">Please upload documents verifying your organization's status</label>
                             <input type="file" class="form-control form-control-lg" id="orgQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
+                            <div class="error-message" id="orgQualificationsError" style="display: none;">Please upload documents</div>
 
                             <button type="button" class="btn btn-primary btn-lg btn-block" id="registerButton" style="background-color: #162836; color: #D5A187;">Register</button>
 
@@ -136,51 +149,65 @@
 
             if (!orgName) {
                 document.getElementById("orgName").classList.add("error");
+                document.getElementById("orgNameError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgName").classList.remove("error");
+                document.getElementById("orgNameError").style.display = "none";
             }
 
             if (!orgType) {
                 document.getElementById("orgType").classList.add("error");
+                document.getElementById("orgTypeError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgType").classList.remove("error");
+                document.getElementById("orgTypeError").style.display = "none";
             }
 
             if (!orgAddress) {
                 document.getElementById("orgAddress").classList.add("error");
+                document.getElementById("orgAddressError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgAddress").classList.remove("error");
+                document.getElementById("orgAddressError").style.display = "none";
             }
 
             if (!orgArea) {
                 document.getElementById("orgArea").classList.add("error");
+                document.getElementById("orgAreaError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgArea").classList.remove("error");
+                document.getElementById("orgAreaError").style.display = "none";
             }
 
             if (!orgGovernorate) {
                 document.getElementById("orgGovernorate").classList.add("error");
+                document.getElementById("orgGovernorateError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgGovernorate").classList.remove("error");
+                document.getElementById("orgGovernorateError").style.display = "none";
             }
 
             if (!orgPostalCode) {
                 document.getElementById("orgPostalCode").classList.add("error");
+                document.getElementById("orgPostalCodeError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgPostalCode").classList.remove("error");
+                document.getElementById("orgPostalCodeError").style.display = "none";
             }
 
             if (!orgQualifications) {
                 document.getElementById("orgQualifications").classList.add("error");
+                document.getElementById("orgQualificationsError").style.display = "block";
                 event.preventDefault();
             } else {
                 document.getElementById("orgQualifications").classList.remove("error");
+                document.getElementById("orgQualificationsError").style.display = "none";
             }
 
             if (orgName && orgType && orgAddress && orgArea && orgGovernorate && orgPostalCode && orgQualifications) {
